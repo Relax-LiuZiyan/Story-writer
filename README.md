@@ -1,2 +1,2 @@
 # Story-writer
-Used by XiaoShuJiang-Writer
+Used by XiaoShuJiang-Writer.
