@@ -1,5 +1,5 @@
 ---
-title: proxychains4& socks 
+title: proxychains4 & socks 
 tags: socks ,proxychains4
 renderNumberedHeading: true
 grammar_cjkRuby: true
