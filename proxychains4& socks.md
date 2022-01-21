@@ -4,7 +4,7 @@ tags: socks ,proxychains4
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
-
+[toc]
 # proxychains4安装与配置
 1. 安装proxychains4，`sudo apt-get install proxychains4`
 2. 配置proxychains4.conf，`sudo vim /etc/proxychains4.conf`，注释掉最后一行，并在最后一行加上本地的端口`socks5 127.0.0.1 1080`。
@@ -54,6 +54,6 @@ pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
  8. In firefox browser, setup the HTTP proxy as 127.0.0.1:8123. Remember to tick "Use this proxy server for all protocols" 
 
 # Reference Links
-1. https://github.com/duanjp8617/misc/tree/master/shadowsocks[enter description here](https://github.com/duanjp8617/misc/tree/master/shadowsocks)
+1. [https://github.com/duanjp8617/misc/tree/master/shadowsocks](https://github.com/duanjp8617/misc/tree/master/shadowsocks)
 2. [Linux安装配置Shadowsocks客户端及开机自动启动](https://blog.huihut.com/2017/08/25/LinuxInstallConfigShadowsocksClient/)
  
