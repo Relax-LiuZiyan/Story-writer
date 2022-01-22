@@ -24,8 +24,8 @@ Win10专业版：控制面板->程序->启用或关闭Windows功能->Hyper-V，�
 ### 实现所有CPU利用率达100%
 
 ``` bash
-for i in \`seq 1 $(cat /proc/cpuinfo |grep "physical id" |wc -l)\`; do dd if=/dev/zero of=/dev/null & ;done
-for i in \`seq 29814 29829\`;dokill -9 $i;done
+for i in `seq 1 $(cat /proc/cpuinfo |grep "physical id" |wc -l)`; do dd if=/dev/zero of=/dev/null & done
+for i in `seq 29814 29829`;dokill -9 $i;done
 ```
 
 - cat /proc/cpuinfo |grep "physical id" | wc -l 可以获得CPU的个数,　我们将其表示为N。
