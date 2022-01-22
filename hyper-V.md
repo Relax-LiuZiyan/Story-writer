@@ -23,9 +23,9 @@ Win10专业版：控制面板->程序->启用或关闭Windows功能->Hyper-V，�
 4. 详细内容：[Hyper-V 3 限定虚拟机可用的CPU利用率](https://blog.51cto.com/wangshujiang/936269)
 ### 实现所有CPU利用率达100%
 
-``` bash
-for i in `seq 1 $(cat /proc/cpuinfo |grep "physical id" |wc -l)`; do dd if=/dev/zero of=/dev/null & done
-for i in `seq 29814 29829`;dokill -9 $i;done
+``` bash?linenums
+ for i in `seq 1 $(cat /proc/cpuinfo |grep "physical id" |wc -l)`; do dd if=/dev/zero of=/dev/null & done
+ for i in `seq 29814 29829`;dokill -9 $i;done
 ```
 
 - cat /proc/cpuinfo |grep "physical id" | wc -l 可以获得CPU的个数,　我们将其表示为N。
