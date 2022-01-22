@@ -3,15 +3,6 @@ title: Hyper-V&Ubuntu18.04
 tags: 资源分配
 renderNumberedHeading: true
 grammar_cjkRuby: true
-title: 更新内容
-tags: 更新说明,小书匠
-category: 小书匠/帮助手册
-slug: storywriter/upgrade_log
-grammar_mindmap: true
-renderNumberedHeading: true
-grammar_code: true
-grammar_decorate: true
-grammar_mathjax: true
 ---
 
 [toc]
