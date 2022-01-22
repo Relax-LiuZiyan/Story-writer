@@ -1,6 +1,6 @@
 ---
 title: proxychains4 & socks 
-tags: socks ,proxychains4
+tags: socks ,proxychains4,代理,浏览器
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
@@ -27,7 +27,7 @@ pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
     "method":"chacha20-ietf",
     "fast_open":false
 	}
-4. 后台挂载`$HOME/.local/bin/sslocal -c $HOME/SSConfig/shadowsocks.json &`，`proxychains4 wget --no-cookie --no-check-certificate  https://www.google.com`查看是否可以访问。
+4. 后台挂载`$HOME/.local/bin/sslocal -c $HOME/SSConfig/shadowsocks.json &`，`proxychains4 wget https://www.google.com --no-cookie --no-check-certificate `查看是否可以访问。
  
 5.  Install polipo: `sudo apt-get install polipo`
 6.  Populate "/etc/polipo/config" with the following content
