@@ -20,6 +20,5 @@ Win10专业版：控制面板->程序->启用或关闭Windows功能->Hyper-V，�
 1. 虚拟处理器的数量：使用的物理核个数。
 2. 虚拟机保留（百分比）：使用虚拟处理器的资源率。例如：虚拟处理器的数量为16个，并且虚拟机保留（百分比）为100%，则相当于效率使用1600%，占总系统资源的百分比为1600% / 3200 % = 50%。
 3. 虚拟机限制（百分比）：则该虚拟机最多可以使用CPU的处理器数据处理能力。例如：虚拟机限制为50%，则该虚拟机可以使用的硬件CPU最高资源是50%，虽然虚拟机提示CPU利用率接近100%。
-
-[Hyper-V 3 限定虚拟机可用的CPU利用率](https://blog.51cto.com/wangshujiang/936269)
-[Hyper-V CPU设置](https://jingyan.baidu.com/article/6181c3e08ccc65152ef153b4.html)
+4. 详细内容：[Hyper-V 3 限定虚拟机可用的CPU利用率](https://blog.51cto.com/wangshujiang/936269)
+5. `for i in `seq 1 $(cat /proc/cpuinfo |grep "physical id" |wc -l)`; do dd if=/dev/zero of=/dev/null & done` ，实现所有CPU利用率达100%。
