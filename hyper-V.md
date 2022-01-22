@@ -3,6 +3,11 @@ title:Hyper-V Ubuntu18.04
 tags: 资源分配
 renderNumberedHeading: true
 grammar_cjkRuby: true
+grammar_mindmap: true
+renderNumberedHeading: true
+grammar_code: true
+grammar_decorate: true
+grammar_mathjax: true
 ---
 
 [toc]
