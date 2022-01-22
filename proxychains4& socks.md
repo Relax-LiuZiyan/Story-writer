@@ -1,6 +1,6 @@
 ---
 title: proxychains4 & socks 
-tags: socks ,proxychains4,代理,浏览器
+tags: socks ,proxychains4,Terminal,Browser Proxy
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
