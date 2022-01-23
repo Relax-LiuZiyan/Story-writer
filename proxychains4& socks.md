@@ -6,11 +6,9 @@ grammar_cjkRuby: true
 ---
 [toc]
 # SwitchyOmega：一个代理设置工具
-proxy设置：
+在运行之前，需要现在软件全局中选择好节点即可。proxy设置：
 
 ![代理端口查看软件](./images/1642933344212.png)
-
-在运行之前，需要现在软件全局中选择好节点即可。
 
 # Ubuntu挂代理
 1. 创建并进入目录： `mkdir clash && cd clash`
