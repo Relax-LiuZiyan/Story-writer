@@ -13,8 +13,15 @@ proxy设置：
 在运行之前，需要现在软件全局中选择好节点即可。
 
 # Ubuntu挂代理
-
-
+1. 创建并进入目录： `mkdir clash && cd clash`
+2. 下载软件包： `wget https://github.com/Dreamacro/clash/releases/download/v1.7.1/clash-linux-amd64-v1.7.1.gz`
+3. 解压软件包： `gzip -dk clash-linux-amd64-v1.7.1.gz`
+4. 重命名： `mv clash-linux-amd64-v1.7.1 clash`
+5. 给与权限： `chmod +x clash`
+6. 载config： `wget -O config.yaml https://xxxxxxxxxx`
+7. 运行程序： `./clash -d . &`
+8. 切换测试节点网址：`http://clash.razord.top/`
+9. 终端挂载代理：`export http_proxy=http://127.0.0.1:port`
 # proxychains4安装与配置
 1. 安装proxychains4，`sudo apt-get install proxychains4`
 2. 配置proxychains4.conf，`sudo vim /etc/proxychains4.conf`，注释掉最后一行，并在最后一行加上本地的端口`socks5 127.0.0.1 1080`。
