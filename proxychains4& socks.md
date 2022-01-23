@@ -10,6 +10,9 @@ proxy设置：
 
 ![代理端口查看软件](./images/1642933344212.png)
 
+在运行之前，需要现在软件全局中选择好节点即可。
+
+
 # proxychains4安装与配置
 1. 安装proxychains4，`sudo apt-get install proxychains4`
 2. 配置proxychains4.conf，`sudo vim /etc/proxychains4.conf`，注释掉最后一行，并在最后一行加上本地的端口`socks5 127.0.0.1 1080`。
