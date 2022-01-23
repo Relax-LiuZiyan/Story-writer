@@ -12,6 +12,8 @@ proxy设置：
 
 在运行之前，需要现在软件全局中选择好节点即可。
 
+# Ubuntu挂代理
+
 
 # proxychains4安装与配置
 1. 安装proxychains4，`sudo apt-get install proxychains4`
