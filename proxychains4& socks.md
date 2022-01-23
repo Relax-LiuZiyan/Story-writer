@@ -21,7 +21,7 @@ proxy设置：
 6. 载config： `wget -O config.yaml https://xxxxxxxxxx`
 7. 运行程序： `./clash -d . &`
 8. 切换测试节点网址：`http://clash.razord.top/`
-9. 填写系统代理：填写 HTTP 和 HTTPS 代理为 127.0.0.1:7890，填写 Socks 主机为 127.0.0.1:7891，即可启用系统代理，默认最好不要开启。
+9. 填写系统代理：填写 HTTP 和 HTTPS 代理为 127.0.0.1:7890，填写 Socks 主机为 127.0.0.1:7891，即可启用系统代理，最好默认不要开启。
 10. 终端挂载代理：`export http_proxy=http://127.0.0.1:port`
 # proxychains4安装与配置
 1. 安装proxychains4，`sudo apt-get install proxychains4`
