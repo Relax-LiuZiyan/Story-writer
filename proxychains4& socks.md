@@ -1,5 +1,5 @@
 ---
-title: proxychains4 & socks 
+title: socks & proxychains4 
 tags: socks ,proxychains4,Terminal,Browser Proxy
 renderNumberedHeading: true
 grammar_cjkRuby: true
