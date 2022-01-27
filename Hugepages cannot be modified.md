@@ -112,3 +112,5 @@ Node 0 HugePages_Surp:     21
 
 
 # hugepages相关学习
+
+- [Linux下hugetlbpage使用详解](http://www.lenky.info/archives/2012/03/1219)：详细的介绍了HugePages_Total、HugePages_Free、HugePages_Rsvd、HugePages_Surp具体意义，以及如何在NUMA系统上的合理分配Hugepages。
