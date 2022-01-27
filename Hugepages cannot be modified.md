@@ -12,4 +12,5 @@ stackoverflow上有人遇到同样问题[Can't modify hugepage size once DPDK ap
 
 ``` bash
 echo 0 > sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+
 ```
