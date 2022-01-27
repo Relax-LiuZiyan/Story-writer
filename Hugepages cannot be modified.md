@@ -92,10 +92,18 @@ Node 0 HugePages_Surp:      0
 ```
 
 # 问题总结
-hugepages之所以不能修改，但是可以比21值大，可以认为是有程序在使用，因此不可以直接通过命令直接修改将其变为0。
+hugepages之所以不能修改变为0，但是可以比21大，可以认为是有程序在使用，因此不可以直接通过命令直接修改将其变为0。
 
-不结束占用hugepages的进程，直接取消挂载。
+
+## 不结束占用hugepages的进程，直接取消挂载
 
 ``` bash
-enter code here
+root@lzy-Virtual-Machine:/home/lzy# umount /sys/fs/cgroup/hugetl
+root@lzy-Virtual-Machine:/home/lzy# cat /sys/devices/system/node/node*/meminfo | fgrep Huge
+Node 0 AnonHugePages:         0 kB
+Node 0 ShmemHugePages:        0 kB
+Node 0 FileHugePages:        0 kB
+Node 0 HugePages_Total:    21
+Node 0 HugePages_Free:      0
+Node 0 HugePages_Surp:     21
 ```
