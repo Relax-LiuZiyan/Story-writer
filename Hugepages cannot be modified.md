@@ -50,7 +50,7 @@ lzy@lzy-Virtual-Machine:~$ ps 859
 最后定位到，是`vpp`会使用`hugepages`。
 
 ## 解决问题
-
+使用kill发送结束信号，软件应该会自动重启。
 ``` bash
 lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
 /proc/854/numa_maps:ac0200000 default file=/memfd:seg_2-0\040(deleted) huge dirty=1 N0=1 kernelpagesize_kB=2048
@@ -63,10 +63,35 @@ lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
 /proc/2280/numa_maps:ac0200000 default file=/memfd:seg_2-0\040(deleted) huge dirty=1 N0=1 kernelpagesize_kB=2048
 /proc/2280/numa_maps:1000000000 default file=/memfd:buffers-numa-0\040(deleted) huge dirty=20 N0=20 kernelpagesize_kB=2048
 ```
-使用kill发送结束信号，软件应该会自动重启。
+
 
 正确方法如下：
 ``` bash
-
+lzy@lzy-Virtual-Machine:~$ service vpp stop
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+停止“vpp.service”需要认证。
+Authenticating as: lzy,,, (lzy)
+Password:
+==== AUTHENTICATION COMPLETE ===
+lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
+lzy@lzy-Virtual-Machine:~$ cat /sys/devices/system/node/node*/meminfo | fgrep Huge
+Node 0 AnonHugePages:         0 kB
+Node 0 ShmemHugePages:        0 kB
+Node 0 FileHugePages:        0 kB
+Node 0 HugePages_Total:  1024
+Node 0 HugePages_Free:   1024
+Node 0 HugePages_Surp:      0
+root@lzy-Virtual-Machine:/home/lzy# echo 0 > /proc/sys/vm/nr_hugepages
+root@lzy-Virtual-Machine:/home/lzy#  cat /sys/devices/system/node/node*/meminfo | fgrep Huge
+Node 0 AnonHugePages:         0 kB
+Node 0 ShmemHugePages:        0 kB
+Node 0 FileHugePages:        0 kB
+Node 0 HugePages_Total:     0
+Node 0 HugePages_Free:      0
+Node 0 HugePages_Surp:      0
 ```
 
+# 问题总结
+hugepages之所以不能修改，但是可以比21值大，可以认为是有程序在使用，因此不可以直接通过命令直接修改将其变为0。
+
+不结束占用hugepages的进程，直接取消挂载。
