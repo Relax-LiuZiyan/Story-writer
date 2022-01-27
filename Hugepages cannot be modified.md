@@ -21,7 +21,7 @@ grammar_cjkRuby: true
 stackoverflow上有人遇到同样问题[Can't modify hugepage size once DPDK application is stopped](https://stackoverflow.com/questions/58410451/cant-modify-hugepage-size-once-dpdk-application-is-stopped) & [Hugepages seems to be stuck](https://serverfault.com/questions/912449/hugepages-seems-to-be-stuck)。
 
 ``` bash?linenums
-echo 0 > sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+echo 0 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
 echo 0 > /proc/sys/vm/nr_hugepages
 cat /sys/devices/system/node/node*/meminfo | fgrep Huge
 ```
@@ -36,3 +36,17 @@ cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hu
 hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)
 ```
 卸载`/sys/fs/cgroup/hugetl`并且结束对应的程序。
+
+``` bash
+lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
+/proc/859/numa_maps:ac0200000 default file=/memfd:seg_2-0\040(deleted) huge dirty=1 N0=1 kernelpagesize_kB=2048
+/proc/859/numa_maps:1000000000 default file=/memfd:buffers-numa-0\040(deleted) huge dirty=20 N0=20 kernelpagesize_kB=2048
+
+lzy@lzy-Virtual-Machine:~$ ps 859
+  PID TTY      STAT   TIME COMMAND
+  859 ?        Ssl    0:11 /usr/bin/vpp -c /etc/vpp/startup.conf
+```
+最后定位到，是`vpp`会使用`hugepages`。
+
+## 解决问题
+
