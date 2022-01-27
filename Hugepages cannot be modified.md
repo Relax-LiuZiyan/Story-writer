@@ -67,6 +67,6 @@ lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
 
 正确方法如下：
 ``` bash
-enter code here
+
 ```
 
