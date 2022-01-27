@@ -35,6 +35,7 @@ lzy@lzy-Virtual-Machine:~$ mount | grep huge
 cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)
 hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)
 ```
+
 卸载`/sys/fs/cgroup/hugetl`并且结束对应的程序。
 
 ``` bash
@@ -49,4 +50,23 @@ lzy@lzy-Virtual-Machine:~$ ps 859
 最后定位到，是`vpp`会使用`hugepages`。
 
 ## 解决问题
+
+``` bash
+lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
+/proc/854/numa_maps:ac0200000 default file=/memfd:seg_2-0\040(deleted) huge dirty=1 N0=1 kernelpagesize_kB=2048
+/proc/854/numa_maps:1000000000 default file=/memfd:buffers-numa-0\040(deleted) huge dirty=20 N0=20 kernelpagesize_kB=2048
+lzy@lzy-Virtual-Machine:~$ ps 854
+  PID TTY      STAT   TIME COMMAND
+  854 ?        Ssl    0:01 /usr/bin/vpp -c /etc/vpp/startup.conf
+lzy@lzy-Virtual-Machine:~$ sudo kill -9 854
+lzy@lzy-Virtual-Machine:~$ sudo grep huge /proc/*/numa_maps
+/proc/2280/numa_maps:ac0200000 default file=/memfd:seg_2-0\040(deleted) huge dirty=1 N0=1 kernelpagesize_kB=2048
+/proc/2280/numa_maps:1000000000 default file=/memfd:buffers-numa-0\040(deleted) huge dirty=20 N0=20 kernelpagesize_kB=2048
+```
+使用kill发送结束信号，软件应该会自动重启。
+
+正确方法如下：
+``` bash
+enter code here
+```
 
