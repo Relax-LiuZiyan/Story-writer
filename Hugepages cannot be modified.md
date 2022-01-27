@@ -94,7 +94,6 @@ Node 0 HugePages_Surp:      0
 # 问题总结
 hugepages之所以不能修改变为0，但是可以比21大，因此怀疑是有程序在占用，因此不可以直接通过命令直接修改将其变为0。
 
-
 ## 不结束占用hugepages的进程，直接取消挂载
 
 ``` bash
@@ -107,3 +106,6 @@ Node 0 HugePages_Total:    21
 Node 0 HugePages_Free:      0
 Node 0 HugePages_Surp:     21
 ```
+
+
+# hugepages相关学习
