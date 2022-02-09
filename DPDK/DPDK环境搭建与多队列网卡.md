@@ -7,7 +7,7 @@ grammar_cjkRuby: true
 
 # vmware配置问题
 ## E1000 与 VMXNET3
-VMXNET3支持多队列网卡
+VMXNET3网卡
 ``` bash
 
 root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/interrupts | grep eth0
