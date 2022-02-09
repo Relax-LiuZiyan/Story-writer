@@ -6,6 +6,7 @@ grammar_cjkRuby: true
 ---
 
 # vmware配置问题
+
 ## E1000 与 VMXNET3
 VMXNET3网卡
 ``` bash
@@ -29,4 +30,13 @@ root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/inter
   19:          7       3617          0          0          0          0          0          0          0         55          0          0          0          0          0          0   IO-APIC   19-fasteoi   eth2
 ```
 
-#
+# CPU亲和性
+
+
+``` bash
+root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/irq/56/
+affinity_hint      eth0-rxtx-0/       node               smp_affinity       smp_affinity_list  spurious
+root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/irq/56/smp_affinity
+00000000,00000000,00000000,00000400
+```
+
