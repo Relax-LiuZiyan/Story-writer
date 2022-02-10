@@ -25,3 +25,5 @@ grammar_cjkRuby: true
  - 由于[]的优先级比*高，因此在写数组指针的时候必须将*arr用括号括起来
  - arr先和*结合，说明p是一个指针变量
  - 这句话的意思就是：指针arr指向一个大小为8个整型的数组。
+
+![enter description here](./images/1644482909999.png)
