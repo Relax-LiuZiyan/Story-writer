@@ -162,3 +162,10 @@ export RTE_TARGET=x86_64-native-linux-gcc
 4. 46-47设置巨页。
 5. down对应的网卡，选择49，绑定网卡PCI到IGB UIO module。
 
+# window10 无对应IP的ARP列表
+
+ - 查看网卡对应ARP列表：`arp -a`
+ - 添加IP为192.168.0.20的MAC信息：`arp -s 192.168.0.20 00-0c-29-20-2f-68`
+ -  删除IP为192.168.0.20的MAC信息：`arp -d 192.168.0.20`
+ -  查看本地网卡对应的"Idx"值：`netsh i i show in`
+ -  绑定IP与MAC，网卡Idx为9：`netsh -c i i add neighbors 9 192.168.0.20 00-0c-29-20-2f-68` 
