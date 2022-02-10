@@ -34,9 +34,21 @@ root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/inter
 
 
 ``` bash
-root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/irq/56/
+king@ubuntu:~$ cat /proc/irq/56/
 affinity_hint      eth0-rxtx-0/       node               smp_affinity       smp_affinity_list  spurious
-root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/irq/56/smp_affinity
-00000000,00000000,00000000,00000400
-```
 
+# 查看56号中断绑在某个CPU上
+king@ubuntu:~$ cat /proc/irq/56/smp_affinity
+00000000,00000000,00000000,00000400
+
+# 把网卡的56-63号中断绑定在1-8的CPU
+king@ubuntu:~$ echo 01 > /proc/irq/56/smp_affinity
+king@ubuntu:~$ echo 02 > /proc/irq/57/smp_affinity
+king@ubuntu:~$ echo 04 > /proc/irq/58/smp_affinity
+king@ubuntu:~$ echo 08 > /proc/irq/59/smp_affinity
+king@ubuntu:~$ echo 10 > /proc/irq/60/smp_affinity
+king@ubuntu:~$ echo 20 > /proc/irq/61/smp_affinity
+king@ubuntu:~$ echo 40 > /proc/irq/62/smp_affinity
+king@ubuntu:~$ echo 80 > /proc/irq/63/smp_affinity
+
+```
