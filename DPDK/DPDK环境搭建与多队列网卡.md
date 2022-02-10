@@ -1,6 +1,6 @@
 ---
 title: DPDK环境搭建与多队列网卡
-tags: 新建,模板,小书匠
+tags: 
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
