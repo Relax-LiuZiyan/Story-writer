@@ -11,7 +11,7 @@ grammar_cjkRuby: true
 VMXNET3网卡
 ``` bash
 
-root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/interrupts | grep eth0
+king@ubuntu:~$ cat /proc/interrupts | grep eth0
   56:          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0   PCI-MSI 1572864-edge      eth0-rxtx-0
   57:          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0   PCI-MSI 1572865-edge      eth0-rxtx-1
   58:          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0   PCI-MSI 1572866-edge      eth0-rxtx-2
@@ -26,9 +26,13 @@ root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/inter
 E1000网卡
 ``` bahs
 
-root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/usertools# cat /proc/interrupts | grep eth2
+king@ubuntu:~$ cat /proc/interrupts | grep eth2
   19:          7       3617          0          0          0          0          0          0          0         55          0          0          0          0          0          0   IO-APIC   19-fasteoi   eth2
 ```
+
+## 网卡名字 ens 和 eth区别
+
+ens是虚拟网卡，eth是物理网卡；在使用DPDK时，要将ens修改为eth。
 
 # CPU亲和性
 
@@ -52,3 +56,5 @@ king@ubuntu:~$ echo 40 > /proc/irq/62/smp_affinity
 king@ubuntu:~$ echo 80 > /proc/irq/63/smp_affinity
 
 ```
+
+![中断与CPU绑定](./images/1644464032147.png)
