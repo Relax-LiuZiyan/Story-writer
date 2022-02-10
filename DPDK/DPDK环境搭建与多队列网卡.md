@@ -148,3 +148,17 @@ root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/examples/recv_send# ./../.
 
 [60] Exit Script
 ```
+
+
+1. 选择39做为DPDK工作环境。
+2. 添加环境变量：
+
+``` routeros
+export RTE_SDK=/home/king/share/dpdk/dpdk-stable-19.08.2
+export RTE_TARGET=x86_64-native-linux-gcc
+```
+
+3. 添加设备驱动序号：43-45。
+4. down对应的网卡，选择49，绑定网卡PCI到IGB UIO module。
+5. 
+
