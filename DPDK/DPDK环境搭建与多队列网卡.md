@@ -169,3 +169,4 @@ export RTE_TARGET=x86_64-native-linux-gcc
  -  删除IP为192.168.0.20的MAC信息：`arp -d 192.168.0.20`
  -  查看本地网卡对应的"Idx"值：`netsh i i show in`
  -  绑定IP与MAC，网卡Idx为9：`netsh -c i i add neighbors 9 192.168.0.20 00-0c-29-20-2f-68` 
+ -  删除网卡Idx为9的IP与MAC：`netsh  i i delete neighbors 9`
