@@ -160,5 +160,4 @@ export RTE_TARGET=x86_64-native-linux-gcc
 
 3. 添加设备驱动序号：43-45。
 4. down对应的网卡，选择49，绑定网卡PCI到IGB UIO module。
-5. 
 
