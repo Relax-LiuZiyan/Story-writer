@@ -63,10 +63,11 @@ king@ubuntu:~$ echo 80 > /proc/irq/63/smp_affinity
 
 ``` bash
 root@ubuntu:/home/king/share/dpdk/dpdk-stable-19.08.2/examples/recv_send# ./../../usertools/dpdk-setup.sh
-------------------------------------------------------------------------------
+
+
  RTE_SDK exported as /home/king/share/dpdk/dpdk-stable-19.08.2
 ------------------------------------------------------------------------------
-----------------------------------------------------------
+
  Step 1: Select the DPDK environment to build
 ----------------------------------------------------------
 [1] arm64-armada-linuxapp-gcc
