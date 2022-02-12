@@ -1,6 +1,6 @@
 ---
 title: DPDK实现UDP发送和接受
-tags: 新建,模板,小书匠f
+tags: DPDK,UDP,小书匠f
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
