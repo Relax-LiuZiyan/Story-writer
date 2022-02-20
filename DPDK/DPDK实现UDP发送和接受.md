@@ -26,7 +26,10 @@ grammar_cjkRuby: true
 # ARP报文
 封装ARP报文过程中gLocalMac的赋值，不能直接使用eth或者arp报文的目的MAC，因为ARP报文本身就是要获取目的IP地址对应的MAC，因此此处为无效值，因此需要通过网卡口获得本地MAC才可。
 
+
 ``` c
+rte_eth_macaddr_get(gDpdkPortId, (struct rte_ether_addr *)gLocalMac);
+
 if(ethhdr->ether_type == rte_cpu_to_be_16(RTE_ETHER_TYPE_ARP)){
 	struct rte_arp_hdr *arphdr = rte_pktmbuf_mtod_offset(mbufs[i], struct rte_arp_hdr *, sizeof(struct rte_ether_hdr));
 	if(arphdr->arp_data.arp_tip == gLocalIp){	/* 发送到本地的ARP报文 */
