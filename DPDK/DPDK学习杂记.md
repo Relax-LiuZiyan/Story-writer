@@ -27,3 +27,39 @@ grammar_cjkRuby: true
 
 
 # 网卡初始化失败 eth_i40e_dev_init(): Failed to init adminq: -66 
+
+## 首先查看DPDK是否兼容该网卡
+
+ 1. [DPDK SUPPORTED HARDWARE](https://core.dpdk.org/supported/)
+ 2. [DPDK INTEL NIC](https://core.dpdk.org/supported/nics/intel/)
+ 3. [DPDK X710](https://doc.dpdk.org/guides/nics/i40e.html)
+
+![DPDK Recommended Matching List](./images/1646211984713.png)
+![X710 Information](./images/1646212031782.png)
+
+## select the appropriate DPDK,Driver and Firmware version
+
+Since DPDK version 20.11(LTS) is selected,the driver version is 2.14.13 and firmware version is 8.00.
+
+[适用于 英特尔® 以太网 适配器 700 系列的非易失性内存 （NVM） 更新实用程序 — Linux](https://www.intel.cn/content/www/cn/zh/download/18635/28332/non-volatile-memory-nvm-update-utility-for-intel-ethernet-adapters-700-series-linux.html)*
+
+
+# Running dpdk-pmdinfo.py shows No module named 'elftools'
+
+``` bash
+**root@f410client-MS-7C37:/home/f410-client/lzy/dpdk/dpdk-stable-20.11.4/usertools# ls
+cpu_layout.py    dpdk-hugepages.py  dpdk-telemetry-client.py  meson.build
+dpdk-devbind.py  dpdk-pmdinfo.py    dpdk-telemetry.py
+root@f410client-MS-7C37:/home/f410-client/lzy/dpdk/dpdk-stable-20.11.4/usertools#
+root@f410client-MS-7C37:/home/f410-client/lzy/dpdk/dpdk-stable-20.11.4/usertools# ./dpdk-pmdinfo.py -h
+Traceback (most recent call last):
+  File "./dpdk-pmdinfo.py", line 15, in <module>
+    from elftools.common.exceptions import ELFError
+ModuleNotFoundError: No module named 'elftools'**
+```
+
+The query shows that elftools is a module for python,so you have to download it with pip or pip3. But pip3 cannot locate the elftools module.
+
+``` python
+pip3 install pyelftools
+```
