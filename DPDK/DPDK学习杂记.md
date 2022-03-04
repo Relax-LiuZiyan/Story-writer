@@ -61,7 +61,9 @@ ModuleNotFoundError: No module named 'elftools'**
 The query shows that elftools is a module for python,so you have to download it with pip or pip3. But pip3 cannot locate the elftools module.
 
 ``` python
+
 pip3 install pyelftools
+
 ```
 
 # ## ERROR: Target does not have the DPDK UIO Kernel Module.  To fix, please try to rebuild target.
