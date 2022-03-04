@@ -66,7 +66,7 @@ pip3 install pyelftools
 
 ```
 
-# ## ERROR: Target does not have the DPDK UIO Kernel Module.  To fix, please try to rebuild target.
+# ERROR: Target does not have the DPDK UIO Kernel Module.  To fix, please try to rebuild target.
 
 This is because the version of DPDK no longer provides igb_uio driver directly, you need to download source code and compile it before you can use it.
 
