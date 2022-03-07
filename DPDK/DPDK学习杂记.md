@@ -4,7 +4,7 @@ tags: CPU,ring
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
-
+[toc]
 
 # DPDK中CPU相关概念
 ##  lcore
@@ -35,13 +35,11 @@ grammar_cjkRuby: true
  3. [DPDK X710](https://doc.dpdk.org/guides/nics/i40e.html)
 
 ![DPDK Recommended Matching List](./images/1646211984713.png)
-![X710 Information](./images/1646212031782.png)
-
+![X710 Information](./images/1646636385663.png)
 ## select the appropriate DPDK,Driver and Firmware version
 
 Since DPDK version 20.11(LTS) is selected,the driver version is 2.14.13 and firmware version is 8.00.
 
-[适用于 英特尔® 以太网 适配器 700 系列的非易失性内存 （NVM） 更新实用程序 — Linux](https://www.intel.cn/content/www/cn/zh/download/18635/28332/non-volatile-memory-nvm-update-utility-for-intel-ethernet-adapters-700-series-linux.html)*
 
 
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
