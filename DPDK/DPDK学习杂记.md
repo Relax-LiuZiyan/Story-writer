@@ -1,6 +1,6 @@
 ---
-title: DPDK学习杂记
-tags: CPU,ring
+title: DPDK Learning Record
+tags: DPDK,NIC
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
@@ -28,7 +28,7 @@ grammar_cjkRuby: true
 
 # 网卡初始化失败 eth_i40e_dev_init(): Failed to init adminq: -66 
 
-## 首先查看DPDK是否兼容该网卡
+## Check if the DPDK is compatible with the NIC
 
  1. [DPDK SUPPORTED HARDWARE](https://core.dpdk.org/supported/)
  2. [DPDK INTEL NIC](https://core.dpdk.org/supported/nics/intel/)
