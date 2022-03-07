@@ -26,7 +26,7 @@ grammar_cjkRuby: true
 在DPDK中不同于物理核的socket,应该是numa的标识。查看文件/sys/devices/system/nodeX/cpu.
 
 
-# NIC initialization faild eth_i40e_dev_init(): Failed to init adminq: -66 
+# NIC initialization faild: eth_i40e_dev_init(): Failed to init adminq: -66 
 
 ## Check if the DPDK is compatible with the NIC
 
