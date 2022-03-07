@@ -80,7 +80,6 @@ vi /etc/modprobe.d/blacklist.conf
 blacklist i40e
 ```
 
-# 
 # View NIC information
 ``` bahs
 root@f410client-MS-7C37:/home/f410-client/lzy/updata_NIC# ethtool -i enp45s0f0
