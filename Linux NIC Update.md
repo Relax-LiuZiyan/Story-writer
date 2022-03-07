@@ -16,7 +16,6 @@ Select the appropriate version to download.
 ./700Series/Linux_x64/nvmupdate64e
 ```
 
-
 # Driver update
 ## To manually build the driver
 [适用于 Linux* 下 PCIe* 4 万兆位以太网网络连接的英特尔® 网络适配器驱动程序](https://www.intel.cn/content/www/cn/zh/download/18026/30366/intel-network-adapter-driver-for-pcie-40-gigabit-ethernet-network-connections-under-linux.html)
