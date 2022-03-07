@@ -70,3 +70,5 @@ If you have already compiled the NIC driver source code with root, the i40e.ko d
 ``` bash
  update-initramfs -u
 ```
+
+
