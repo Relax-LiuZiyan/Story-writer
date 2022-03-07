@@ -44,7 +44,10 @@ Since DPDK version 20.11(LTS) is selected,the driver version is 2.14.13 and firm
 
 kernel: The module igb_uio has been moved to the git repository [dpdk-kmods](https://doc.dpdk.org/guides-20.11/rel_notes/release_20_11.html?highlight=igb_uio) in a new directory linux/igb_uio.
 
-
+``` bash
+sudo modprobe uio
+sudo insmoigb_uio.ko
+```
 
 
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
