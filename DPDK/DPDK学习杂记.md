@@ -40,6 +40,11 @@ grammar_cjkRuby: true
 
 Since DPDK version 20.11(LTS) is selected,the driver version is 2.14.13 and firmware version is 8.00.
 
+# download source code and insmod igb_uio
+
+kernel: The module igb_uio has been moved to the git repository [dpdk-kmods](https://doc.dpdk.org/guides-20.11/rel_notes/release_20_11.html?highlight=igb_uio) in a new directory linux/igb_uio.
+
+
 
 
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
