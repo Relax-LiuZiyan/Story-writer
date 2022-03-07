@@ -51,13 +51,15 @@ sudo insmoigb_uio.ko
 In a virtualized environment, the programmer can enable a maximum of 128 Virtual Functions (VF) globally per Intel® X710/XL710 Gigabit Ethernet Controller NIC device. The Physical Function in host could be either configured by the Linux* i40e driver (in the case of the Linux Kernel-based Virtual Machine [KVM]) or by DPDK PMD PF driver. When using both DPDK PMD PF/VF drivers, the whole NIC will be taken over by DPDK based application.
 
 
-Using Linux* i40e driver:
+
 
 ``` bash
+#  Using Linux* i40e driver
 rmmod i40e (To remove the i40e module)
 insmod i40e.ko max_vfs=2,2 (To enable two Virtual Functions per port)
 ```
 
+``` bash
 Using the DPDK PMD PF i40e driver:
 
 Kernel Params: iommu=pt, intel_iommu=on
@@ -66,6 +68,8 @@ modprobe uio
 insmod igb_uio
 ./dpdk-devbind.py -b igb_uio bb:ss.f
 echo 2 > /sys/bus/pci/devices/0000\:bb\:ss.f/max_vfs (To enable two VFs on a specific PCI device)
+```
+
 Launch the DPDK testpmd/example or your own host daemon application using the DPDK PMD library.
 
 Virtual Function enumeration is performed in the following sequence by the Linux* pci driver for a dual-port NIC. When you enable the four Virtual Functions with the above command, the four enabled functions have a Function# represented by (Bus#, Device#, Function#) in sequence starting from 0 to 3. However:
