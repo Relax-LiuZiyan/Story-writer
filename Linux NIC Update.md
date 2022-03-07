@@ -79,3 +79,19 @@ vi /etc/modprobe.d/blacklist.conf
 # just add it directly to the last line.
 blacklist i40e
 ```
+
+# 
+
+``` bahs
+root@f410client-MS-7C37:/home/f410-client/lzy/updata_NIC# ethtool -i enp45s0f0
+driver: i40e
+version: 2.14.13
+firmware-version: 8.00 0x80008b84 1.2766.0
+expansion-rom-version:
+bus-info: 0000:2d:00.0
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+supports-priv-flags: yes
+```
