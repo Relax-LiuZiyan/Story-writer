@@ -66,3 +66,7 @@ For SLES:
 
 ## About boot up the network card driver automatically loaded
 If you have already compiled the NIC driver source code with root, the i40e.ko driver will exist in `/lib/modules/<KERNELVER>/updates/drivers/net/ethernet/intel/i40e/`, just regenerate /boot/initrd.img-4.15.0- 169-generic.
+
+``` bash
+ update-initramfs -u
+```
