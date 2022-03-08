@@ -88,6 +88,13 @@ Since the VFIO driver depends on the IOMMU,the boot parameters in grub need to b
 Check if iommu is running:
 
 ``` bash
+$ dmesg | grep -e DMAR -e IOMMU
+
+```
+
+
+check if start-up parameters are added:
+``` bash
 cat /proc/cmdline | grep iommu=pt
 cat /proc/cmdline | grep intel_iommu=on
 ```
@@ -107,6 +114,8 @@ update configuration information and reboot
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
 sudo reboot 
 ```
+
+[DPDK中使用VFIO的配置](https://www.cnblogs.com/vancasola/p/9378970.html)
 
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
 
