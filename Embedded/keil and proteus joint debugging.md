@@ -23,6 +23,4 @@ grammar_cjkRuby: true
 
 ## proteus
 1. ![enter description here](./images/1646728855416.png)
-2. ![enter description here](./images/1646728999740.png) 
-
-->居中显示的文字<-
+2. ![enter 撒旦here](./images/1646728999740.png) 
