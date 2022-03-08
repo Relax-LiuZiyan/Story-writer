@@ -82,6 +82,18 @@ Virtual Function enumeration is performed in the following sequence by the Linux
 
 https://doc.dpdk.org/guides-20.11/nics/intel_vf.html?highlight=x710
 
+##  Modify IOMMU
+Since the VFIO driver depends on the IOMMU,the boot parameters in grub need to be modified.
+
+Check if iommu is running:
+
+``` bash
+$ cat /proc/cmdline | grep iommu=pt
+$ cat /proc/cmdline | grep intel_iommu=on
+```
+
+
+
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
 
 ``` bash
@@ -107,4 +119,3 @@ pip3 install pyelftools
 # ERROR: Target does not have the DPDK UIO Kernel Module.  To fix, please try to rebuild target.
 
 This is because the version of DPDK no longer provides igb_uio driver directly, you need to download source code and compile it before you can use it.
-
