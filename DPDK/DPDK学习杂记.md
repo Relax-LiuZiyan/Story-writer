@@ -101,6 +101,12 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on"
 ```
 
+update configuration information and reboot
+
+``` javascript
+sudo grub-mkconfig -o /boot/grub/grub.cfg 
+sudo reboot 
+```
 
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
 
