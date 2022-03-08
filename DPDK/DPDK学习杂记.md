@@ -88,8 +88,8 @@ Since the VFIO driver depends on the IOMMU,the boot parameters in grub need to b
 Check if iommu is running:
 
 ``` bash
-$ cat /proc/cmdline | grep iommu=pt
-$ cat /proc/cmdline | grep intel_iommu=on
+cat /proc/cmdline | grep iommu=pt
+cat /proc/cmdline | grep intel_iommu=on
 ```
 
 
