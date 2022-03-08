@@ -53,4 +53,6 @@ grammar_tableExtra: true
 1. ->![enter description here](./images/1646728855416.png)<-
 2. ->![enter 撒旦here](./images/1646728999740.png)<- 
 
--> 123 <-
+# reference 
+1. [keil和Proteus联动调试实现Hello world](https://blog.csdn.net/weixin_45616775/article/details/105060552?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164672671416780271926404%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=164672671416780271926404&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-105060552.pc_search_result_control_group&utm_term=keil%E5%92%8CProteus%E8%81%94%E5%8A%A8%E8%B0%83%E8%AF%95&spm=1018.2226.3001.4187)
+2. [Keil uvision5 C51和Proteus 8.7professional的联动调试设置](https://blog.csdn.net/qq_43610788/article/details/104279424?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164672671416780271948705%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=164672671416780271948705&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-5-104279424.pc_search_result_control_group&utm_term=keil%E5%92%8CProteus%E8%81%94%E5%8A%A8%E8%B0%83%E8%AF%95&spm=1018.2226.3001.4187)
