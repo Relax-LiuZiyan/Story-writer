@@ -92,6 +92,11 @@ cat /proc/cmdline | grep iommu=pt
 cat /proc/cmdline | grep intel_iommu=on
 ```
 
+add configuartion information to the /etc/default/grub file
+
+``` bash
+enter code here
+```
 
 
 # Running dpdk-pmdinfo.py shows No module named 'elftools'
