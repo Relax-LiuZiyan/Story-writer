@@ -185,8 +185,7 @@ timer0_cb(__attribute__((unused)) struct rte_timer *tim,
 
 	printf("%s() on lcore %u\n", __func__, lcore_id);
 
-	/* this timer is automatically reloaded until we decide to
-	 * stop it, when counter reaches 20. */
+	/* this timer is automatically reloaded until we decide to stop it, when counter reaches 20. */
 	if ((counter ++) == 20)
 		rte_timer_stop(tim);
 }
