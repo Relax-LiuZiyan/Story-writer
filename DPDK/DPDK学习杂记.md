@@ -169,6 +169,7 @@ This is because the version of DPDK no longer provides igb_uio driver directly, 
 #include <rte_timer.h>
 #include <rte_debug.h>
 
+/* Manage the timer list and execute callback functions.  */
 #define TIMER_RESOLUTION_CYCLES 20000000ULL /* around 10ms at 2 Ghz */
 
 static struct rte_timer timer0;
