@@ -254,7 +254,6 @@ int main(int argc, char **argv)
 	hz = rte_get_timer_hz();
 
 	/* load timer0, every second, on master lcore, reloaded automatically */
-	
 	lcore_id = rte_lcore_id();
 	rte_timer_reset(&timer0, hz, PERIODICAL, lcore_id, timer0_cb, NULL);
 
