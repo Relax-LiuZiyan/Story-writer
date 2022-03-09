@@ -175,7 +175,8 @@ This is because the version of DPDK no longer provides igb_uio driver directly, 
 static struct rte_timer timer0;
 static struct rte_timer timer1;
 
-/* timer0 callback */
+
+/*1s call timer0 callback  */
 static void
 timer0_cb(__attribute__((unused)) struct rte_timer *tim,
 	  __attribute__((unused)) void *arg)
@@ -190,7 +191,7 @@ timer0_cb(__attribute__((unused)) struct rte_timer *tim,
 		rte_timer_stop(tim);
 }
 
-/* timer1 callback */
+/* 1/3s call timer1 callback */
 static void
 timer1_cb(__attribute__((unused)) struct rte_timer *tim,
 	  __attribute__((unused)) void *arg)
