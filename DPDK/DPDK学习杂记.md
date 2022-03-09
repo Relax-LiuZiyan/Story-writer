@@ -203,6 +203,7 @@ timer1_cb(__attribute__((unused)) struct rte_timer *tim,
 	/* reload it on another lcore */
 	hz = rte_get_timer_hz();
 	lcore_id = rte_get_next_lcore(lcore_id, 0, 1);
+	/* Reset and start the timer associated with the timer handle. */
 	rte_timer_reset(tim, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 }
 
