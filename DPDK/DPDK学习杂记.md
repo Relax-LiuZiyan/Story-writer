@@ -232,8 +232,7 @@ lcore_mainloop(__attribute__((unused)) void *arg)
 	}
 }
 
-int
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int ret;
 	uint64_t hz;
