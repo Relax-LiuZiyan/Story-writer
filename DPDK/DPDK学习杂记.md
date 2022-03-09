@@ -228,6 +228,7 @@ lcore_mainloop(__attribute__((unused)) void *arg)
 		cur_tsc = rte_rdtsc();
 		diff_tsc = cur_tsc - prev_tsc;
 		if (diff_tsc > TIMER_RESOLUTION_CYCLES) {
+			/* Manage the timer list and execute callback functions.  */
 			rte_timer_manage();
 			prev_tsc = cur_tsc;
 		}
