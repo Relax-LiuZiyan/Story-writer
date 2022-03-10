@@ -167,7 +167,9 @@ rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 	RTE_LCORE_FOREACH_SLAVE(lcore_id) {
 		rte_eal_remote_launch(lcore_mainloop, NULL, lcore_id);
 	}
-
+	
+	/* call it on master lcore too */
+	(void) lcore_mainloop(NULL);
 	
 ```
 
