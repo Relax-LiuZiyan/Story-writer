@@ -155,11 +155,17 @@ This is because the version of DPDK no longer provides igb_uio driver directly, 
 hz = rte_get_timer_hz();
 lcore_id = rte_lcore_id();
 
-// 1s called
+/* load timer0, every second, on master lcore, reloaded automatically */
 rte_timer_reset(&timer0, hz, PERIODICAL, lcore_id, timer0_cb, NULL);
 
+/* load timer1, every second/3, on next lcore, reloaded manually */
+lcore_id = rte_get_next_lcore(lcore_id, 0, 1);
+rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 
-
+	/* call lcore_mainloop() on every slave lcore */
+	RTE_LCORE_FOREACH_SLAVE(lcore_id) {
+		rte_eal_remote_launch(lcore_mainloop, NULL, lcore_id);
+	}
 
 ```
 
