@@ -235,7 +235,7 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 		if (diff_tsc > TIMER_RESOLUTION_CYCLES) {
 		
 			/* Manage the timer list and execute callback functions.   */
-			/* 
+			/* This function must be called periodically from EAL lcores main_loop().  */
 			rte_timer_manage();
 			prev_tsc = cur_tsc;
 		}
