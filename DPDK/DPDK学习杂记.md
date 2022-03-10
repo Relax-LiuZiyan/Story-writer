@@ -246,3 +246,6 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 
 }
 ```
+## Reference
+1. [DPDK Timer Library原理（学习笔记）](https://www.cnblogs.com/realjimmy/p/12912751.html)
+2. [Docs » Programmer’s Guide » 21. Timer Library](http://doc.dpdk.org/guides-20.02/prog_guide/timer_lib.html)
