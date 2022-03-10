@@ -209,4 +209,34 @@ static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,  __attribut
 }
 ```
 
-## 
+## lcore_mainloop function
+
+``` c
+static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void *arg)
+{
+	uint64_t prev_tsc = 0, cur_tsc, diff_tsc;
+	unsigned lcore_id;
+
+	lcore_id = rte_lcore_id();
+	printf("Starting mainloop on core %u\n", lcore_id);
+
+	while (1) {
+		/*
+		 * Call the timer handler on each core: as we don't
+		 * need a very precise timer, so only call
+		 * rte_timer_manage() every ~10ms (at 2Ghz). In a real
+		 * application, this will enhance performances as
+		 * reading the HPET timer is not efficient.
+		 */
+		cur_tsc = rte_rdtsc();
+		diff_tsc = cur_tsc - prev_tsc;
+		if (diff_tsc > TIMER_RESOLUTION_CYCLES) {
+			rte_timer_manage();
+			prev_tsc = cur_tsc;
+		}
+
+	}
+
+}
+```
+
