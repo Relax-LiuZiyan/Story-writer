@@ -234,7 +234,8 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 		/* The rte_timer_manage function is called approximately once every 10ms. */
 		if (diff_tsc > TIMER_RESOLUTION_CYCLES) {
 		
-			/*   */
+			/* Manage the timer list and execute callback functions.   */
+			/* 
 			rte_timer_manage();
 			prev_tsc = cur_tsc;
 		}
