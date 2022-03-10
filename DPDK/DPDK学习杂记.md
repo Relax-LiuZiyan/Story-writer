@@ -237,7 +237,7 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 			/* Manage the timer list and execute callback functions.   */
 			/* This function must be called periodically from EAL lcores main_loop().  */
 			/* The above two lines are the official comments, which means that if a timer is run on a core,
-			the function must be run on that core to manage the timing list and the wake-up callback function.*/
+			the function must be run on that core to manage the timing list and the wake-up callback function. */
 			rte_timer_manage();
 			prev_tsc = cur_tsc;
 		}
