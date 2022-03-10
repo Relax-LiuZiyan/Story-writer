@@ -247,3 +247,6 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 }
 ```
 
+
+## Test 
+1. The Master Lcore stops calling timer0_cb after 20 calls.
