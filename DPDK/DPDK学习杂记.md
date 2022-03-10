@@ -187,6 +187,7 @@ static void timer0_cb(__attribute__((unused)) struct rte_timer *tim,  __attribut
 ```
 ## timer1 callback function
 
+
 ``` c
 static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,
 	  __attribute__((unused)) void *arg)
