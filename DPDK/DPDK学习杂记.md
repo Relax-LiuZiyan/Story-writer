@@ -148,7 +148,7 @@ This is because the version of DPDK no longer provides igb_uio driver directly, 
 # DPDK TIMER
 # Examples provided by DPDK
   
-  
+  ## main function
 
 ``` c
 
@@ -162,10 +162,28 @@ rte_timer_reset(&timer0, hz, PERIODICAL, lcore_id, timer0_cb, NULL);
 lcore_id = rte_get_next_lcore(lcore_id, 0, 1);
 rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 
-	/* call lcore_mainloop() on every slave lcore */
+	/* Call lcore_mainloop() on each remaining slave lcore. */
 	RTE_LCORE_FOREACH_SLAVE(lcore_id) {
 		rte_eal_remote_launch(lcore_mainloop, NULL, lcore_id);
 	}
 
 ```
 
+## timer0 callback function
+
+``` c
+static void
+timer0_cb(__attribute__((unused)) struct rte_timer *tim,
+	  __attribute__((unused)) void *arg)
+{
+	static unsigned counter = 0;
+	unsigned lcore_id = rte_lcore_id();
+
+	printf("%s() on lcore %u\n", __func__, lcore_id);
+
+	/* this timer is automatically reloaded until we decide to
+	 * stop it, when counter reaches 20. */
+	if ((counter ++) == 20)
+		rte_timer_stop(tim);
+}
+```
