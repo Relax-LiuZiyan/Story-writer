@@ -163,6 +163,7 @@ lcore_id = rte_get_next_lcore(lcore_id, 0, 1);
 rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 
 	/* Call lcore_mainloop() on each remaining slave lcore. */
+	/* 在除了master lcore之外的所有核，都绑定并运行lcore_mainloop函数 */
 	RTE_LCORE_FOREACH_SLAVE(lcore_id) {
 		rte_eal_remote_launch(lcore_mainloop, NULL, lcore_id);
 	}
@@ -185,8 +186,10 @@ static void timer0_cb(__attribute__((unused)) struct rte_timer *tim,  __attribut
 		rte_timer_stop(tim);
 }
 ```
+
 ## timer1 callback function
 
+First get the lcore_id that called the function, then rebind the function to the next lcores. 
 
 ``` c
 static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,  __attribute__((unused)) void *arg)
@@ -202,3 +205,5 @@ static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,  __attribut
 	rte_timer_reset(tim, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 }
 ```
+
+## 
