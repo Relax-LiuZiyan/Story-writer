@@ -230,7 +230,11 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 		 */
 		cur_tsc = rte_rdtsc();
 		diff_tsc = cur_tsc - prev_tsc;
+		
+		/* The rte_timer_manage function is called approximately once every 10ms. */
 		if (diff_tsc > TIMER_RESOLUTION_CYCLES) {
+		
+			/*   */
 			rte_timer_manage();
 			prev_tsc = cur_tsc;
 		}
