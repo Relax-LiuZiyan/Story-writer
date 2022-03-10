@@ -163,7 +163,7 @@ lcore_id = rte_get_next_lcore(lcore_id, 0, 1);
 rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 
 	/* Call lcore_mainloop() on each remaining slave lcore. */
-	/* 在除了master lcore之外的所有核，都绑定并运行lcore_mainloop函数 */
+	/* 在除了master lcore之外的所有核，都绑定并运行lcore_mainloop函数 （非定时绑定，就是函数运行）  */
 	RTE_LCORE_FOREACH_SLAVE(lcore_id) {
 		rte_eal_remote_launch(lcore_mainloop, NULL, lcore_id);
 	}
