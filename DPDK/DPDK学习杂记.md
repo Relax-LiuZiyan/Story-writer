@@ -189,8 +189,7 @@ static void timer0_cb(__attribute__((unused)) struct rte_timer *tim,  __attribut
 
 
 ``` c
-static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,
-	  __attribute__((unused)) void *arg)
+static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,  __attribute__((unused)) void *arg)
 {
 	unsigned lcore_id = rte_lcore_id();
 	uint64_t hz;
