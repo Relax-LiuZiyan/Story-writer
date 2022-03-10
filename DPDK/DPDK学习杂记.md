@@ -185,3 +185,20 @@ static void timer0_cb(__attribute__((unused)) struct rte_timer *tim,  __attribut
 		rte_timer_stop(tim);
 }
 ```
+## timer1 callback function
+
+``` c
+static void timer1_cb(__attribute__((unused)) struct rte_timer *tim,
+	  __attribute__((unused)) void *arg)
+{
+	unsigned lcore_id = rte_lcore_id();
+	uint64_t hz;
+
+	printf("%s() on lcore %u\n", __func__, lcore_id);
+
+	/* reload it on another lcore */
+	hz = rte_get_timer_hz();
+	lcore_id = rte_get_next_lcore(lcore_id, 0, 1);
+	rte_timer_reset(tim, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
+}
+```
