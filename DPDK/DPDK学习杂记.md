@@ -172,8 +172,7 @@ rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 ## timer0 callback function
 
 ``` c
-static void
-timer0_cb(__attribute__((unused)) struct rte_timer *tim,
+static void timer0_cb(__attribute__((unused)) struct rte_timer *tim,
 	  __attribute__((unused)) void *arg)
 {
 	static unsigned counter = 0;
