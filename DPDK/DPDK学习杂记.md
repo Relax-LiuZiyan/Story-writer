@@ -19,6 +19,17 @@ export RTE_TARGET=x86_64-native-linux-gcc
 
 ```
 
+## Set terminal to automatically load DPDK environment variables
+
+``` bash
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+```
+
+
+
+
 # DPDK中CPU 相关概念
 ##  lcore
 
