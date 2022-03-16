@@ -6,6 +6,19 @@ grammar_cjkRuby: true
 ---
 [toc]
 
+# DPDK Common Commands
+
+
+## Environment  Variables
+``` bash
+export RTE_SDK=/home/f410-client/lzy/dpdk/dpdk-stable-19.08.2/
+export RTE_TARGET=x86_64-native-linux-gcc
+
+export RTE_SDK=/home/f410-server/lzy/dpdk/dpdk-stable-19.11.11
+export RTE_TARGET=x86_64-native-linux-gcc
+
+```
+
 # DPDK中CPU 相关概念
 ##  lcore
 
