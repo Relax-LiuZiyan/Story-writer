@@ -4,36 +4,28 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 tags: 89c51
 ---
+# 消除keil C51中未调用函数的警告
+第一步：使用LX51
+![enter description here](./images/1647606282778.png)
 
-
+第二步：点击LX51 Misc,在下方Misc controls的内容框写上“REMOVEUNUSED”点击OK重新编译即可
+![enter description here](./images/1647606289304.png)
 
 
 # UART
 ## 串行口接口
 ![enter description here](./images/1647601210490.png)
 SBUF：51单片机中的特殊寄存器，串行数据缓冲器（一个接收一个发送），两个其实是共用的一个地址99H，但是两个在物理上面是分开的。
-当发送使用时，就采用SBUF=XXX;  （XXX为需要传送的数据）
+当发送使用时，就采用SBUF=XXX; 
 当接收使用时，采用XXX=SBUF；
 
 T1溢出率：T1计时器的溢出频率（就是计时器每次低位计满向高位进位时间的倒数）
 用处：用于计算波特率（每秒传输二进制代码的位数）
 
 ## 串行口的控制寄存器（SCON）
-![SCON register ](./images/1647600389641.png)
+![enter description here](./images/1647605627093.png)
 
-SM2，多机通信控制位，主要用于方式2和方式3。
-当接收机的SM2=1，可以利用收到的RB8来控制是否激活RI（RB8＝0时不激活RI，收到的信息丢弃；RB8＝1时收到的数据进入SBUF，并激活RI，进而在中断服务中将数据从SBUF读走）。
-当SM2=0时，不论收到的RB8为0和1，均可以使收到的数据进入SBUF，并激活RI（即此时RB8不具有控制RI激活的功能）。通过控制SM2，可以实现多机通信。在方式0时，SM2必须是0。在方式1时，如果SM2=1，则只有接收到有效停止位时，RI才置1。
-
-REN，允许串行接收位。由软件置REN=1，则启动串行口接收数据；若软件置REN=0，则禁止接收。
-
-TB8，在方式2或方式3中，是发送数据的第九位，可以用软件规定其作用。可以用作数据的奇偶校验位，或在多机通信中，作为地址帧/数据帧的标志位。在方式0和方式1中，该位未用。
-
-RB8，在方式2或方式3中，是接收到数据的第九位，作为奇偶校验位或地址帧/数据帧的标志位。在方式1时，若SM2=0，则RB8是接收到的停止位。
-
-TI，发送中断标志位。在方式0时，当串行发送第8位数据结束时，或在其它方式，串行发送停止位的开始时，由内部硬件使TI置1，向CPU发中断申请。在中断服务程序中，必须用软件将其清0，取消此中断申请。
-
-RI，接收中断标志位。在方式0时，当串行接收第8位数据结束时，或在其它方式，串行接收停止位的中间时，由内部硬件使RI置1，向CPU发中断申请。也必须在中断服务程序中，用软件将其清0，取消此中断申请。 
+![enter description here](./images/1647601373652.png)
 
 ## SM0 and SM1 Operating mode selection bits
 ![Four ways to work with serial ports](./images/1647600561582.png)
@@ -44,3 +36,20 @@ RI，接收中断标志位。在方式0时，当串行接收第8位数据结束�
 SMOD（PCON.7）  波特率倍增位。在串行口方式1、方式2、方式3时，波特率与SMOD有关，当SMOD=1时，波特率提高一倍。复位时，SMOD=0。 
 
 ## Baud rate calculations
+![enter description here](./images/1647601755031.png)
+
+### 方式0的波特率配置
+
+方式0的波特率计算公式如下：
+
+![enter description here](./images/1647601664492.png)
+
+其中B是波特率，fosc是晶振的频率。
+### 方式2的波特率配置
+方式2的波特率计算公式如下：
+
+![enter description here](./images/1647601682272.png)
+其中B是波特率，fosc是晶振的频率,SMOD是PCON寄存器最高位。
+
+### 方式1和3的波特率配置
+![enter description here](./images/1647601714445.png)
