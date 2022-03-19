@@ -317,7 +317,7 @@ void lcd_clear(void);				//清屏函数
 ``` c	
 #include "common.h"
 
-unsigned char PuZh[]=" Pechin Science ";
+unsigned char PuZh[]=" hello world! ";
 
 /*******************************************************************************
 * 函 数 名         : main
@@ -327,7 +327,6 @@ unsigned char PuZh[]=" Pechin Science ";
 *******************************************************************************/
 void main(void)
 {
-	P1=0xf0;
 	lcd1602_init();
 	lcd_clear();
 	lcd_show_str(0,0,PuZh);
