@@ -269,3 +269,46 @@ void lcd_clear(void)
 
 
 ```
+## lcd1602.h
+
+``` c
+#ifndef __LCD1602_H_
+#define __LCD1602_H_
+
+/**********************************
+包含头文件
+**********************************/
+#include <reg51.h>
+
+//---重定义关键词---//
+#ifndef uchar
+	#define uchar unsigned char
+#endif
+
+#ifndef uint 
+	#define uint unsigned int
+#endif
+
+/**********************************
+PIN口定义
+**********************************/
+#define LCD1602_DB  P0
+sbit LCD1602_RS = P2^6;
+sbit LCD1602_RW = P2^5;
+sbit LCD1602_EN = P2^7;
+
+/**********************************
+函数声明
+**********************************/
+
+void read_busy(void);           //忙检测函数，判断bit7是0，允许执行；1禁止
+void lcd1602_write_cmd(unsigned char cmd);     //写命令
+void lcd1602_write_data(unsigned char dat);   //写数据
+void lcd_set_cursor(unsigned char x,unsigned char y);  //坐标显示
+void lcd_show_str(unsigned char x,unsigned char y,unsigned char *str);     //显示字符串
+void lcd1602_init(void);		//1602初始化
+void lcd_clear(void);				//清屏函数	 
+
+#endif
+
+```
