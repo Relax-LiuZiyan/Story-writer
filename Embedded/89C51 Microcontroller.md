@@ -192,7 +192,7 @@ void main(void)
 ## lcd1602.c
 
 ``` c
-#include"lcd.h"
+#include "lcd1602.h"
 
 //忙检测函数，判断bit7是0，允许执行；1禁止
 void read_busy()           
