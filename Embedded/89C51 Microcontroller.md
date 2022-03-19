@@ -306,7 +306,7 @@ void lcd1602_write_cmd(unsigned char cmd);     //写命令
 void lcd1602_write_data(unsigned char dat);   //写数据
 void lcd_set_cursor(unsigned char x,unsigned char y);  //坐标显示
 void lcd_show_str(unsigned char x,unsigned char y,unsigned char *str);     //显示字符串
-void lcd1602_init(void);		//1602初始化
+void lcd1602_init(void);			//1602初始化
 void lcd_clear(void);				//清屏函数	 
 
 #endif
