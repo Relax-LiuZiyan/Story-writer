@@ -186,4 +186,86 @@ void main(void)
 ```
 
 # LCD1602 
-## lcd1602_init
+## Schematic
+
+![lcd1602 schematic](./images/1647677606909.png)
+## lcd1602.c
+
+``` c
+#include"lcd.h"
+
+//忙检测函数，判断bit7是0，允许执行；1禁止
+void read_busy()           
+{
+    unsigned char sta;
+    LCD1602_DB = 0xff;
+    LCD1602_RS = 0;
+    LCD1602_RW = 1;
+    do
+    {
+			LCD1602_EN = 1;
+			sta = LCD1602_DB;
+			LCD1602_EN = 0;    //使能，用完就拉低，释放总线
+    }while(sta & 0x80);
+}
+
+//写命令
+void lcd1602_write_cmd(unsigned char cmd)
+{
+    read_busy();
+    LCD1602_RS = 0;
+    LCD1602_RW = 0;
+    LCD1602_DB = cmd;
+    LCD1602_EN = 1;
+    LCD1602_EN = 0;    
+}
+
+//写数据
+void lcd1602_write_data(unsigned char dat)   
+{
+      read_busy();
+      LCD1602_RS = 1;
+      LCD1602_RW = 0;
+      LCD1602_DB = dat;
+      LCD1602_EN = 1;
+      LCD1602_EN = 0;
+}
+
+//设置坐标
+void lcd_set_cursor(unsigned char x,unsigned char y)  
+{
+    unsigned char addr;
+    if(y == 0)
+        addr = 0x00 + x;
+    else
+        addr = 0x40 + x;
+    
+    lcd1602_write_cmd(addr|0x80);
+}
+
+ //显示字符串
+void lcd_show_str(unsigned char x,unsigned char y,unsigned char *str)
+{
+    lcd_set_cursor(x,y);      //当前字符的坐标
+    while(*str != '\0')
+    {
+        lcd1602_write_data(*str++);
+    }
+}
+
+//1602初始化
+void lcd1602_init()              
+{
+    lcd1602_write_cmd(0x38);    //打开，5*8,8位数据
+    lcd1602_write_cmd(0x0c);
+    lcd1602_write_cmd(0x06);
+    lcd1602_write_cmd(0x01);    //清屏   
+}
+
+void lcd_clear(void)
+{
+	lcd1602_write_cmd(0x01);    //清屏 
+}
+
+
+```
