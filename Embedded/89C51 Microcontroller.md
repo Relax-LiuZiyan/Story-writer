@@ -4,6 +4,7 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 tags: 89c51
 ---
+[toc]
 # 消除keil C51中未调用函数的警告
 第一步：使用LX51
 ![enter description here](./images/1647606282778.png)
@@ -178,10 +179,11 @@ void main(void)
 			uart_sendstring(recv_buf);
 			uart_reset();
 		}
-		
 		delay200ms();
 	}
 }
 
 ```
 
+# LCD1602 
+## lcd1602_init
