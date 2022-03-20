@@ -254,7 +254,7 @@ void lcd_show_str(unsigned char x,unsigned char y,unsigned char *str)
 }
 
 //1602初始化
-void lcd1602_init()              
+void lcd1602_init(void)              
 {
     lcd1602_write_cmd(0x38);    //打开，5*8,8位数据
     lcd1602_write_cmd(0x0c);
