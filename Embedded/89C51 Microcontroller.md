@@ -281,6 +281,7 @@ void lcd_clear(void)
 #include <common.h>
 
 //---重定义关键词---//
+
 #ifndef uchar
 	#define uchar unsigned char
 #endif
