@@ -33,3 +33,7 @@ grammar_center: true
 grammar_align: true
 grammar_tableExtra: true
 ---
+
+
+# KEIL中的宏定义
+1. [KEIL中的 USE_STDPERIPH_DRIVER 宏定义](https://blog.csdn.net/liuqi3256797/article/details/90041971)
