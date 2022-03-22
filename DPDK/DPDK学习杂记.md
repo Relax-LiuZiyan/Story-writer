@@ -69,12 +69,6 @@ export RTE_TARGET=x86_64-native-linux-gcc
 }
 
 ```
-### settings.json
-
-``` json
-enter code here
-```
-
 # DPDK中CPU 相关概念
 ##  lcore
 
