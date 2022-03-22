@@ -42,10 +42,37 @@ export RTE_TARGET=x86_64-native-linux-gcc
 ```
 
 ## VScode Settings
+### c_cpp_properties.json
+``` json
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/f410-server/lzy/dpdk/dpdk-stable-19.11.11/lib/**",
+                "/home/f410-server/lzy/dpdk/dpdk-stable-19.11.11/build/lib/**",
+                "/home/f410-server/lzy/dpdk/dpdk-stable-19.11.11/x86_64-native-linux-gcc/include/**",
+                "/usr/include/**",
+                "/usr/local/include/**",
+                "/usr/lib/**",
+                "/lib/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
+
+```
+### settings.json
 
 ``` json
-
-
+enter code here
 ```
 
 # DPDK中CPU 相关概念
