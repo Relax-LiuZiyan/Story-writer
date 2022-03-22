@@ -8,7 +8,6 @@ grammar_cjkRuby: true
 
 # DPDK Common Commands
 
-
 ## Environment  Variables
 ``` bash
 export RTE_SDK=/home/f410-client/lzy/dpdk/dpdk-stable-19.08.2/
@@ -22,13 +21,25 @@ export RTE_TARGET=x86_64-native-linux-gcc
 ## Set terminal to automatically load DPDK environment variables
 
 ``` bash
+
+# Add to the end of /etc/profile
+
 if [ -f ~/.bashrc ]; then
 . ~/.bashrc
 fi
+
+# Add to the end of ~/.bashrc
+
+export RTE_SDK=/home/f410-client/lzy/dpdk/dpdk-stable-19.08.2/
+export RTE_TARGET=x86_64-native-linux-gcc
+
 ```
 
+## netassist
 
-
+``` javascript
+192.168.0.150 :8889
+```
 
 # DPDK中CPU 相关概念
 ##  lcore
@@ -189,6 +200,7 @@ rte_timer_reset(&timer1, hz/3, SINGLE, lcore_id, timer1_cb, NULL);
 	/* Call lcore_mainloop() on each remaining slave lcore. */
 	/* Bind and run the lcore_mainloop function on all slave lcore except the master lcore  */
 	RTE_LCORE_FOREACH_SLAVE(lcore_id) {
+		/* This function must be called by the timer bound core to update the timer. */ 
 		rte_eal_remote_launch(lcore_mainloop, NULL, lcore_id);
 	}
 	
@@ -267,8 +279,7 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 		}
 
 	}
-
-}
+	}
 ```
 ## Reference
 1. [DPDK Timer Library原理（学习笔记）](https://www.cnblogs.com/realjimmy/p/12912751.html)
