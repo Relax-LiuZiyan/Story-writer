@@ -24,7 +24,7 @@ __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500); //改变占空比，500/1000=
 ![enter description here](./images/1647953581837.png)
 
 ## Reference
-JDY-31蓝牙模块简单通信[enter description here](https://blog.csdn.net/weixin_51690423/article/details/122690945?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164795114516780271517968%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=164795114516780271517968&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm_bkp-4-122690945.142^v3^pc_search_quality_down,143^v4^control&utm_term=jdy-31+stm32&spm=1018.2226.3001.4187)
+[JDY-31蓝牙模块简单通信](https://blog.csdn.net/weixin_51690423/article/details/122690945?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164795114516780271517968%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=164795114516780271517968&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm_bkp-4-122690945.142^v3^pc_search_quality_down,143^v4^control&utm_term=jdy-31+stm32&spm=1018.2226.3001.4187)
 
 # USART
 ## Serial redirection
