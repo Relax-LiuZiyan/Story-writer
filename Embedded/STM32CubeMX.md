@@ -1,8 +1,8 @@
 ---
-title: STM32CubeMX
+title: STM32 Learning
 renderNumberedHeading: true
 grammar_cjkRuby: true
-tags: 'STM32,STM32CubeMX'
+tags: 'STM32,STM32CubeMX,keil for arm'
 ---
 
 # SYS Mode and Configuration
@@ -19,3 +19,54 @@ HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);//开启PWM波形输出
 __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500); //改变占空比，500/1000=50%
 ```
 
+# JDY-31
+
+![enter description here](./images/1647953581837.png)
+
+# USART
+## Serial redirection
+### Plan A
+``` c
+#if 1
+#pragma import(__use_no_semihosting)             
+                
+struct __FILE 
+{ 
+	int handle; 
+
+}; 
+
+FILE __stdout;       
+//定义_sys_exit()以避免使用半主机模式    
+void _sys_exit(int x) 
+{ 
+	x = x; 
+} 
+//重定义fputc函数 
+int fputc(int ch, FILE *f)
+{      
+	while((USART1->SR&0X40)==0);//循环发送,直到发送完毕   
+    USART1->DR = (uint8_t) ch;      
+	return ch;
+}
+#endif     
+
+
+```
+
+### Plan B
+
+``` c
+#ifdef __GNUC__
+  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+ #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif
+
+PUTCHAR_PROTOTYPE
+{
+ HAL_UART_Transmit(&huart1,(uint8_t *)&ch,1,0xFFFF);//阻塞方式打印
+  return ch;
+}
+
+```
