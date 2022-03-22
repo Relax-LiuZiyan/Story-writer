@@ -43,8 +43,7 @@ export RTE_TARGET=x86_64-native-linux-gcc
 
 ## wireshark
 
-## VScode Settings
-### c_cpp_properties.json
+## VScode Settings : c_cpp_properties.json
 ``` json
 {
     "configurations": [
