@@ -41,6 +41,13 @@ export RTE_TARGET=x86_64-native-linux-gcc
 192.168.0.150 :8889
 ```
 
+## VScode Settings
+
+``` json
+
+
+```
+
 # DPDK中CPU 相关概念
 ##  lcore
 
