@@ -44,7 +44,6 @@ export RTE_TARGET=x86_64-native-linux-gcc
 ## wireshark
 
 ``` javascript
-
 arp.src.hw_mac eq 9c:69:b4:61:69:08
 
 ```
