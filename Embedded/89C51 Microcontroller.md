@@ -254,7 +254,7 @@ void lcd_show_str(unsigned char x,unsigned char y,unsigned char *str)
 }
 
 //1602初始化
-void lcd1602_init(void)              
+void lcd1602_init()              
 {
     lcd1602_write_cmd(0x38);    //打开，5*8,8位数据
     lcd1602_write_cmd(0x0c);
@@ -278,10 +278,9 @@ void lcd_clear(void)
 /**********************************
 包含头文件
 **********************************/
-#include "common.h"
+#include <common.h>
 
 //---重定义关键词---//
-
 #ifndef uchar
 	#define uchar unsigned char
 #endif
