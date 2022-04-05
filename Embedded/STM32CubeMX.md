@@ -20,6 +20,11 @@ __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500); //改变占空比，500/1000=
 ```
 
 # ADC Multi-channel acquisition
+
+If you use the ADC of the proteus to collect the voltage, you can only use the non-DMA mode.
+
 ## Non-DMA Mode
 
+
 ## DMA Mode
+
