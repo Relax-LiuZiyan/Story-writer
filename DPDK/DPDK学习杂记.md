@@ -10,7 +10,8 @@ grammar_cjkRuby: true
 
 ## Environment  Variables
 ``` bash
-export RTE_SDK=/home/f410-client/lzy/dpdk/dpdk-stable-19.08.2/
+
+export RTE_SDK=/home/f410-client/lzy/dpdk/dpdk-stable-19.11.11
 export RTE_TARGET=x86_64-native-linux-gcc
 
 export RTE_SDK=/home/f410-server/lzy/dpdk/dpdk-stable-19.11.11
@@ -209,11 +210,6 @@ pip3 install pyelftools
 
 This is because the version of DPDK no longer provides igb_uio driver directly, you need to download source code and compile it before you can use it.
 
-
-# reference
-[DPDK-20.11.1版本在Centos8上安装和测试](https://blog.csdn.net/wangquan1992/article/details/120822519)
-
-
 # DPDK TIMER
 # Examples provided by DPDK
   
@@ -315,6 +311,75 @@ static __attribute__((noreturn)) int lcore_mainloop(__attribute__((unused)) void
 	}
 	}
 ```
+
 ## Reference
 1. [DPDK Timer Library原理（学习笔记）](https://www.cnblogs.com/realjimmy/p/12912751.html)
 2. [Docs » Programmer’s Guide » 21. Timer Library](http://doc.dpdk.org/guides-20.02/prog_guide/timer_lib.html)
+
+# Sample basicfwd
+
+# dpdk Pktgen
+The software will use the DPDK library, so the DPDK version requirements are very strict, so be sure to choose the most relevant one.
+
+Here I am using DPDK 19.11.11 (LTS), pktgen-20.02.0.。
+
+[pktgen-dpdk Download Website](http://git.dpdk.org/apps/pktgen-dpdk/refs/)
+
+
+## Problems encountered during installation
+### Error:Did not find CMake 'cmake'
+
+``` routeros
+sudo apt-get install cmake -y
+```
+
+### fatal error: lua.h: No such file or directory
+
+下载：https://www.lua.org/ftp/
+
+``` bash
+
+tar -zxvf lua-5.3.6.tar.gz
+
+# Put it under pktgen-3.4.5/lib/lua/
+
+cd   lua-5.3.6
+
+make linux
+sudo make install
+make local
+
+lua -v
+
+```
+
+### fatal error: pcap.h
+
+``` bash
+sudo apt-get install flex  bison  -y
+sudo apt-get install bison -y
+
+```
+
+[Ubuntu下libpcap安装步骤](https://www.cnblogs.com/flyinggod/p/9322267.html)
+
+![enter description here](./images/1648608010396.png)
+
+``` bash
+
+# Since the program will depend on the libpcap library to run, it needs to be copied to the user library
+
+find / -name libpcap.so  
+find / -name libpcap.so.1
+
+cp /usr/local/lib/libpcap.so /usr/lib/
+cp /usr/local/lib/libpcap.so.1 /usr/lib/
+
+```
+
+### reference 
+[DPDK PKTGEN使用](https://www.jianshu.com/p/fa7d9f2c0f55)
+[DPDK以及Pktgen的编译安装](https://blog.csdn.net/Sword1996/article/details/88718131)
+[pktgen+dpdk安装（20201222）](https://blog.csdn.net/shaoyunzhe/article/details/111560782)
+[dpdk相关pktgen 的安装以及使用](https://blog.csdn.net/linggang_123/article/details/114521238)
+## Usage
