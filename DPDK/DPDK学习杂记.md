@@ -447,7 +447,6 @@ Just recompile pktgen-dpdk and run it.
 
 Just run the command: stty erase ^H in the terminal.
 
-
 ### reference 
 [DPDK PKTGEN使用](https://www.jianshu.com/p/fa7d9f2c0f55)
 [DPDK以及Pktgen的编译安装](https://blog.csdn.net/Sword1996/article/details/88718131)
