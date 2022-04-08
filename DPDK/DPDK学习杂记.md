@@ -443,6 +443,11 @@ By looking at the link library, I found that the link library provided by x86_64
 
 Just recompile pktgen-dpdk and run it.
 
+### Backspace key becomes ^H
+
+Just run the command: stty erase ^H in the terminal.
+
+
 ### reference 
 [DPDK PKTGEN使用](https://www.jianshu.com/p/fa7d9f2c0f55)
 [DPDK以及Pktgen的编译安装](https://blog.csdn.net/Sword1996/article/details/88718131)
