@@ -424,6 +424,8 @@ f410-client@f410client-MS-7C37:~/lzy/dpdk/dpdk-stable-19.11.11/examples/pktgen-d
 
 通过查看链接库，发现使用x86_64-linux-gnu所提供的链接库，但是由于本项目使用的编译器是x86_64-native-linux-gcc，因此需要删除该链接库。之所以pktgen-dpdk使用这一款，是由于在之前安装的版本中有安装其他版本的DPDK，在编译的时候直接将该链接库放到/usr/lib下面了。
 
+重新编译一下pktgen-dpdk，然后调用即可。
+
 ### reference 
 [DPDK PKTGEN使用](https://www.jianshu.com/p/fa7d9f2c0f55)
 [DPDK以及Pktgen的编译安装](https://blog.csdn.net/Sword1996/article/details/88718131)
