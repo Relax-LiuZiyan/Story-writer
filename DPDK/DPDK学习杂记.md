@@ -445,7 +445,7 @@ Just recompile pktgen-dpdk and run it.
 
 ### Backspace key becomes ^H
 
-Just run the command: stty erase ^H in the terminal.
+Just run the command: `stty erase ^H` in the terminal.
 
 ### reference 
 [DPDK PKTGEN使用](https://www.jianshu.com/p/fa7d9f2c0f55)
