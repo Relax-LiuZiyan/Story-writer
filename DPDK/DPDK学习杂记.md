@@ -379,6 +379,51 @@ sudo cp /usr/local/lib/libpcap.so.1 /usr/lib/
 
 ```
 
+### Run error : PANIC in tailqinitfn_mbuf_dynfield_tailq():
+
+
+``` bash
+f410-client@f410client-MS-7C37:~/lzy/dpdk/dpdk-stable-19.11.11/examples/pktgen-dpdk-pktgen-20.02.0$ ./app/x86_64-native-linux-gcc/pktgen
+EAL: RTE_MBUF_DYNFIELD tailq is already registered
+PANIC in tailqinitfn_mbuf_dynfield_tailq():
+Cannot initialize tailq: RTE_MBUF_DYNFIELD
+6: [./app/x86_64-native-linux-gcc/pktgen(_start+0x2a) [0x560c0791662a]]
+5: [/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x78) [0x7f7e85ccbc18]]
+4: [./app/x86_64-native-linux-gcc/pktgen(__libc_csu_init+0x4d) [0x560c0806186d]]
+3: [./app/x86_64-native-linux-gcc/pktgen(+0xd826c) [0x560c0785926c]]
+2: [./app/x86_64-native-linux-gcc/pktgen(__rte_panic+0xc5) [0x560c07848a3e]]
+1: [./app/x86_64-native-linux-gcc/pktgen(rte_dump_stack+0x2e) [0x560c07a73a1e]]
+Aborted (core dumped)
+
+```
+
+查看pktgen-dpdk所使用的链接库
+
+``` bash
+f410-client@f410client-MS-7C37:~/lzy/dpdk/dpdk-stable-19.11.11/examples/pktgen-dpdk-pktgen-20.02.0$ ldd ./app/x86_64-native-linux-gcc/pktgen
+        linux-vdso.so.1 (0x00007fff8bbc5000)
+        librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f35b0d0b000)
+        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f35b096d000)
+        libnuma.so.1 => /usr/lib/x86_64-linux-gnu/libnuma.so.1 (0x00007f35b0762000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f35b055e000)
+        libpcap.so.1 => /usr/local/lib/libpcap.so.1 (0x00007f35b0313000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f35b00f4000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f35afd03000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f35b1f7c000)
+        librte_ethdev.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_ethdev.so.21 (0x00007f35afa5d000)
+        librte_mbuf.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_mbuf.so.21 (0x00007f35af851000)
+        librte_mempool.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_mempool.so.21 (0x00007f35af647000)
+        librte_eal.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_eal.so.21 (0x00007f35af356000)
+        librte_kvargs.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_kvargs.so.21 (0x00007f35af153000)
+        librte_telemetry.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_telemetry.so.21 (0x00007f35aef4a000)
+        librte_net.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_net.so.21 (0x00007f35aed43000)
+        librte_ring.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_ring.so.21 (0x00007f35aeb3f000)
+        librte_meter.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_meter.so.21 (0x00007f35ae93c000)
+	
+```
+
+通过查看链接库，发现使用x86_64-linux-gnu所提供的链接库，但是由于本项目使用的编译器是x86_64-native-linux-gcc，因此需要删除该链接库。之所以pktgen-dpdk使用这一款，是由于在之前安装的版本中有安装其他版本的DPDK，在编译的时候直接将该链接库放到/usr/lib下面。
+
 ### reference 
 [DPDK PKTGEN使用](https://www.jianshu.com/p/fa7d9f2c0f55)
 [DPDK以及Pktgen的编译安装](https://blog.csdn.net/Sword1996/article/details/88718131)
