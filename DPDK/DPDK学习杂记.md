@@ -371,11 +371,11 @@ sudo apt-get install bison -y
 
 # Since the program will depend on the libpcap library to run, it needs to be copied to the user library
 
-find / -name libpcap.so  
-find / -name libpcap.so.1
+sudo  find / -name libpcap.so  
+sudo  find / -name libpcap.so.1
 
-cp /usr/local/lib/libpcap.so /usr/lib/
-cp /usr/local/lib/libpcap.so.1 /usr/lib/
+sudo cp /usr/local/lib/libpcap.so /usr/lib/
+sudo cp /usr/local/lib/libpcap.so.1 /usr/lib/
 
 ```
 
