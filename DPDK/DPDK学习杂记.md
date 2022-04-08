@@ -325,6 +325,7 @@ Here I am using DPDK 19.11.11 (LTS), pktgen-20.02.0.。
 
 [pktgen-dpdk Download Website](http://git.dpdk.org/apps/pktgen-dpdk/refs/)
 
+将下载的源码直接放到dpdk/examples/下即可。
 
 ## Problems encountered during installation
 ### Error:Did not find CMake 'cmake'
@@ -420,6 +421,21 @@ f410-client@f410client-MS-7C37:~/lzy/dpdk/dpdk-stable-19.11.11/examples/pktgen-d
         librte_ring.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_ring.so.21 (0x00007f35aeb3f000)
         librte_meter.so.21 => /usr/local/lib/x86_64-linux-gnu/librte_meter.so.21 (0x00007f35ae93c000)
 	
+f410-client@f410client-MS-7C37:/usr/local/lib$ ll
+total 3536
+drwxr-xr-x  7 root root     4096 4月   7 15:32 ./
+drwxr-xr-x 11 root root     4096 12月 17 19:11 ../
+-rw-r--r--  1 root root   453644 4月   7 15:32 liblua.a
+-rw-r--r--  1 root root  1952722 4月   7 11:16 libpcap.a
+lrwxrwxrwx  1 root root       12 4月   7 11:16 libpcap.so -> libpcap.so.1*
+lrwxrwxrwx  1 root root       17 4月   7 11:16 libpcap.so.1 -> libpcap.so.1.10.1*
+-rwxr-xr-x  1 root root  1144728 4月   7 11:16 libpcap.so.1.10.1*
+drwxr-xr-x  4 root root     4096 4月   7 15:11 lua/
+drwxr-xr-x  2 root root     4096 4月   7 11:16 pkgconfig/
+drwxrwsr-x  4 root staff    4096 3月  31 06:24 python2.7/
+drwxrwsr-x  3 root staff    4096 2月  28 16:47 python3.6/
+drwxr-xr-x  4 root root    36864 3月   3 10:12 x86_64-linux-gnu/	
+
 ```
 
 通过查看链接库，发现使用x86_64-linux-gnu所提供的链接库，但是由于本项目使用的编译器是x86_64-native-linux-gcc，因此需要删除该链接库。之所以pktgen-dpdk使用这一款，是由于在之前安装的版本中有安装其他版本的DPDK，在编译的时候直接将该链接库放到/usr/lib下面了。
