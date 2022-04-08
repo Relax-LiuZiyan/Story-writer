@@ -76,7 +76,7 @@ arp.src.hw_mac eq 9c:69:b4:61:69:08
 }
 
 ```
-# DPDK中CPU 相关概念
+# CPU-related concepts in DPDK
 ##  lcore
 
 指eal线程，采用pthread创建，并设置了CPU亲和性。我感觉dpdk把这个概念搞混淆了，有时指逻辑核，有时指线程。不过大部分是指线程。
