@@ -325,7 +325,7 @@ Here I am using DPDK 19.11.11 (LTS), pktgen-20.02.0.。
 
 [pktgen-dpdk Download Website](http://git.dpdk.org/apps/pktgen-dpdk/refs/)
 
-将下载的源码直接放到dpdk/examples/下即可。
+Just put the downloaded source code directly under dpdk/examples/.
 
 ## Problems encountered during installation
 ### Error:Did not find CMake 'cmake'
