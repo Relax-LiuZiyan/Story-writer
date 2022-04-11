@@ -30,7 +30,7 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
  run = {
      'exec': (
      #'sudo', '-E', 'LD_LIBRARY_PATH=%(sdk)s/%(target)s/lib/x86_64-native-linux-gcc'
-    # Location of the DPDK compiler library
+	 # Location of the DPDK compiler library
 	'sudo', '-E', 'LD_LIBRARY_PATH=%(sdk)s/%(target)s/lib' 
          ),
      # Application name and use app_path to help locate the app
