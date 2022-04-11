@@ -20,6 +20,7 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
          ),
 
      'devices': (
+	 	# Location of NIC on PCIE
          '2d:00.0', '2d:00.1'  #
          ),
      # UIO module type, igb_uio, vfio-pci or uio_pci_generic
