@@ -45,13 +45,14 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
          '%(sdk)s/%(target)s/app/%(app_name)s',
          './build/app/%(app_name)s',
          ),
-
+	# Cores used by the application
      'cores': '3,4-5,6-7',
+	 # Number of memory stick channels
      'nrank': '4',
      'proc': 'auto',
      'log': '7',
      'prefix': 'pg',
-
+	
      'blacklist': (
          #'03:00.0', '05:00.0',
          #'81:00.0', '84:00.0'
@@ -68,6 +69,7 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
          '-P',
          '-j',
          ),
+	# NIC and core allocation table，4-5 cores assigned to NIC 0
      'map': (
          '[4:5].0',
          '[6:7].1',
@@ -77,3 +79,5 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
      }
 
 ```
+
+## DPDK wireless hit stream test
