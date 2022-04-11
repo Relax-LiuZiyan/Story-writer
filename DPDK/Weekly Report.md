@@ -20,7 +20,7 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
          ),
 
      'devices': (
-         '2d:00.0', '2d:00.1'
+         '2d:00.0', '2d:00.1'  #
          ),
      # UIO module type, igb_uio, vfio-pci or uio_pci_generic
      'uio': 'igb_uio'
@@ -30,7 +30,8 @@ The installation of DPDK-Pktgen is a tedious task, as it requires lua and pacp l
  run = {
      'exec': (
      #'sudo', '-E', 'LD_LIBRARY_PATH=%(sdk)s/%(target)s/lib/x86_64-native-linux-gcc'
-     'sudo', '-E', 'LD_LIBRARY_PATH=%(sdk)s/%(target)s/lib'
+    # Location of the DPDK compiler library
+	'sudo', '-E', 'LD_LIBRARY_PATH=%(sdk)s/%(target)s/lib' 
          ),
      # Application name and use app_path to help locate the app
      'app_name': 'pktgen',
