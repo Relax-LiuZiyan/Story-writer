@@ -16,6 +16,9 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 ## TIM Base Update
 
 ``` c?linenums
+
+
+// 定时器中断函数 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	static unsigned char ledState = 0;
