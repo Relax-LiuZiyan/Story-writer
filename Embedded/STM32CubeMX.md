@@ -15,6 +15,24 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 
 ## TIM Base Update
 
+``` c?linenums
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	static unsigned char ledState = 0;
+	static u32 count = 0;
+	
+	if (htim == (&htim1))
+	{
+		count++;
+		if(count >= 1000){
+			count = 0;
+
+		}
+	}
+	
+}
+```
+
 ## TIMx PWM Generation CHx
 
 ``` c
