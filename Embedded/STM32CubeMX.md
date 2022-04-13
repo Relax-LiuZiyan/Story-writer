@@ -15,6 +15,8 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 
 ## TIM Base Update
 
+![TIM Update 1ms](./images/1649838119996.png)
+
 ``` c?linenums
 
 // 开启定时器计数中断
