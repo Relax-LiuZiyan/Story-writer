@@ -17,6 +17,7 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 
 ``` c?linenums
 
+// 开启定时器计数中断
 
 // 定时器中断回调函数 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
