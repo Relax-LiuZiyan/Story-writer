@@ -16,6 +16,7 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 ## TIM Base Update
 
 ![TIM Update 1ms](./images/1649838119996.png)
+![NVIC Configure](./images/1649838145174.png)
 
 ``` c?linenums
 
