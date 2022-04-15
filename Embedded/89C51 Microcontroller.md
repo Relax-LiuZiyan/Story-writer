@@ -278,7 +278,7 @@ void lcd_clear(void)
 /**********************************
 包含头文件
 **********************************/
-#include <common.h>
+#include "main.h"
 
 //---重定义关键词---//
 #ifndef uchar
