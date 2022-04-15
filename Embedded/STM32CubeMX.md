@@ -7,7 +7,7 @@ tags: 'STM32,STM32CubeMX'
 [toc]
 # Delay_us
 
-``` nginx
+``` c?linenums
 #define CPU_FREQUENCY_MHZ    72		// STM32时钟主频
 void Delay_us(__IO uint32_t delay)
 {
