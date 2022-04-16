@@ -7,6 +7,12 @@ grammar_cjkRuby: true
 [toc]
 
 # DPDK Common Commands
+## route
+
+``` bash?linenums
+sudo ifconfig enp45s0f1 172.16.0.1/24
+sudo route add -net 172.16.0.0 netmask 255.255.255.0 dev enp45s0f1
+```
 
 ## Environment  Variables
 ``` bash
