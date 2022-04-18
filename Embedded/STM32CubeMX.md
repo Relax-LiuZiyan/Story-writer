@@ -4,7 +4,7 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 tags: 'STM32,STM32CubeMX,keil for arm'
 ---
-@[toc]
+@[toc ]
 # main.h
 
 ``` c?linenums
@@ -32,6 +32,39 @@ typedef  signed short       s16;       /* Signed 16 bit value */
 typedef  signed char        s8;        /* Signed 8  bit value */  
 ```
 
+# HAL库微秒us的延时Delay实现
+
+``` bash?linenums
+void delay_us(uint32_t udelay)
+{
+  uint32_t startval,tickn,delays,wait;
+ 
+  startval = SysTick->VAL;
+  tickn = HAL_GetTick();
+  //sysc = 72000;  //SystemCoreClock / (1000U / uwTickFreq);
+  delays =udelay * 72; //sysc / 1000 * udelay;
+  if(delays > startval)
+    {
+      while(HAL_GetTick() == tickn)
+        {
+ 
+        }
+      wait = 72000 + startval - delays;
+      while(wait < SysTick->VAL)
+        {
+ 
+        }
+    }
+  else
+    {
+      wait = startval - delays;
+      while(wait < SysTick->VAL && HAL_GetTick() == tickn)
+        {
+ 
+        }
+    }
+}
+```
 
 # SYS Mode and Configuration
 ![enter description here](./images/1647493843556.png)
