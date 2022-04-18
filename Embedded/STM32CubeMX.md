@@ -34,7 +34,7 @@ typedef  signed char        s8;        /* Signed 8  bit value */
 
 # HAL库微秒us的延时Delay实现
 
-``` bash?linenums
+``` c?linenums
 void delay_us(uint32_t udelay)
 {
   uint32_t startval,tickn,delays,wait;
