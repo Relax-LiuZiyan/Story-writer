@@ -35,35 +35,39 @@ typedef  signed char        s8;        /* Signed 8  bit value */
 # HAL库微秒us的延时Delay实现
 
 ``` c?linenums
-void delay_us(uint32_t udelay)
+#define CPU_FREQUENCY_MHZ    72		// STM32时钟主频
+void delay_us(__IO uint32_t delay)
 {
-  uint32_t startval,tickn,delays,wait;
- 
-  startval = SysTick->VAL;
-  tickn = HAL_GetTick();
-  //sysc = 72000;  //SystemCoreClock / (1000U / uwTickFreq);
-  delays =udelay * 72; //sysc / 1000 * udelay;
-  if(delays > startval)
+    int last, curr, val;
+    int temp;
+
+    while (delay != 0)
     {
-      while(HAL_GetTick() == tickn)
+        temp = delay > 900 ? 900 : delay;
+        last = SysTick->VAL;
+        curr = last - CPU_FREQUENCY_MHZ * temp;
+        if (curr >= 0)
         {
- 
+            do
+            {
+                val = SysTick->VAL;
+            }
+            while ((val < last) && (val >= curr));
         }
-      wait = 72000 + startval - delays;
-      while(wait < SysTick->VAL)
+        else
         {
- 
+            curr += CPU_FREQUENCY_MHZ * 1000;
+            do
+            {
+                val = SysTick->VAL;
+            }
+            while ((val <= last) || (val > curr));
         }
-    }
-  else
-    {
-      wait = startval - delays;
-      while(wait < SysTick->VAL && HAL_GetTick() == tickn)
-        {
- 
-        }
+        delay -= temp;
     }
 }
+
+
 ```
 
 # SYS Mode and Configuration
