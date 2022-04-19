@@ -8,28 +8,36 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 # main.h
 
 ``` c?linenums
-#include "reg52.h"
 
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-#include "intrins.h"
+#include "stdbool.h"
 
-typedef  unsigned char      boolean;     /* Boolean value type. */ 
+typedef signed char             int8_t; 
+typedef short int               int16_t;
+typedef int                     int32_t;
+typedef long long int           int64_t;
 
-typedef  unsigned long int  uint32;      /* Unsigned 32 bit value */  
-typedef  unsigned short     uint16;      /* Unsigned 16 bit value */  
-typedef  unsigned char      uint8;       /* Unsigned 8  bit value */ 
-typedef  unsigned long int  u32;      /* Unsigned 32 bit value */  
-typedef  unsigned short     u16;      /* Unsigned 16 bit value */  
-typedef  unsigned char      u8;       /* Unsigned 8  bit value */ 
+typedef unsigned char           uint8_t;
+typedef unsigned short int      uint16_t;
+typedef unsigned int            uint32_t;
+typedef unsigned long long int  uint64_t;
 
-typedef  signed long int    int32;       /* Signed 32 bit value */  
-typedef  signed short       int16;       /* Signed 16 bit value */  
-typedef  signed char        int8;        /* Signed 8  bit value */  
-typedef  signed long int    s32;       /* Signed 32 bit value */  
-typedef  signed short       s16;       /* Signed 16 bit value */  
-typedef  signed char        s8;        /* Signed 8  bit value */  
+#include "usart.h"
+#include "gpio.h"
+#include "adc.h"
+
+#include "dht11.h"
+#include "oled.h"
+#include "jdy_31.h"
+#include "adc_muti.h"
+#include "key.h"
+#include "28BYJ-48.h"
+
+
+void delay_us(__IO uint32_t delay);
+
 ```
 
 # HAL库微秒us的延时Delay实现
