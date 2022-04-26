@@ -14,6 +14,56 @@ tags: 89c51
 
 
 # main.h
+
+``` c?linenums
+#ifndef __MAIN_H__
+#define __MAIN_H__
+
+#include "reg52.h"
+
+#include "stdlib.h"
+#include "string.h"
+#include "stdio.h"
+#include "intrins.h"
+
+typedef  unsigned char      boolean;     /* Boolean value type. */ 
+
+typedef  unsigned long int  uint32;      /* Unsigned 32 bit value */  
+typedef  unsigned short     uint16;      /* Unsigned 16 bit value */  
+typedef  unsigned char      uint8;       /* Unsigned 8  bit value */ 
+typedef  unsigned long int  u32;      /* Unsigned 32 bit value */  
+typedef  unsigned short     u16;      /* Unsigned 16 bit value */  
+typedef  unsigned char      u8;       /* Unsigned 8  bit value */ 
+
+typedef  signed long int    int32;       /* Signed 32 bit value */  
+typedef  signed short       int16;       /* Signed 16 bit value */  
+typedef  signed char        int8;        /* Signed 8  bit value */  
+typedef  signed long int    s32;       /* Signed 32 bit value */  
+typedef  signed short       s16;       /* Signed 16 bit value */  
+typedef  signed char        s8;        /* Signed 8  bit value */  
+
+typedef signed char             int8_t; 
+typedef short int               int16_t;
+typedef int                     int32_t;
+
+typedef unsigned char           uint8_t;
+typedef unsigned short int      uint16_t;
+typedef unsigned int            uint32_t;
+
+#include "adc0832.h"
+#include "beep.h"
+#include "delay.h"
+#include "ds18b20.h"
+#include "key.h"
+#include "lcd1602.h"
+#include "led.h"
+#include "step_motor.h"
+#include "uart.h"
+
+#endif
+
+```
+
 # UART
 ## Serial port interface internal structure
 ![enter description here](./images/1647601210490.png)
