@@ -35,8 +35,7 @@ typedef unsigned long long int  uint64_t;
 #include "key.h"
 #include "28BYJ-48.h"
 
-
-void delay_us(__IO uint32_t delay);
+void delay_us(__IO uint32_t delay);   
 
 ```
 
