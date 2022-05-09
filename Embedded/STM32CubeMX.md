@@ -7,7 +7,6 @@ tags: 'STM32,STM32CubeMX,keil for arm'
 [toc]
 # main.h
 ``` c?linenums
-
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -41,7 +40,9 @@ void delay_us(__IO uint32_t delay);
 # HAL库微秒us的延时Delay实现
 
 ``` c?linenums
+
 #define CPU_FREQUENCY_MHZ    72		// STM32时钟主频
+
 void delay_us(__IO uint32_t delay)
 {
     int last, curr, val;
@@ -73,13 +74,10 @@ void delay_us(__IO uint32_t delay)
     }
 }
 
-
 ```
 
 # SYS Mode and Configuration
 ![enter description here](./images/1647493843556.png)
-
-
 
 # TIMx Mode and configuration
 ## TIM Base Update
@@ -97,16 +95,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	static unsigned char ledState = 0;
 	static u32 count = 0;
-	
 	if (htim == (&htim1))
 	{
 		count++;
 		if(count >= 1000){
 			count = 0;
-
 		}
 	}
-	
 }
 ```
 
@@ -176,6 +171,7 @@ void _sys_exit(int x)
 { 
 	x = x; 
 } 
+
 //重定义fputc函数 
 int fputc(int ch, FILE *f)
 {      
