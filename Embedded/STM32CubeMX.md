@@ -4,9 +4,8 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 tags: 'STM32,STM32CubeMX,keil for arm'
 ---
-@[toc ]
+@[toc]
 # main.h
-
 ``` c?linenums
 
 #include "stdio.h"
@@ -82,9 +81,7 @@ void delay_us(__IO uint32_t delay)
 
 
 
-
 # TIMx Mode and configuration
-
 ## TIM Base Update
 
 ![TIM Update 1ms](./images/1649838119996.png)
@@ -119,7 +116,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);//开启PWM波形输出
 __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500); //改变占空比，500/1000=50%
 ```
-
 # JDY-31
 
 ![enter description here](./images/1647953581837.png)
