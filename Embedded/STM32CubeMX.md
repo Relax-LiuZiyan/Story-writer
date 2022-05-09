@@ -4,7 +4,7 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 tags: 'STM32,STM32CubeMX,keil for arm'
 ---
-@[toc]
+[toc]
 # main.h
 ``` c?linenums
 
