@@ -60,4 +60,4 @@ skb = alloc_icmp_package(ch.code, ch.type, nic_list[k].ip, link_list[k].ip, &ch)
 skb = alloc_icmp_package(ch.type, link_list[k].icmp_seq++, nic_list[k].ip, link_list[k].ip, &ch);
 ```
 ## icmp报文提示no response found!
-C端封装好ICMP报文发送到S端后，
+C端封装好ICMP报文发送到S端后，由于其对数据载荷部分进行了修改，因此wireshark软件认为此回复icmp报文与之前的请求报文不是同一对报文。
