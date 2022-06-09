@@ -49,4 +49,4 @@ grammar_tableExtra: true
 ![skb_reserve](./images/1654591326009.png)
 
 # SK_Buff data和tail指针问题
-网络报文真正发送的数据报文时data指针和tail指针中间的部分，
+网络报文真正发送的数据报文时data指针和tail指针中间的部分，即使head和data中间有空间，发送也不会去考虑
