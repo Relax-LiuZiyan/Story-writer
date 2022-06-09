@@ -63,3 +63,7 @@ skb = alloc_icmp_package(ch.type, link_list[k].icmp_seq++, nic_list[k].ip, link_
 C端封装好ICMP报文发送到S端后，由于其对数据载荷部分进行了修改，因此wireshark软件认为此回复icmp报文与之前的请求报文不是同一对报文。
 
 ![no response found!](./images/1654767817090.png)
+![左C、右S数据载荷不同](./images/1654767895447.png)
+
+
+![数据载荷不修改则显示正常](./images/1654768043191.png)
