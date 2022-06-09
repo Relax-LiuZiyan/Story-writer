@@ -53,8 +53,8 @@ grammar_tableExtra: true
 在修改此函数时，误删除了一行代码，`skb_push(skb, SIZE_IP_HDR);`，在得到传输层的指针后，需要再添加上述代码，使`skb->data`指针再次移到网络层头所在的地址，具体原因未知。
 
 ![bogus IPv4 version](./images/1654604415789.png)
+## 函数调用修改
 修改了函数参数调用，之前函数参数调用为第一行，修改了link_info结构体，添加了icmp_seq变量做为ICMP中Seq参数传入。
-
 ``` c?linenums
 skb = alloc_icmp_package(ch.code, ch.type, nic_list[k].ip, link_list[k].ip, &ch);
 skb = alloc_icmp_package(ch.type, link_list[k].icmp_seq++, nic_list[k].ip, link_list[k].ip, &ch);
