@@ -58,7 +58,10 @@ skb->len = skb->data - skb->tail;
 ```
 
 ``` c?linenums
+// data_len = 2 + 14 +20 + 8 + 72;
 data_len =  2 + SIZE_MAC_HDR + SIZE_IP_HDR + SIZE_ICMP_HDR + sizeof(struct chkhdr);
+// skb->len = 20+8+72 = 100
+// 由于测试代码将data指针移到了网络层，因此不加上2和14字节。
 ```
 
 ![enter description here](./images/1655263579726.png)
