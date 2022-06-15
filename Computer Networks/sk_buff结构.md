@@ -50,3 +50,5 @@ grammar_tableExtra: true
 
 # SK_Buff data和tail指针问题
 网络报文真正发送的数据报文时data指针和tail指针中间的部分，即使head和data中间有空间，发送也不会去考虑
+
+# SK_Buff中的len成员变量
