@@ -54,5 +54,11 @@ grammar_tableExtra: true
 # SK_Buff中的len成员变量
 
 ``` c?linenums
-skb->len = 
+skb->len = skb->data - skb->tail;
 ```
+
+``` c?linenums
+data_len =  2 + SIZE_MAC_HDR + SIZE_IP_HDR + SIZE_ICMP_HDR + sizeof(struct chkhdr);
+```
+
+![enter description here](./images/1655263579726.png)
