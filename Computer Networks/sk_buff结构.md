@@ -52,3 +52,7 @@ grammar_tableExtra: true
 网络报文真正发送的数据报文时data指针和tail指针中间的部分，即使head和data中间有空间，发送也不会去考虑
 
 # SK_Buff中的len成员变量
+
+``` c?linenums
+skb->len = 
+```
