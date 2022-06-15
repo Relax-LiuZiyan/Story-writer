@@ -64,4 +64,4 @@ data_len =  2 + SIZE_MAC_HDR + SIZE_IP_HDR + SIZE_ICMP_HDR + sizeof(struct chkhd
 // 由于测试代码将data指针移到了网络层，因此不加上2和14字节。
 ```
 
-![enter description here](./images/1655263579726.png)
+![skb->len打印调试信息](./images/1655263579726.png)
