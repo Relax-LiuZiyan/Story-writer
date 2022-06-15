@@ -34,10 +34,9 @@ grammar_align: true
 grammar_tableExtra: true
 ---
 [toc]
-
 # 管理函数
 ## skb_put
-![skb_put函数](./images/1654591202583.png)
+![skb_put](./images/1654591202583.png)
 ## skb_push
 ![skb_push](./images/1654591250135.png)
 ## skb_pull
@@ -45,12 +44,9 @@ grammar_tableExtra: true
 
 ## skb_reserve
 ![skb_reserve](./images/1654591326009.png)
-
 # SK_Buff data和tail指针问题
 网络报文真正发送的数据报文时data指针和tail指针中间的部分，即使head和data中间有空间，发送也不会去考虑
-
 # SK_Buff中的len成员变量
-
 ``` c?linenums
 skb->len = skb->data - skb->tail;
 ```
