@@ -34,5 +34,7 @@ grammar_align: true
 grammar_tableExtra: true
 ---
 
+# 网络环境
+网络拓扑图如下所示，
 
-欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
+![Network topology diagram](./images/1657608374281.png)
