@@ -104,7 +104,11 @@ enp45s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
+路由表修改命令常用：
 
+``` c?linenums
+enter code here
+```
 
 # 网络环境
 网络拓扑图如下所示，
