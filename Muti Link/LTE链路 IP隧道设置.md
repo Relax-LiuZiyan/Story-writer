@@ -33,6 +33,51 @@ grammar_center: true
 grammar_align: true
 grammar_tableExtra: true
 ---
+# 路由表信息
+
+C端路由表和IP地址信息如下所示：
+``` c?linenums
+f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         _gateway        0.0.0.0         UG    20100  0        0 enp45s0f0
+default         _gateway        0.0.0.0         UG    20104  0        0 enp39s0
+link-local      0.0.0.0         255.255.0.0     U     1000   0        0 enp45s0f0
+172.16.1.0      0.0.0.0         255.255.255.0   U     101    0        0 enp45s0f1
+172.16.2.0      0.0.0.0         255.255.255.0   U     102    0        0 enp45s0f2
+172.16.3.0      0.0.0.0         255.255.255.0   U     103    0        0 enp45s0f3
+192.168.0.0     0.0.0.0         255.255.255.0   U     104    0        0 enp39s0
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 enp45s0f0
+f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ sudo route del -net default netmask 0.0.0.0 dev enp45s0f0
+f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ sudo route add -net 192.168.2.0 netmask 255.255.255.0 dev enp45s0f0 gw 192.168.1.1
+f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ ping 192.168.2.2
+PING 192.168.2.2 (192.168.2.2) 56(84) bytes of data.
+64 bytes from 192.168.2.2: icmp_seq=1 ttl=63 time=2.14 ms
+^C
+--- 192.168.2.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.143/2.143/2.143/0.000 ms
+f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         _gateway        0.0.0.0         UG    20104  0        0 enp39s0
+link-local      0.0.0.0         255.255.0.0     U     1000   0        0 enp45s0f0
+172.16.1.0      0.0.0.0         255.255.255.0   U     101    0        0 enp45s0f1
+172.16.2.0      0.0.0.0         255.255.255.0   U     102    0        0 enp45s0f2
+172.16.3.0      0.0.0.0         255.255.255.0   U     103    0        0 enp45s0f3
+192.168.0.0     0.0.0.0         255.255.255.0   U     104    0        0 enp39s0
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 enp45s0f0
+192.168.2.0     192.168.1.1     255.255.255.0   UG    0      0        0 enp45s0f0
+f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ ifconfig enp45s0f0
+enp45s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.2  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::b083:44b4:4513:9631  prefixlen 64  scopeid 0x20<link>
+        ether 9c:69:b4:61:69:08  txqueuelen 1000  (Ethernet)
+        RX packets 27  bytes 1798 (1.7 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 409  bytes 39072 (39.0 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 
 # 网络环境
 网络拓扑图如下所示，
