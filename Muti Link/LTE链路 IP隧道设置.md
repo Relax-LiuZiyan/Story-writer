@@ -81,8 +81,30 @@ enp45s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 S端路由表和IP地址信息如下所示：
 
 ``` c?linenums
-
+f410-server@:408_server_lte$ route
+内核 IP 路由表
+目标            网关            子网掩码        标志  跃点   引用  使用 接口
+default         _gateway        0.0.0.0         UG    100    0        0 enp45s0f0
+default         _gateway        0.0.0.0         UG    104    0        0 enp39s0
+link-local      0.0.0.0         255.255.0.0     U     1000   0        0 enp45s0f0
+172.16.1.0      0.0.0.0         255.255.255.0   U     105    0        0 enp45s0f1
+172.16.2.0      0.0.0.0         255.255.255.0   U     106    0        0 enp45s0f2
+172.16.3.0      0.0.0.0         255.255.255.0   U     107    0        0 enp45s0f3
+192.168.0.0     0.0.0.0         255.255.255.0   U     104    0        0 enp39s0
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 enp45s0f0
+192.168.2.0     0.0.0.0         255.255.255.0   U     100    0        0 enp45s0f0
+f410-server@:408_server_lte$ ifconfig enp45s0f0
+enp45s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.2.2  netmask 255.255.255.0  broadcast 192.168.2.255
+        inet6 fe80::8e2f:f9c4:eaf8:244b  prefixlen 64  scopeid 0x20<link>
+        ether 9c:69:b4:62:4c:54  txqueuelen 1000  (以太网)
+        RX packets 954  bytes 62143 (62.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1538  bytes 130549 (130.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+
+
 
 # 网络环境
 网络拓扑图如下所示，
