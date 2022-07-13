@@ -34,7 +34,6 @@ grammar_align: true
 grammar_tableExtra: true
 ---
 # 路由表信息
-
 C端路由表和IP地址信息如下所示：
 ``` c?linenums
 f410-client@f410client-MS-7C37:~/lzy/408_client_lte$ route
@@ -78,6 +77,7 @@ enp45s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX packets 409  bytes 39072 (39.0 KB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+
 
 # 网络环境
 网络拓扑图如下所示，
