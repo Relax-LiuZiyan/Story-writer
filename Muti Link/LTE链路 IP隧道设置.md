@@ -80,6 +80,10 @@ enp45s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 S端路由表和IP地址信息如下所示：
 
+``` c?linenums
+
+```
+
 # 网络环境
 网络拓扑图如下所示，
 
