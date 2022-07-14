@@ -233,4 +233,4 @@ NIC_ON:
 
 ![enter description here](./images/1657800099983.png)
 
-链路活性的赋值只有在
+链路活性的赋值只有在链路探测包回传处才会有判断，
