@@ -126,7 +126,76 @@ iperf3 -s -p10000 -A0
 
 ![Network topology diagram](./images/1657764385430.png)‘
 # 代码修改
-需要在C端和S端
+需要在C端和S端check.c中的`do_lte`函数中，加入以下代码。链路0为LTE链路，链路1-3为正常链路。
+
+``` c?linenums
+	link[1].isvalid = 0;
+	link[2].isvalid = 0;
+	link[3].isvalid = 0;
+	lte_on = lte_is_valid(link,link_count);
+```
+
+
+## client1_conf.c
+
+``` c?linenums
+
+static struct nic_info nic_list[] = {
+    [0] = {
+		.name = "enp45s0f0", 
+		.ip_str = "192.168.1.2",
+		.isvalid = 0,
+    },
+	[1] = {
+		.name = "enp45s0f1",
+		.ip_str = "172.16.1.10",
+		.isvalid = 0,
+	},
+	[2] = {
+		.name = "enp45s0f2",
+		.ip_str = "172.16.2.10",
+		.isvalid = 0,
+	},
+	[3] = {
+		.name = "enp45s0f3",
+		.ip_str = "172.16.3.10",
+		.isvalid = 0,
+	},
+};
+
+static struct link_info user0_link_list[] = {
+    [0] = {
+        .isvalid = 0,
+        .scale = 1,
+	    .istosnd = 1,
+        .ip_str = "192.168.2.2",
+    },
+	[1] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "172.16.1.1",
+	},
+	[2] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "172.16.2.1",
+	},
+	[3] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "172.16.3.1",
+	},
+};
+```
+
+## server_conf.c
+
+``` c?linenums
+
+```
 
 # 测试
 ## ping测试
