@@ -124,5 +124,49 @@ iperf3 -s -p10000 -A0
 # 网络环境
 网络拓扑图如下所示，注意S端的IP地址需要填写一个192.168.1.X的地址，否则LINUX协议栈收到C端发送的报文头为192.168.1.X的报文，不会对其进行上层提交。
 
+![Network topology diagram](./images/1657764385430.png)‘
 
-![Network topology diagram](./images/1657608374281.png)
+# 测试
+
+## ping测试
+
+``` c?linenums
+root@f410client-MS-7C37:/home/f410-client/lzy/408_client_lte# ping 192.168.2.2
+PING 192.168.2.2 (192.168.2.2) 56(84) bytes of data.
+64 bytes from 192.168.2.2: icmp_seq=1 ttl=63 time=1.96 ms
+64 bytes from 192.168.2.2: icmp_seq=2 ttl=63 time=2.71 ms
+^C
+--- 192.168.2.2 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 1.963/2.338/2.714/0.378 ms
+root@f410client-MS-7C37:/home/f410-client/lzy/408_client_lte# ping 10.0.0.1
+PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.671 ms
+64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=0.776 ms
+^[[A64 bytes from 10.0.0.1: icmp_seq=3 ttl=64 time=0.899 ms
+64 bytes from 10.0.0.1: icmp_seq=4 ttl=64 time=0.730 ms
+64 bytes from 10.0.0.1: icmp_seq=5 ttl=64 time=0.841 ms
+64 bytes from 10.0.0.1: icmp_seq=6 ttl=64 time=0.702 ms
+64 bytes from 10.0.0.1: icmp_seq=7 ttl=64 time=0.825 ms
+64 bytes from 10.0.0.1: icmp_seq=8 ttl=64 time=0.671 ms
+64 bytes from 10.0.0.1: icmp_seq=9 ttl=64 time=0.810 ms
+64 bytes from 10.0.0.1: icmp_seq=10 ttl=64 time=0.927 ms
+64 bytes from 10.0.0.1: icmp_seq=11 ttl=64 time=0.774 ms
+64 bytes from 10.0.0.1: icmp_seq=12 ttl=64 time=0.902 ms
+64 bytes from 10.0.0.1: icmp_seq=13 ttl=64 time=0.801 ms
+64 bytes from 10.0.0.1: icmp_seq=14 ttl=64 time=0.883 ms
+64 bytes from 10.0.0.1: icmp_seq=15 ttl=64 time=0.771 ms
+64 bytes from 10.0.0.1: icmp_seq=16 ttl=64 time=0.778 ms
+64 bytes from 10.0.0.1: icmp_seq=17 ttl=64 time=0.695 ms
+64 bytes from 10.0.0.1: icmp_seq=18 ttl=64 time=0.809 ms
+64 bytes from 10.0.0.1: icmp_seq=19 ttl=64 time=0.671 ms
+64 bytes from 10.0.0.1: icmp_seq=20 ttl=64 time=0.791 ms
+64 bytes from 10.0.0.1: icmp_seq=21 ttl=64 time=0.918 ms
+64 bytes from 10.0.0.1: icmp_seq=22 ttl=64 time=0.781 ms
+64 bytes from 10.0.0.1: icmp_seq=23 ttl=64 time=0.911 ms
+^C
+--- 10.0.0.1 ping statistics ---
+23 packets transmitted, 23 received, 0% packet loss, time 22498ms
+rtt min/avg/max/mdev = 0.671/0.797/0.927/0.083 ms
+
+```
