@@ -168,5 +168,35 @@ PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
 --- 10.0.0.1 ping statistics ---
 23 packets transmitted, 23 received, 0% packet loss, time 22498ms
 rtt min/avg/max/mdev = 0.671/0.797/0.927/0.083 ms
+```
+
+## iperf3 打流测试（只保留LTE链路）
+C端测试结果如下：
+``` c?linenums
+root@f410client-MS-7C37:/home/f410-client/lzy/408_client_lte# iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b100M -A0
+Connecting to host 10.0.0.1, port 10000
+[  4] local 10.0.0.10 port 47899 connected to 10.0.0.1 port 10000
+[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+[  4]   0.00-1.00   sec  10.8 MBytes  90.3 Mbits/sec  8066
+[  4]   1.00-2.00   sec  11.9 MBytes   100 Mbits/sec  8929
+[  4]   2.00-3.00   sec  11.9 MBytes   100 Mbits/sec  8929
+[  4]   3.00-4.00   sec  11.9 MBytes   100 Mbits/sec  8928
+[  4]   4.00-5.00   sec  11.9 MBytes   100 Mbits/sec  8929
+[  4]   5.00-6.00   sec  11.9 MBytes   100 Mbits/sec  8928
+[  4]   6.00-7.00   sec  11.9 MBytes   100 Mbits/sec  8929
+[  4]   7.00-8.00   sec  11.9 MBytes   100 Mbits/sec  8928
+[  4]   8.00-9.00   sec  11.9 MBytes   100 Mbits/sec  8929
+[  4]   9.00-10.00  sec  11.9 MBytes   100 Mbits/sec  8928
+[  4]   9.00-10.00  sec  11.9 MBytes   100 Mbits/sec  8928
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  4]   0.00-10.00  sec   120 MBytes   101 Mbits/sec  0.000 ms  0/90208 (0%)
+[  4] Sent 90208 datagrams
+iperf3: error - the server has terminated
+```
+
+S端测试结果如下：
+
+``` c?linenums
 
 ```
