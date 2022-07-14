@@ -126,6 +126,9 @@ iperf3 -s -p10000 -A0
 
 ![Network topology diagram](./images/1657764385430.png)‘
 # 代码修改
+
+使用代码为408_clientv2.0.0.zip
+
 需要在C端和S端check.c中的`do_lte`函数中，加入以下代码。链路0为LTE链路，链路1-3为正常链路。
 
 ``` c?linenums
