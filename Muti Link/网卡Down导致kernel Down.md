@@ -228,6 +228,7 @@ NIC_ON:
 ```
 
 # 网卡ON后无法直接链路正常
+
 当网卡UP后，链路1的活性会由0变为1，然后再变成0，再次变为1。
 
 ![enter description here](./images/1657800099983.png)
