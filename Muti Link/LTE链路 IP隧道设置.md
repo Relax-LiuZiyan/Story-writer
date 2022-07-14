@@ -171,6 +171,7 @@ rtt min/avg/max/mdev = 0.671/0.797/0.927/0.083 ms
 ```
 
 ## iperf3 打流测试（只保留LTE链路）
+
 C端测试结果如下：
 ``` c?linenums
 root@f410client-MS-7C37:/home/f410-client/lzy/408_client_lte# iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b100M -A0
@@ -194,9 +195,35 @@ Connecting to host 10.0.0.1, port 10000
 [  4] Sent 90208 datagrams
 iperf3: error - the server has terminated
 ```
-
 S端测试结果如下：
-
 ``` c?linenums
+root@:408_server_lte# iperf3 -s -p10000 -A0
+-----------------------------------------------------------
+Server listening on 10000
+-----------------------------------------------------------
+Accepted connection from 10.0.0.10, port 36586
+[  5] local 10.0.0.1 port 10000 connected to 10.0.0.10 port 47899
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  10.8 MBytes  90.3 Mbits/sec  0.011 ms  0/8065 (0%)
+[  5]   1.00-2.00   sec  11.9 MBytes   100 Mbits/sec  0.012 ms  0/8929 (0%)
+[  5]   2.00-3.00   sec  11.9 MBytes   100 Mbits/sec  0.013 ms  0/8929 (0%)
+[  5]   3.00-4.00   sec  11.9 MBytes   100 Mbits/sec  0.012 ms  0/8928 (0%)
+[  5]   4.00-5.00   sec  11.9 MBytes   100 Mbits/sec  0.012 ms  0/8929 (0%)
+[  5]   5.00-6.00   sec  11.9 MBytes   100 Mbits/sec  0.012 ms  0/8928 (0%)
+[  5]   6.00-7.00   sec  11.9 MBytes   100 Mbits/sec  0.014 ms  0/8929 (0%)
+[  5]   7.00-8.00   sec  11.9 MBytes   100 Mbits/sec  0.014 ms  0/8928 (0%)
+[  5]   8.00-9.00   sec  11.9 MBytes   100 Mbits/sec  0.012 ms  0/8929 (0%)
+[  5]   9.00-10.00  sec  11.9 MBytes   100 Mbits/sec  0.012 ms  0/8928 (0%)
+^C[  5]  10.00-10.23  sec  2.38 MBytes  87.1 Mbits/sec  0.012 ms  0/1786 (0%)
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  5]   0.00-10.23  sec  0.00 Bytes  0.00 bits/sec  0.012 ms  0/90208 (0%)
+iperf3: interrupt - the server has terminated
+
+```
+## 内核打印信息
+
+``` bash?linenums
+
 
 ```
