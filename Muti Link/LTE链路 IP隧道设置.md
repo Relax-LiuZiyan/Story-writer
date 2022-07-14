@@ -127,9 +127,7 @@ iperf3 -s -p10000 -A0
 ![Network topology diagram](./images/1657764385430.png)‘
 
 # 测试
-
 ## ping测试
-
 ``` c?linenums
 root@f410client-MS-7C37:/home/f410-client/lzy/408_client_lte# ping 192.168.2.2
 PING 192.168.2.2 (192.168.2.2) 56(84) bytes of data.
@@ -169,9 +167,7 @@ PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
 23 packets transmitted, 23 received, 0% packet loss, time 22498ms
 rtt min/avg/max/mdev = 0.671/0.797/0.927/0.083 ms
 ```
-
 ## iperf3 打流测试（只保留LTE链路）
-
 C端测试结果如下：
 ``` c?linenums
 root@f410client-MS-7C37:/home/f410-client/lzy/408_client_lte# iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b100M -A0
@@ -222,8 +218,26 @@ iperf3: interrupt - the server has terminated
 
 ```
 ## 内核打印信息
-
 ``` bash?linenums
-
-
+[  412.508711] USER0-0:[1.1]SND:   6651582      RCV:       282  DELAY:         0us      Record:1        DD:0
+[  412.508713] USER0-1:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  412.508714] USER0-2:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  412.508714] USER0-3:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  413.020694] USER0-0:[1.1]SND:   6651582      RCV:       282  DELAY:         0us      Record:1        DD:0
+[  413.020695] USER0-1:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  413.020696] USER0-2:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  413.020697] USER0-3:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  413.532680] USER0-0:[1.1]SND:   2661590      RCV:       439  DELAY:         0us      Record:1        DD:0
+[  413.532682] USER0-1:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  413.532683] USER0-2:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  413.532684] USER0-3:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  414.044666] USER0-0:[1.1]SND:       222      RCV:       282  DELAY:         0us      Record:1        DD:0
+[  414.044668] USER0-1:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  414.044669] USER0-2:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  414.044669] USER0-3:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  414.556652] USER0-0:[1.1]SND:       222      RCV:       282  DELAY:         0us      Record:1        DD:0
+[  414.556654] USER0-1:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  414.556655] USER0-2:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
+[  414.556656] USER0-3:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
 ```
+
