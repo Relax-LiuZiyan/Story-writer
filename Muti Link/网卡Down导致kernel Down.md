@@ -205,3 +205,28 @@ NIC_ON:
 ```
 
 ## post_routing.c文件修改
+
+``` c?linenums
+        link = user->link_list + lid;
+        nic = host->nic_list + lid;
+
+        if (unlikely(select_route(nic, link, skb) < 0))
+        {
+            if (likely(skb))
+                kfree_skb(skb);
+            return NF_STOLEN;
+        }
+
+        if (unlikely(!link->isvalid && skb))
+        {
+            kfree_skb(skb);
+            return NF_STOLEN;
+        }
+
+        link->snd_size += skb->len + SIZE_MAC_HDR;
+        (*(state->okfn))(state->net, state->sk, skb);
+```
+
+# 网卡ON后无法直接链路正常
+
+![enter description here](./images/1657800099983.png)
