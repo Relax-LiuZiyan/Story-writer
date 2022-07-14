@@ -192,9 +192,59 @@ static struct link_info user0_link_list[] = {
 ```
 
 ## server_conf.c
+S端的用户链路信息中的IP地址，为与其网卡对接的Wan口IP地址。
 
 ``` c?linenums
 
+struct nic_info nic_list[] = {
+	[0] = {
+		.name = "enp45s0f0",
+		.ip_str = "192.168.2.2",
+		.isvalid = 0,
+	},
+	[1] = {
+		.name = "enp45s0f1",
+		.ip_str = "172.16.1.1",
+		.isvalid = 0,
+	},
+	[2] = {
+		.name = "enp45s0f2",
+		.ip_str = "172.16.2.1",
+		.isvalid = 0,
+	},
+	[3] = {
+		.name = "enp45s0f3",
+		.ip_str = "172.16.3.1",
+		.isvalid = 0,
+	},
+};
+
+struct link_info user0_link_list[] = {
+	[0] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "192.168.2.1",
+	},
+	[1] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "172.16.1.10",
+	},
+	[2] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "172.16.2.10",
+	},
+	[3] = {
+		.isvalid = 0,
+		.scale = 1,
+		.istosnd = 1,
+		.ip_str = "172.16.3.10",
+	},
+};
 ```
 
 # 测试
