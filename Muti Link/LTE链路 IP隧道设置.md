@@ -1,5 +1,5 @@
 ---
-title: LTE链路 IP隧道设置
+title: LTE链路 IP隧道实现
 tags: IP隧道,跨网段,Linux内核,路由表
 slug: storywriter/grammar
 grammar_abbr: true
@@ -193,7 +193,6 @@ static struct link_info user0_link_list[] = {
 
 ## server_conf.c
 S端的用户链路信息中的IP地址，为与其网卡对接的Wan口IP地址。
-
 ``` c?linenums
 
 struct nic_info nic_list[] = {
@@ -361,4 +360,3 @@ iperf3: interrupt - the server has terminated
 [  414.556655] USER0-2:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
 [  414.556656] USER0-3:[0.1]SND:       246      RCV:         0  DELAY:         0us      Record:1        DD:0
 ```
-
