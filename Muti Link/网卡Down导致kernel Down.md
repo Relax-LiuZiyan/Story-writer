@@ -234,3 +234,9 @@ NIC_ON:
 ![enter description here](./images/1657800099983.png)
 
 链路活性的赋值只有在链路探测包回传处才会有判断，因此重点可以观察探测报文。
+
+
+# 网卡网络通知链
+enp45s0f0网卡设置了两个IP地址，
+
+![insmod 驱动](./images/1658108357793.png)
