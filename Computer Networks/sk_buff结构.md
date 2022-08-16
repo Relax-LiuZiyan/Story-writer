@@ -46,6 +46,8 @@ grammar_tableExtra: true
 ![skb_reserve](./images/1654591326009.png)
 # SK_Buff data和tail指针问题
 网络报文真正发送的数据报文时data指针和tail指针中间的部分，即使head和data中间有空间，发送也不会去考虑
+# 长度字段的含义
+![enter description here](./images/1660635024993.png)
 # SK_Buff中的len成员变量
 ``` c?linenums
 skb->len = skb->data - skb->tail;
