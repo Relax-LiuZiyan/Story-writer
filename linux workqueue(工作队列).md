@@ -80,7 +80,7 @@ Workqueue初始化完毕之后，将任务运行的上下文环境构建起来�
 
 上述描述的workqueue内核实现原理可以描述如下：在Workqueue机制中，提供了一个系统默认的workqueue队列——keventd_wq，这个队列是Linux系统在初始化的时候就创建的。用户可以直接初始化一个work_struct对象，然后在该队列中进行调度，使用更加方便。
 
-## Workqueue编程接口序号接口函数说明
+## 2.2 Workqueue编程接口序号接口函数说明
 
 1. create_workqueue 用于创建一个workqueue队列，为系统中的每个CPU都创建一个内核线程。输入参数：@name：workqueue的名称
 2.  create_singlethread_workqueue 用于创建workqueue，只创建一个内核线程。输入参数：@name：workqueue名称
