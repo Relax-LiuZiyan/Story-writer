@@ -51,7 +51,7 @@ grammar_tableExtra: true
  
  ![P62](./images/1662175175505.jpg)
  
- # create_workqueue和create_singlethread_workqueue 的使用和区别
+ # 2 create_workqueue和create_singlethread_workqueue 的使用和区别
  
 Linux中的Workqueue机制就是为了简化内核线程的创建。通过调用workqueue的接口就能创建内核线程。并且可以根据当前系统CPU的个数创建线程的数量，使得线程处理的事务能够并行化。workqueue是内核中实现简单而有效的机制，他显然简化了内核daemon的创建，方便了用户的编程， Workqueue机制的实现Workqueue机制中定义了两个重要的数据结构，分析如下：
 
