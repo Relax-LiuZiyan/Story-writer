@@ -93,3 +93,8 @@ Workqueue初始化完毕之后，将任务运行的上下文环境构建起来�
 5.  schedule_delayed_work 延迟一定时间去执行一个具体的任务，功能与schedule_work类似，多了一个延迟时间，输入参数：@work_struct：具体任务对象指针@delay：延迟时间
 6.  queue_work 调度执行一个指定workqueue中的任务。输入参数：@ workqueue_struct：指定的workqueue指针@work_struct：具体任务对象指针
 7.  queue_delayed_work 延迟调度执行一个指定workqueue中的任务，功能与queue_work类似，输入参数多了一个delay。
+
+# 3 reference
+
+1. [linux中Workqueue机制的分析—— create_workqueue和create_singlethread_workqueue 的使用和区别](https://blog.csdn.net/weixin_42096901/article/details/103526507)
+2. [Linux驱动开发笔记_工作队列&共享队列](https://blog.csdn.net/weixin_43625081/article/details/113270507)
