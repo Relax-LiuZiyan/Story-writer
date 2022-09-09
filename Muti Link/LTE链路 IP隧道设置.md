@@ -114,11 +114,8 @@ sudo route add -net 192.168.2.0 netmask 255.255.255.0 dev enp45s0f0 gw 192.168.1
 iperf3打流测试命令：
 
 ``` c?linenums
-
-iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b100M -A0
-
-iperf3 -s -p10000 -A0
-
+iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b100M -A2
+iperf3 -s -p10000 -A2
 ```
 
 # 网络环境
