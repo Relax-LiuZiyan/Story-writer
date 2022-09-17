@@ -69,3 +69,7 @@ sudo iptables -t raw -A PREROUTING -p udp -j NOTRACK
 sudo iptables -t raw -A PREROUTING -p tcp --dport 22 -j NOTRACK
 ```
 
+此命令可以有效的解决报文丢包。
+
+## reference
+1. [Centos7高并发场景下丢包排查](https://www.modb.pro/db/243882)
