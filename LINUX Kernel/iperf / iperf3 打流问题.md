@@ -63,3 +63,9 @@ iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b1        G -A0
 
 # nf_conntrack: table full, dropping packet 
 在进行高吞吐量打流过程中内核打印会提示链接跟踪表已满，LINUX内核协议栈进行释放报文，因此会导致报文大量丢失，可以进行命令关闭防火墙和链接跟踪表。
+
+``` bash?linenums
+sudo iptables -t raw -A PREROUTING -p udp -j NOTRACK
+sudo iptables -t raw -A PREROUTING -p tcp --dport 22 -j NOTRACK
+```
+
