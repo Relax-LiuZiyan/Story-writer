@@ -44,8 +44,8 @@ iperf -u -s -p10000 -i1
 ## ieprf3
 
 ``` bash?linenums
-iperf3 -u -c 10.0.0.1 -p10007 -l8756 -t100 -b15G -A10
-iperf3 -s -p10000 -A2
+iperf3 -u -c 10.0.0.1 -p10000 -l8756 -t100 -b10G -A10
+iperf3 -s -p10000 -A10
 ```
 
 环境：1Gpbs NIC  网线直连
@@ -60,3 +60,6 @@ S端打流命令：
 iperf3 -u -c 10.0.0.1 -p10000 -l1400 -t100 -b1        G -A0
 ```
 
+
+# nf_conntrack: table full, dropping packet 
+在进行高吞吐量打流过程中内核打印会提示链接跟踪表已满，LINUX内核协议栈进行释放报文，
