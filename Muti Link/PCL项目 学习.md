@@ -135,4 +135,9 @@ root@:s_v1.0.8# ./script/cpu_set.sh 0
 使用方法将CPU设置为对应的模式: 参数1为性能,参数2为默认,参数3为节能!
 ```
 
-## 
+## 1.5 常用关于CPU的命令
+``` bash?linenums
+cat /proc/cpuinfo
+sudo cpufreq_info
+watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
+```
