@@ -206,7 +206,6 @@ bool kthread_should_stop(void)
 }
 ```
 ## 3.5 kthread_bind()，绑定创建好的线程在执行CPU核心上运行
-
 ``` c?linenums
 void kthread_bind(struct task_struct *k, unsigned int cpu);
 ```
@@ -224,9 +223,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 [linux内核模块：内核方法未定义（kthread_create_on_cpu）](https://qa.1r1g.com/sf/ask/2039076791/#)
 
 ## 3.6 实际测试
-作为线程对编程来说只是一个函数的实现，该函数一般作为死循环处理，当然在该循环中会进行判断，确认该线程是不是该停止退出了，如果该退出则做相应的处理，如果不退出则继续处理。
-
-作为内核线程，要能主动让出CPU去运行其他线程也必须能重新被调度，这需要调用schedule函数等相关方式，schedule相关函数在kernel/timer.c文件中有定义。
+线程一旦启动起来后，会一直运行，除非该线程主动调用do_exit函数，或者其他的进程调用kthread_stop函数，结束线程的运行。 但如果线程函数正在处理一个非常重要的任务，它不会被中断的。当然如果线程函数永远不返回并且不检查信号，它将永远都不会停止，因此，**==线程函数必须能让出CPU #F44336==**，以便能运行其他线程。同时线程函数也必须能重新被调度运行。在例子程序中，这是**==通过schedule_timeout()函数完成的 #F44336==**。
 ``` cpp?linenums
 // 让CPU调度运行其他线程并等待指定时间后本线程被重新调度，其不改变当前状态
 signed long __sched schedule_timeout(signed long timeout) ;
@@ -292,19 +289,18 @@ static __exit void kthread_example_exit(void)
 module_init(kthread_example_init);
 module_exit(kthread_example_exit);
 ```
-
-## 查看线程CPU利用率
-可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：
-
-``` c?linenums
- top –p {线程号}
-```
-
-可以使用下面命令来查找线程号：
-       ps aux|grep{线程名}
-## 3.7 参考
+## 3.7 注意
+1. 值得一提的是kthread_should_stop函数，我们需要在开启的线程中嵌入该函数并检查此函数的返回值，否则kthread_stop是不起作用的
+2. 休眠有两种相关的状态:TASK_INTERRUPTIBLE and TASK_UNINTERRUPTIBLE。它们的惟一却不是处于TASK_UNINTERRUPTIBLE状态的进程会忽略信号，而处于TASK_INTERRUPTIBLE状态的进程如果收到信号会被唤醒并处理信号(然后再次进入等待睡眠状态)。两种状态的进程位于同一个等待队列上，等待某些事件，不能够运行。
+3. schedule_time(s*HZ)的参数为节拍数，HZ宏每个系统定义不一样，表示每一秒时钟中断数，如在2.6中为1000，2.4中为100, s为秒单位，例如如果要休眠20ms，则schedule_time(0.02*HZ)就可以了。
+4. 在调用kthread_stop函数时，线程函数不能已经运行结束。否则，kthread_stop函数会一直进行等待。在执行kthread_stop的时候，目标线程必须没有退出，否则会Oops。原因很容易理解，当目标线程退出的时候，其对应的task结构也变得无效，kthread_stop引用该无效task结构就会出错。
+5. 线程函数必须能让出CPU，以便能运行其他线程。同时线程函数也必须能重新被调度运行。在例子程序中，这是通过schedule_timeout()函数完成的。
+## 3.8 查看线程CPU利用率
+可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：` top -p {线程号}`或`ps aux | grep {线程名}`。
+## 3.9 参考
 1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
-2. 
+2. [kthread_create 简单使用](https://blog.csdn.net/iamliuyanlei/article/details/9326119)
+
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
