@@ -205,7 +205,7 @@ bool kthread_should_stop(void)
 	return test_bit(KTHREAD_SHOULD_STOP, &to_kthread(current)->flags);
 }
 ```
-
+## 3.5 kthread_bind()，绑定创建好的线程在执行CPU核心上运行
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
