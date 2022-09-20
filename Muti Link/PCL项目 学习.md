@@ -223,6 +223,22 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 ### 3.5.2 参考
 [linux内核模块：内核方法未定义（kthread_create_on_cpu）](https://qa.1r1g.com/sf/ask/2039076791/#)
 
+## 3.6 实际测试
+作为线程对编程来说只是一个函数的实现，该函数一般作为死循环处理，当然在该循环中会进行判断，确认该线程是不是该停止退出了，如果该退出则做相应的处理，如果不退出则继续处理。
+
+作为内核线程，要能主动让出CPU去运行其他线程也必须能重新被调度，这需要调用schedule函数等相关方式，schedule相关函数在kernel/timer.c文件中有定义。
+
+1.schedule_timeout()，让CPU调度运行其他线程并等待指定时间后本线程被重新调度，其不改变当前状态
+
+signed long __sched schedule_timeout(signed long timeout) ;
+
+2.schedule_timeout_interruptible()，其会改变当前状态为可被中断
+
+``` cpp?linenums
+signed long __sched schedule_timeout_interruptible(signed long timeout) ;
+```
+
+
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
