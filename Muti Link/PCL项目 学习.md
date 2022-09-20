@@ -143,10 +143,17 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
 
 # 2 常用打流命令
-## 2.1 iperf3 打流软件
+## 2.1 iperf3
+``` bash?linenums
+iperf3 -u -c 10.0.0.1 -p10000 -l8756 -t100 -b12G -A10
+iperf3 -s -p10000 -A10
+```
+## 2.2 iperf
 
+``` bash?linenums
+enter code here
+```
 
 ## 2.3 打流软件对比
 1. 进行UDP打流前，iperf3需要发送端与接收端先建立一个TCP的链接，在进行UDP报文的传输，而iperf则不需要进行TCP的建立。
 2. iperf使用场景为低流量，高可靠场景，iperf3场景为高流量，快速发包。iperf3会在每个1S周期内的0.1S内前半段时间进行大流量的灌包，后半段时间进行空闲。这样则会导致缓冲区满而导致丢包。
-3. 
