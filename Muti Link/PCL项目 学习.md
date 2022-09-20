@@ -210,9 +210,7 @@ bool kthread_should_stop(void)
 ``` c?linenums
 void kthread_bind(struct task_struct *k, unsigned int cpu);
 ```
-
-也可在创建的时候调用如下函数在创建的同时一起绑定：
-
+也可在创建线程的时候调用如下函数在创建的同时一起绑定CPU
 ``` c?linenums
 struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
                    void *data,
