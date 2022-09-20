@@ -39,3 +39,5 @@ tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 左上角GAME BOOST调整为OFF，A-XMP调整为1，其他配置可以不用修改。
 
 ![msi主板Bios界面](./images/1663643467056.png)
+
+开机进入到Ubuntu界面后，需要安装工具。
