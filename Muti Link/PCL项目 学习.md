@@ -137,3 +137,14 @@ fi
 
 ```
 
+脚本调用显示如下所示：
+``` bash?linenums
+root@:s_v1.0.8# ./script/cpu_set.sh 1
+CPU核心10-13修改为性能模式
+root@:s_v1.0.8# ./script/cpu_set.sh 2
+CPU核心10-13修改为默认模式
+root@:s_v1.0.8# ./script/cpu_set.sh 3
+CPU核心10-13修改为节能模式
+root@:s_v1.0.8# ./script/cpu_set.sh 0
+使用方法将CPU设置为对应的模式: 参数1为性能,参数2为默认,参数3为节能!
+```
