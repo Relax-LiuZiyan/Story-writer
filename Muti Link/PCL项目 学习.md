@@ -190,6 +190,7 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
 ``` c?linenums
 int kthread_stop(struct task_struct *k);
 ```
+## 3.4 kthread_should_stop()，判断线程是否该停止
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
