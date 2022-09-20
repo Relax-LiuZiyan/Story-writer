@@ -185,8 +185,11 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
         __k; \
 })
 ```
-## 3.3
+## 3.3 kthread_stop()，停止指定内核线程
 
+``` c?linenums
+int kthread_stop(struct task_struct *k);
+```
 
 # 四、LINUX内核任务延迟队列
 
