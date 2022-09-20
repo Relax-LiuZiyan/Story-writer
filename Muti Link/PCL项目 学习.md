@@ -301,8 +301,10 @@ module_exit(kthread_example_exit);
 1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
 2. [Linux内核多线程实现方法 —— kthread_create函数【转】](https://www.cnblogs.com/sky-heaven/p/8204631.html)
 2. [kthread_create 简单使用](https://blog.csdn.net/iamliuyanlei/article/details/9326119)
-
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
 
+
+# 常用的网站
+1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有)
