@@ -227,18 +227,94 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 作为线程对编程来说只是一个函数的实现，该函数一般作为死循环处理，当然在该循环中会进行判断，确认该线程是不是该停止退出了，如果该退出则做相应的处理，如果不退出则继续处理。
 
 作为内核线程，要能主动让出CPU去运行其他线程也必须能重新被调度，这需要调用schedule函数等相关方式，schedule相关函数在kernel/timer.c文件中有定义。
-
-1.schedule_timeout()，让CPU调度运行其他线程并等待指定时间后本线程被重新调度，其不改变当前状态
-
+``` cpp?linenums
+// 让CPU调度运行其他线程并等待指定时间后本线程被重新调度，其不改变当前状态
 signed long __sched schedule_timeout(signed long timeout) ;
 
-2.schedule_timeout_interruptible()，其会改变当前状态为可被中断
-
-``` cpp?linenums
+// 其会改变当前状态为可被中断
 signed long __sched schedule_timeout_interruptible(signed long timeout) ;
 ```
+在创建的线程中必须调用上述函数，把CPU的工作让出一段时间进行自动类似喂狗的操作，否则会进行提示警告说绑定对应的CPU不能正常使用。
 
+``` c?linenums
+#include <linux/module.h>
+#include <linux/kthread.h>
+#include <linux/slab.h>
 
+static struct task_struct * slam_unbind_thread = NULL;
+
+static int slam_bind_func(void *data)
+{
+        unsigned int cur_cpu = *((unsigned int *)data);
+        printk("[slam_bind_thread/%d] start!\n", cur_cpu);
+
+        while(!kthread_should_stop())
+        {
+                printk("I'm in [slam_bind_thread/%d]!\n", cur_cpu);
+                schedule_timeout(msecs_to_jiffies(5000));
+        }
+
+        printk("[slam_bind_thread/%d] end!\n", cur_cpu);
+        return 0;
+}
+
+static int slam_unbind_func(void *data)
+{
+        char *slam_data = kzalloc(strlen(data)+1, GFP_KERNEL);
+        strncpy(slam_data, data, strlen(data));
+
+        while(!kthread_should_stop())
+        {
+                printk("Unbind Thread:%s(%ld)\n", slam_data, jiffies);
+                schedule_timeout(msecs_to_jiffies(5000));
+        }
+
+        kfree(slam_data);
+        return 0;
+}
+
+static __init int kthread_example_init(void)
+{
+        int cur_cpu;
+        unsigned int cpus = num_online_cpus();
+        unsigned int bind_thread_params[cpus];
+
+        struct task_struct *slam_bind_threads[cpus];
+        slam_unbind_thread = kthread_run(slam_unbind_func, "slam-xinu", "slam_unbind");
+
+        for_each_present_cpu(cur_cpu)
+        {
+                bind_thread_params[cur_cpu] = cur_cpu;
+                slam_bind_threads[cur_cpu] = kthread_create(slam_bind_func, (void *)(bind_thread_params+cur_cpu), "BindThread/%d", cur_cpu);
+                kthread_bind(slam_bind_threads[cur_cpu], cur_cpu);
+                wake_up_process(slam_bind_threads[cur_cpu]);
+        }
+
+        schedule_timeout_interruptible(msecs_to_jiffies(30*1000));
+
+         for(cur_cpu=0;cur_cpu<cpus;cur_cpu++)
+         {
+              kthread_stop(slam_bind_threads[cur_cpu]);
+         }
+
+         return 0;
+}
+
+static __exit void kthread_example_exit(void)
+{
+        if(slam_unbind_thread)
+        {
+                kthread_stop(slam_unbind_thread);
+        }
+}
+
+module_init(kthread_example_init);
+module_exit(kthread_example_exit);
+```
+
+## 3.7 参考
+1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
+2. 
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
