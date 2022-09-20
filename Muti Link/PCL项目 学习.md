@@ -34,7 +34,7 @@ grammar_tableExtra: true
 tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 ---
 [toc]
-# 一.CPU性能设置
+# 一、CPU性能设置
 左上角GAME BOOST调整为OFF，A-XMP调整为1，其他配置可以不用修改。操作目的是将CPU设置为非自动模式，将内存设置为高频模式。CPU主频通过命令进行设置。
 
 ![msi主板Bios界面](./images/1663643467056.png)
@@ -142,7 +142,7 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
 
-# 2 常用打流命令
+# 二、常用打流命令
 ## 2.1 iperf3
 ``` bash?linenums
 iperf3 -u -c 10.0.0.1 -p10000 -l8756 -t100 -b12G -A10
@@ -159,3 +159,5 @@ iperf -u -s -p10000 -i1
 3. iperf3具有-A(affinity)参数，可以将打流程序绑定在一个特定的CPU上，对于大流量灌包有很大的帮助。
 ## 2.4 额外知识
 1. 命令中的-l参数指的是载荷的长度，假如你设置为1400B，发送为UDP报文，其最终发送的报文长度为14(MAC)+20(IP)+8(UDP)+1400(payload) = 1442Byte，在传输过程中是没有MAC头字节的，即MTU1500不包括MAC头。
+
+# 三. 
