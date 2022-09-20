@@ -95,7 +95,7 @@ Usage: cpufreq-set [options] Options:
 -h, –help #输出这个帮助信息
 ```
 
-## 1.4 cpu_set.sh脚本
+## 1.4 编写cpu_set.sh脚本
 
 ``` bash?linenums
 #!/bin/bash
