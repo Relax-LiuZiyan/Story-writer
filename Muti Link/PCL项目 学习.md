@@ -53,5 +53,32 @@ available frequency steps： CPU频率可以被设置的值；
 available cpufreq governors： CPU频率调节策略。包括powersave, userspace,ondemand,conservative, performance。
 
 ![图1 cpufreq-info](./images/1663643705745.png)
-## 1.2.1 CPU支持主频
+### 1.2.1 CPU支持主频
 如图1所示，CPU硬件支持的频率最小值为2.20GHz，最大值为3.4GHz。
+
+### 1.2.2 CPU主频可设置的值
+如图一，CPU频率可以被设置的值有：3.4GHz，2.8GHz，2.20GHz。
+需要注意的是：CPU的频率不能被设置为任意值，必须是available frequency steps中的值，若设置的值不在其中，系统会选择设置为大于且在available frequency steps中的最小值。此外，CPU频率设置不会超过其上下限，即 hardware limits。
+
+### 1.2.3 调节策略
+命令：`sudo cpufreq-set -g {模式}`
+
+powersave，是无论如何都只会保持最低频率的所谓”省电”模式；
+userspace，是自定义频率时的模式，这个是当你设定特定频率时自动转变的；
+ondemand，默认模式。一有cpu计算量的任务，就会立即达到最大频率运行，等执行完 毕就立即回到最低频率；
+conservative，翻译成保守（中庸）模 式，会自动在频率上下限调整，
+ondemand的区别在于它会按需分配频率，而不是一味追求最高频率；
+performance，顾名思义只注重效率，无论如何一直保持以最大频率运行。
+
+
+### 1.2.4 模式使用
+powersave，ondemand，conservative，ondemand，performance这些模式设置后，就如3.3中字面意思一样，不用再进一步设置频率。
+而userspace模式，假如你选择的是自定义模式可以通过的话，sudo cpufreq-set -f 1700000（你所需要的频率）
+注意，此处的频率必须是以KHz为单 位，并且是可以达到的频率（也就是用cpufreq-info查看到的各个频率），cpu频率＝倍频x外频。以下凡是涉及频率的一律如此。
+
+而在自动调节下，也可以设置其上限和下限
+
+``` bash?linenums
+sudo cpufreq-set -d {频率下限}
+sudo cpufreq-set -u {频率上限}
+```
