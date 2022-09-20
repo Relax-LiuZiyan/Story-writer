@@ -142,3 +142,10 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
 
+# 2 常用打流命令
+## 2.1 iperf3 打流软件
+
+
+## 2.3 打流软件对比
+1. 进行UDP打流前，iperf3需要发送端与接收端先建立一个TCP的链接，在进行UDP报文的传输，而iperf则不需要进行TCP的建立。
+2. 
