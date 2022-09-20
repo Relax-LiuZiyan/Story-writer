@@ -299,6 +299,7 @@ module_exit(kthread_example_exit);
 可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：` top -p {线程号}`或`ps aux | grep {线程名}`。下面的命令显示所有内核线程：`ps afx`。
 ## 3.9 参考
 1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
+2. [Linux内核多线程实现方法 —— kthread_create函数【转】](https://www.cnblogs.com/sky-heaven/p/8204631.html)
 2. [kthread_create 简单使用](https://blog.csdn.net/iamliuyanlei/article/details/9326119)
 
 # 四、LINUX内核任务延迟队列
