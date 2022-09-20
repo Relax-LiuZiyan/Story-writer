@@ -296,7 +296,7 @@ module_exit(kthread_example_exit);
 4. 在调用kthread_stop函数时，线程函数不能已经运行结束。否则，kthread_stop函数会一直进行等待。在执行kthread_stop的时候，目标线程必须没有退出，否则会Oops。原因很容易理解，当目标线程退出的时候，其对应的task结构也变得无效，kthread_stop引用该无效task结构就会出错。
 5. 线程函数必须能让出CPU，以便能运行其他线程。同时线程函数也必须能重新被调度运行。在例子程序中，这是通过schedule_timeout()函数完成的。
 ## 3.8 查看线程CPU利用率
-可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：` top -p {线程号}`或`ps aux | grep {线程名}`。下面的命令显示所有内核线程：`ps afx`
+可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：` top -p {线程号}`或`ps aux | grep {线程名}`。下面的命令显示所有内核线程：`ps afx`。
 ## 3.9 参考
 1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
 2. [kthread_create 简单使用](https://blog.csdn.net/iamliuyanlei/article/details/9326119)
