@@ -72,7 +72,7 @@ performance，顾名思义只注重效率，无论如何一直保持以最大频
 
 
 ### 1.2.4 模式使用
-powersave，ondemand，conservative，ondemand，performance这些模式设置后，就如3.3中字面意思一样，不用再进一步设置频率。
+powersave，ondemand，conservative，ondemand，performance这些模式设置后，就如1.2.3中字面意思一样，不用再进一步设置频率。
 而userspace模式，假如你选择的是自定义模式可以通过的话，sudo cpufreq-set -f 1700000（你所需要的频率）
 注意，此处的频率必须是以KHz为单 位，并且是可以达到的频率（也就是用cpufreq-info查看到的各个频率），cpu频率＝倍频x外频。以下凡是涉及频率的一律如此。
 
@@ -81,4 +81,16 @@ powersave，ondemand，conservative，ondemand，performance这些模式设置�
 ``` bash?linenums
 sudo cpufreq-set -d {频率下限}
 sudo cpufreq-set -u {频率上限}
+```
+
+## 1.3 命令总结
+
+``` bash?linenums
+Usage: cpufreq-set [options] Options:
+-c CPU, –cpu CPU #指定CPU核心号，请注意上图的analyzing CPU数字。
+-d FREQ, –min FREQ #手工指定最小主频速度。（在userspace策略）
+-u FREQ, –max FREQ #手工指定最大主频速度。（在userspace策略）
+-g GOV, –governor GOV #设置工作策略
+-f FREQ, –freq FREQ #设定特定的工作频率（CPU默认档次）
+-h, –help #输出这个帮助信息
 ```
