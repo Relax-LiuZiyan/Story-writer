@@ -172,17 +172,17 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
 ## 3.1 kthread_create() 创建内核线程
 ``` c?linenums
 #define kthread_create(threadfn, data, namefmt, arg...) \
-        kthread_create_on_node(threadfn, data, -1, namefmt, ##arg)
+        kthread_create_on_node(threadfn, data, -1, namefmt, ##arg)
 ```
 ## 3.2 kthread_run() 创建并运行内核线程
 ``` c?linenums
 #define kthread_run(threadfn, data, namefmt, ...) \
 ({ \
-        struct task_struct *__k \
-                = kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
-        if (!IS_ERR(__k)) \
-                wake_up_process(__k); \
-        __k; \
+        struct task_struct *__k \
+                = kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
+        if (!IS_ERR(__k)) \
+                wake_up_process(__k); \
+        __k; \
 })
 ```
 ## 3.3 kthread_stop()，停止指定内核线程
@@ -213,9 +213,9 @@ void kthread_bind(struct task_struct *k, unsigned int cpu);
 也可在创建线程的时候调用如下函数在创建的同时一起绑定CPU：
 ``` c?linenums
 struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
-                   void *data,
-                   unsigned int cpu,
-                   const char *namefmt);
+                   void *data,
+                   unsigned int cpu,
+                   const char *namefmt);
 ```
 上述两个代码需要在使用后需要调用kthread_run()里用到的wake_up_process()才能进入运行队列。
 ### 3.5.1 编译驱动时提示warning : "kthread_create_on_cpu" undefined!
@@ -235,83 +235,71 @@ signed long __sched schedule_timeout(signed long timeout) ;
 signed long __sched schedule_timeout_interruptible(signed long timeout) ;
 ```
 在创建的线程中必须调用上述函数，把CPU的工作让出一段时间进行自动类似喂狗的操作，否则会进行提示警告说绑定对应的CPU不能正常使用。
-
 ``` c?linenums
 #include <linux/module.h>
 #include <linux/kthread.h>
 #include <linux/slab.h>
-
 static struct task_struct * slam_unbind_thread = NULL;
-
 static int slam_bind_func(void *data)
 {
-        unsigned int cur_cpu = *((unsigned int *)data);
-        printk("[slam_bind_thread/%d] start!\n", cur_cpu);
-
-        while(!kthread_should_stop())
-        {
-                printk("I'm in [slam_bind_thread/%d]!\n", cur_cpu);
-                schedule_timeout(msecs_to_jiffies(5000));
-        }
-
-        printk("[slam_bind_thread/%d] end!\n", cur_cpu);
-        return 0;
+        unsigned int cur_cpu = *((unsigned int *)data);
+        printk("[slam_bind_thread/%d] start!\n", cur_cpu);
+        while(!kthread_should_stop()){
+                printk("I'm in [slam_bind_thread/%d]!\n", cur_cpu);
+                schedule_timeout(msecs_to_jiffies(5000));
+        }
+        printk("[slam_bind_thread/%d] end!\n", cur_cpu);
+        return 0;
 }
-
 static int slam_unbind_func(void *data)
 {
-        char *slam_data = kzalloc(strlen(data)+1, GFP_KERNEL);
-        strncpy(slam_data, data, strlen(data));
-
-        while(!kthread_should_stop())
-        {
-                printk("Unbind Thread:%s(%ld)\n", slam_data, jiffies);
-                schedule_timeout(msecs_to_jiffies(5000));
-        }
-
-        kfree(slam_data);
-        return 0;
+        char *slam_data = kzalloc(strlen(data)+1, GFP_KERNEL);
+        strncpy(slam_data, data, strlen(data));
+        while(!kthread_should_stop()){
+                printk("Unbind Thread:%s(%ld)\n", slam_data, jiffies);
+                schedule_timeout(msecs_to_jiffies(5000));
+        }
+        kfree(slam_data);
+        return 0;
 }
-
 static __init int kthread_example_init(void)
 {
-        int cur_cpu;
-        unsigned int cpus = num_online_cpus();
-        unsigned int bind_thread_params[cpus];
+        int cur_cpu;
+        unsigned int cpus = num_online_cpus();
+        unsigned int bind_thread_params[cpus];
+        struct task_struct *slam_bind_threads[cpus];
+        slam_unbind_thread = kthread_run(slam_unbind_func, "slam-xinu", "slam_unbind");
 
-        struct task_struct *slam_bind_threads[cpus];
-        slam_unbind_thread = kthread_run(slam_unbind_func, "slam-xinu", "slam_unbind");
-
-        for_each_present_cpu(cur_cpu)
-        {
-                bind_thread_params[cur_cpu] = cur_cpu;
-                slam_bind_threads[cur_cpu] = kthread_create(slam_bind_func, (void *)(bind_thread_params+cur_cpu), "BindThread/%d", cur_cpu);
-                kthread_bind(slam_bind_threads[cur_cpu], cur_cpu);
-                wake_up_process(slam_bind_threads[cur_cpu]);
-        }
-
-        schedule_timeout_interruptible(msecs_to_jiffies(30*1000));
-
-         for(cur_cpu=0;cur_cpu<cpus;cur_cpu++)
-         {
-              kthread_stop(slam_bind_threads[cur_cpu]);
-         }
-
-         return 0;
+        for_each_present_cpu(cur_cpu){
+                bind_thread_params[cur_cpu] = cur_cpu;
+                slam_bind_threads[cur_cpu] = kthread_create(slam_bind_func, (void *)(bind_thread_params+cur_cpu), "BindThread/%d", cur_cpu);
+                kthread_bind(slam_bind_threads[cur_cpu], cur_cpu);
+                wake_up_process(slam_bind_threads[cur_cpu]);
+        }
+        schedule_timeout_interruptible(msecs_to_jiffies(30*1000));
+         for(cur_cpu=0;cur_cpu<cpus;cur_cpu++){
+              kthread_stop(slam_bind_threads[cur_cpu]);
+         }
+         return 0;
 }
 
 static __exit void kthread_example_exit(void)
 {
-        if(slam_unbind_thread)
-        {
-                kthread_stop(slam_unbind_thread);
-        }
+        if(slam_unbind_thread){
+                kthread_stop(slam_unbind_thread);
+        }
 }
-
 module_init(kthread_example_init);
 module_exit(kthread_example_exit);
 ```
 
+## 查看线程CPU利用率
+可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：
+
+       top –p线程号
+可以使用下面命令来查找线程号：
+
+       ps aux|grep线程名
 ## 3.7 参考
 1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
 2. 
