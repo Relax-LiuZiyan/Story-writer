@@ -213,10 +213,12 @@ void kthread_bind(struct task_struct *k, unsigned int cpu);
 
 也可在创建的时候调用如下函数在创建的同时一起绑定：
 
+``` c?linenums
 struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
                    void *data,
                    unsigned int cpu,
                    const char *namefmt);
+```
 
 两者在使用后需要调用kthread_run()里用到的wake_up_process()才能进入运行队列。 
 
