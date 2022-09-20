@@ -36,6 +36,6 @@ tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 
 # CPU性能设置
 
-一定要把左上角GAME BOOST调整为OFF，A-XMP调整为1。
+左上角GAME BOOST调整为OFF，A-XMP调整为1。
 
 ![msi主板Bios界面](./images/1663643467056.png)
