@@ -296,10 +296,12 @@ module_exit(kthread_example_exit);
 ## 查看线程CPU利用率
 可以使用top命令来查看线程（包括内核线程）的CPU利用率。命令如下：
 
-       top –p线程号
-可以使用下面命令来查找线程号：
+``` c?linenums
+ top –p {线程号}
+```
 
-       ps aux|grep线程名
+可以使用下面命令来查找线程号：
+       ps aux|grep{线程名}
 ## 3.7 参考
 1. [内核线程](https://www.jianshu.com/p/b3fed01aa01a)
 2. 
