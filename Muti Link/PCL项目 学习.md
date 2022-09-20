@@ -191,9 +191,19 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
 int kthread_stop(struct task_struct *k);
 ```
 ## 3.4 kthread_should_stop()，判断线程是否该停止
-
+在指定线程中利用while循环函数调用此函数，判断此线程是否停止。
 ``` c?linenums
-enter code here
+/**
+ * kthread_should_stop - should this kthread return now?
+ *
+ * When someone calls kthread_stop() on your kthread, it will be woken
+ * and this will return true.  You should then return, and your return
+ * value will be passed through to kthread_stop().
+ */
+bool kthread_should_stop(void)
+{
+	return test_bit(KTHREAD_SHOULD_STOP, &to_kthread(current)->flags);
+}
 ```
 
 # 四、LINUX内核任务延迟队列
