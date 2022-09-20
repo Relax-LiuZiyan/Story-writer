@@ -34,9 +34,8 @@ grammar_tableExtra: true
 tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 ---
 [toc]
-
 # 一.CPU性能设置
-左上角GAME BOOST调整为OFF，A-XMP调整为1，其他配置可以不用修改。
+左上角GAME BOOST调整为OFF，A-XMP调整为1，其他配置可以不用修改。操作目的是将CPU设置为非自动模式，将内存设置为高频模式。
 
 ![msi主板Bios界面](./images/1663643467056.png)
 ## 1.1 工具安装
@@ -122,7 +121,6 @@ else
 fi
 
 ```
-
 脚本调用显示如下所示：
 ``` bash?linenums
 root@:s_v1.0.8# ./script/cpu_set.sh 1
@@ -134,15 +132,13 @@ CPU核心10-13修改为节能模式
 root@:s_v1.0.8# ./script/cpu_set.sh 0
 使用方法将CPU设置为对应的模式: 参数1为性能,参数2为默认,参数3为节能!
 ```
-
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
 cat /proc/cpuinfo
 sudo cpufreq_info
 watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 ```
-
-
 ## 1.6 参考
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
+
