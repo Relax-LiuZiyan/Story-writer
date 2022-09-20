@@ -165,8 +165,23 @@ iperf -u -s -p10000 -i1
 LINUX内核线程只能在内核中由其他的线程来创建，而所有的内核线程由kthreadd创建，故而使用ps -ef命令看到所有被[]括起来的内核线程（守护进程）对应的PPID均为2。
 内核线程与普通用户态线程除了内核线程没有独立地址空间（其mm成员指向NULL）外，其他的可被调度和被抢占均支持。
 
-##　3.1
-
+## 3.1 kthread_create() 创建内核线程
+``` c?linenums
+#define kthread_create(threadfn, data, namefmt, arg...) \
+        kthread_create_on_node(threadfn, data, -1, namefmt, ##arg)
+```
+## 3.2 kthread_run() 创建并运行内核线程
+``` c?linenums
+#define kthread_run(threadfn, data, namefmt, ...) \
+({ \
+        struct task_struct *__k \
+                = kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
+        if (!IS_ERR(__k)) \
+                wake_up_process(__k); \
+        __k; \
+})
+```
+## 3.3 
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
