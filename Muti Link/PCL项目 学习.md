@@ -98,6 +98,42 @@ Usage: cpufreq-set [options] Options:
 ## 1.4 cpu_set.sh脚本
 
 ``` bash?linenums
-enter code here
+#!/bin/bash
+ 
+###
+ # Copyright 2022 liuziyan, All Rights Reserved. 
+ # @Author       : liuziyan
+ # @version      : 1.0
+ # @Date         : 2022-09-13 19:44:36
+ # @Instructions : 
+ # @LastEditTime : 2022-09-20 11:28:00
+ # @FilePath     : /s_v1.0.8/script/cpu_set.sh
+### 
+
+INPUT=$1
+
+if [ "${INPUT}" == "1" ] ; then
+    echo "CPU核心10-13修改为性能模式"
+    sudo cpufreq-set -g performance -c 10
+    sudo cpufreq-set -g performance -c 11
+    sudo cpufreq-set -g performance -c 12
+    sudo cpufreq-set -g performance -c 13
+elif [ "${INPUT}" == "2" ] ; then
+    echo "CPU核心10-13修改为默认模式"
+    sudo cpufreq-set -g conservative -c 10
+    sudo cpufreq-set -g conservative -c 11
+    sudo cpufreq-set -g conservative -c 12
+    sudo cpufreq-set -g conservative -c 13
+elif [ "${INPUT}" == "3" ] ; then
+    echo "CPU核心10-13修改为节能模式"
+    sudo cpufreq-set -g powersave -c 10
+    sudo cpufreq-set -g powersave -c 11
+    sudo cpufreq-set -g powersave -c 12
+    sudo cpufreq-set -g powersave -c 13
+else
+	echo "使用方法将CPU设置为对应的模式: 参数1为性能,参数2为默认,参数3为节能!"
+    exit
+fi
+
 ```
 
