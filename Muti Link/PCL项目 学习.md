@@ -217,7 +217,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
                    unsigned int cpu,
                    const char *namefmt);
 ```
-上述两个代码在使用后需要调用kthread_run()里用到的wake_up_process()才能进入运行队列。 
+上述两个代码需要在使用后需要调用kthread_run()里用到的wake_up_process()才能进入运行队列。 
 # 四、LINUX内核任务延迟队列
 
 # 五、LINUX内核定时器
