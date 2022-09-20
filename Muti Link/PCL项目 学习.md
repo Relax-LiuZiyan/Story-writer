@@ -98,6 +98,10 @@ Usage: cpufreq-set [options] Options:
 ## 1.4 cpu_set.sh脚本
 
 ``` bash?linenums
+enter code here
+```
+
+``` bash?linenums
 #!/bin/bash
  
 ###
