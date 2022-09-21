@@ -357,7 +357,7 @@ void ssleep(unsigned int seconds);
 signed long  schedule_timeout_interruptible(signed long timeout);
 signed long  schedule_timeout_uninterruptible(signed long timeout) 
 ```
-`schedule_timeout_uninterruptible()`和`schedule_timeout_interruptible`是将当前任务睡眠指定的jiffies之后重新被调度执行，它的实现原理是向系统添加一个定时器，在定时器处理函数中唤醒参数对应的进程。如果直接调用函数是上一小节的sleep类函数的底层实现也是调用`schedule_timeout_uninterruptible`这个函数进行实现的。
+`schedule_timeout_uninterruptible()`和`schedule_timeout_interruptible`是将当前任务睡眠指定的jiffies之后重新被调度执行，它的实现原理是向系统添加一个定时器，在定时器处理函数中唤醒参数对应的进程。上一小节的sleep类函数的底层实现也是调用`schedule_timeout_uninterruptible`这个函数进行实现的。
 ``` c?linenums
 void msleep(unsigned int msecs) 
 { 
@@ -383,6 +383,9 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 	return schedule_timeout(timeout); 
 } 
 ```
+
+**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 TASK_UNINTERRUPTIBLE 代替。如果你忘记改变当前进程的状态, 调用 schedule_time 如同调用 shcedule，建立一个不用的定时器。
+
 ### 6.3.3 sleep_on类，在等待队列上睡眠的延时函数
 函数可以将当前进程添加到等待队列中，从而在等待队列上睡眠。当超时发生时，进程将被唤醒（后者可以在超时前被打断）：
 ``` c?linenums
