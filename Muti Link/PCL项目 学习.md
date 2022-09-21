@@ -384,7 +384,7 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 } 
 ```
 
-**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器。`shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行。
+**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器。`shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行（本章参考1）。
 
 ### 6.3.3 sleep_on类，在等待队列上睡眠的延时函数
 函数可以将当前进程添加到等待队列中，从而在等待队列上睡眠。当超时发生时，进程将被唤醒（后者可以在超时前被打断）：
@@ -395,6 +395,8 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ## 6.4 参考
 1. [【linux kernel】linux内核的进程调度函数__schedule](https://blog.csdn.net/iriczhao/article/details/122644580)
+2. [Linux驱动学习–时间、延迟及延缓操作](http://niehan.blog.techweb.com.cn/archives/118.html)
+3. [Linux内核中的延时函数详解](https://blog.csdn.net/liangzc1124/article/details/121756964)
 
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
