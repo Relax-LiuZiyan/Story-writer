@@ -383,7 +383,7 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 } 
 ```
 
-**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器（本章参考2），具体原理大致为`chedule_timeout`函数不会把当前的进程的状态由`TASK_RUNNING`变为`TASK_INTERRUPTIBLE`和`TASK_UNINTERRUPTIBLE`或者TASK_KILLABLE
+**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器（本章参考2），具体原理大致为`chedule_timeout`函数不会把当前的进程的状态由`TASK_RUNNING`变为`TASK_INTERRUPTIBLE`和`TASK_UNINTERRUPTIBLE`或者`TASK_KILLABLE`
 所以在__schedule()中，不会把这个task从runqueue中移出去。那么当系统进行调度的时候这个进程仍然会被调度进来。
 `shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行（本章参考1）。
 
