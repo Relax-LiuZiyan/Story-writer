@@ -335,9 +335,7 @@ void delay(unsigned int time)
  unsigned long delay = jiffies + 2*HZ; 
  while (time_before(jiffies, delay)); 
 ```
-
 其中，time_befor()只是一个函数宏，与其对应的还有一个time_after():
-
 ``` c?linenums
 #define time_after(a,b) \ 
  (typecheck(unsigned long, a) && \ 
@@ -346,11 +344,15 @@ void delay(unsigned int time)
 
 #define time_before(a,b) time_after(b,a)
 ```
+## 6.3 睡眠短延时
+### 6.3.1 sleep类延时函数
+下述函数将使得调用它的进程睡眠参数指定的时间，受系统 HZ 和进程调度的影响，msleep()类似函数的精度是有限的。msleep()、ssleep()不能被打断，而msleep_interruptible()则可以被打断。
+``` cpp?linenums
+void msleep(unsigned int millisecs); 
+unsigned long msleep_interruptible(unsigned int millisecs); 
+void ssleep(unsigned int seconds); 
+```
 
- 
-————————————————
-版权声明：本文为CSDN博主「Leon_George」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/liangzc1124/article/details/121756964
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
