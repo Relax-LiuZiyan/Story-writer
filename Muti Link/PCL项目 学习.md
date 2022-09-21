@@ -352,6 +352,14 @@ void msleep(unsigned int millisecs);
 unsigned long msleep_interruptible(unsigned int millisecs); 
 void ssleep(unsigned int seconds); 
 ```
+### 6.3.2 schedule类睡眠延时函数
+
+``` c?linenums
+signed long  schedule_timeout_interruptible(signed long timeout);
+signed long  schedule_timeout_uninterruptible(signed long timeout) 
+```
+schedule_timeout()可以使当前任务睡眠指定的jiffies 之后重新被调度执行，它的实现原理是向系统添加一个定时器，在定时器处理函数中唤醒参数对应的进程。上一小节的sleep类函数的底层实现也是调用它实现的。
+
 
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
