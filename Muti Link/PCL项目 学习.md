@@ -390,12 +390,10 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 ```
 ### 6.3.3 sleep_on类，在等待队列上睡眠的延时函数
 函数可以将当前进程添加到等待队列中，从而在等待队列上睡眠。当超时发生时，进程将被唤醒（后者可以在超时前被打断）：
-
 ``` c?linenums
 sleep_on_timeout(wait_queue_head_t *q, unsigned long timeout); 
 interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout); 
 ```
-
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
