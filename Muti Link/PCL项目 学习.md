@@ -193,13 +193,6 @@ int kthread_stop(struct task_struct *k);
 ## 3.4 kthread_should_stop()，判断线程是否该停止
 在指定线程中利用while循环函数调用此函数，判断此线程是否停止。
 ``` c?linenums
-/**
- * kthread_should_stop - should this kthread return now?
- *
- * When someone calls kthread_stop() on your kthread, it will be woken
- * and this will return true.  You should then return, and your return
- * value will be passed through to kthread_stop().
- */
 bool kthread_should_stop(void)
 {
 	return test_bit(KTHREAD_SHOULD_STOP, &to_kthread(current)->flags);
@@ -221,74 +214,10 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 代码中使用了函数`kthread_create_on_cpu`，但是在编译驱动过程中提示，经过查阅结果为：`kthread_create_on_cpu`不是由内核导出的，它是 CPU 热插拔线程使用的内部函数（请参阅参考资料linux/smpboot.h）。如果必须设置线程到特定CPU上，则使用函数kthread_bind进行绑定运行。
 ### 3.5.2 参考
 [linux内核模块：内核方法未定义（kthread_create_on_cpu）](https://qa.1r1g.com/sf/ask/2039076791/#)
-
 ## 3.6 实际测试
 线程一旦启动起来后，会一直运行，除非该线程主动调用do_exit函数，或者其他的进程调用kthread_stop函数，结束线程的运行。 但如果线程函数正在处理一个非常重要的任务，它不会被中断的。当然如果线程函数永远不返回并且不检查信号，它将永远都不会停止，因此，**==线程函数必须能让出CPU #F44336==**，以便能运行其他线程。同时线程函数也必须能重新被调度运行。在例子程序中，这是**==通过schedule_timeout()函数完成的 #F44336==**。
-``` cpp?linenums
-// 让CPU调度运行其他线程并等待指定时间后本线程被重新调度，其不改变当前状态
-signed long __sched schedule_timeout(signed long timeout) ;
 
-// 其会改变当前状态为可被中断
-signed long __sched schedule_timeout_interruptible(signed long timeout) ;
-```
-在创建的线程中必须调用上述函数，把CPU的工作让出一段时间进行自动类似喂狗的操作，否则会进行提示警告说绑定对应的CPU不能正常使用。
-``` c?linenums
-#include <linux/module.h>
-#include <linux/kthread.h>
-#include <linux/slab.h>
-static struct task_struct * slam_unbind_thread = NULL;
-static int slam_bind_func(void *data)
-{
-        unsigned int cur_cpu = *((unsigned int *)data);
-        printk("[slam_bind_thread/%d] start!\n", cur_cpu);
-        while(!kthread_should_stop()){
-                printk("I'm in [slam_bind_thread/%d]!\n", cur_cpu);
-                schedule_timeout(msecs_to_jiffies(5000));
-        }
-        printk("[slam_bind_thread/%d] end!\n", cur_cpu);
-        return 0;
-}
-static int slam_unbind_func(void *data)
-{
-        char *slam_data = kzalloc(strlen(data)+1, GFP_KERNEL);
-        strncpy(slam_data, data, strlen(data));
-        while(!kthread_should_stop()){
-                printk("Unbind Thread:%s(%ld)\n", slam_data, jiffies);
-                schedule_timeout(msecs_to_jiffies(5000));
-        }
-        kfree(slam_data);
-        return 0;
-}
-static __init int kthread_example_init(void)
-{
-        int cur_cpu;
-        unsigned int cpus = num_online_cpus();
-        unsigned int bind_thread_params[cpus];
-        struct task_struct *slam_bind_threads[cpus];
-        slam_unbind_thread = kthread_run(slam_unbind_func, "slam-xinu", "slam_unbind");
-
-        for_each_present_cpu(cur_cpu){
-                bind_thread_params[cur_cpu] = cur_cpu;
-                slam_bind_threads[cur_cpu] = kthread_create(slam_bind_func, (void *)(bind_thread_params+cur_cpu), "BindThread/%d", cur_cpu);
-                kthread_bind(slam_bind_threads[cur_cpu], cur_cpu);
-                wake_up_process(slam_bind_threads[cur_cpu]);
-        }
-        schedule_timeout_interruptible(msecs_to_jiffies(30*1000));
-         for(cur_cpu=0;cur_cpu<cpus;cur_cpu++){
-              kthread_stop(slam_bind_threads[cur_cpu]);
-         }
-         return 0;
-}
-
-static __exit void kthread_example_exit(void)
-{
-        if(slam_unbind_thread){
-                kthread_stop(slam_unbind_thread);
-        }
-}
-module_init(kthread_example_init);
-module_exit(kthread_example_exit);
-```
+测试代码参考：[内核线程](https://www.jianshu.com/p/b3fed01aa01a)
 ## 3.7 注意
 1. 值得一提的是kthread_should_stop函数，我们需要在开启的线程中嵌入该函数并检查此函数的返回值，否则kthread_stop是不起作用的
 2. 休眠有两种相关的状态:TASK_INTERRUPTIBLE and TASK_UNINTERRUPTIBLE。它们的惟一却不是处于TASK_UNINTERRUPTIBLE状态的进程会忽略信号，而处于TASK_INTERRUPTIBLE状态的进程如果收到信号会被唤醒并处理信号(然后再次进入等待睡眠状态)。两种状态的进程位于同一个等待队列上，等待某些事件，不能够运行。
@@ -382,18 +311,15 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 	return schedule_timeout(timeout); 
 } 
 ```
-
 **注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器（本章参考2），具体原理大致为`chedule_timeout`函数不会把当前的进程的状态由`TASK_RUNNING`变为`TASK_INTERRUPTIBLE`和`TASK_UNINTERRUPTIBLE`或者`TASK_KILLABLE`所以在`__schedule()`中，不会把这个task从runqueue中移出去。那么当系统进行调度的时候这个进程仍然会被调度进来。
 
 `shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行（本章参考1）。
-
 ### 6.3.3 sleep_on类，在等待队列上睡眠的延时函数
 函数可以将当前进程添加到等待队列中，从而在等待队列上睡眠。当超时发生时，进程将被唤醒（后者可以在超时前被打断）：
 ``` c?linenums
 sleep_on_timeout(wait_queue_head_t *q, unsigned long timeout); 
 interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout); 
 ```
-
 ## 6.4 参考
 1. [【linux kernel】linux内核的进程调度函数__schedule](https://blog.csdn.net/iriczhao/article/details/122644580)
 2. [Linux驱动学习–时间、延迟及延缓操作](http://niehan.blog.techweb.com.cn/archives/118.html)
