@@ -357,7 +357,7 @@ void ssleep(unsigned int seconds);
 signed long  schedule_timeout_interruptible(signed long timeout);
 signed long  schedule_timeout_uninterruptible(signed long timeout) 
 ```
-`schedule_timeout_uninterruptible()`和`schedule_timeout_interruptible`是将当前任务睡眠指定的jiffies之后重新被调度执行，它的实现原理是向系统添加一个定时器，在定时器处理函数中唤醒参数对应的进程。上一小节的sleep类函数的底层实现也是调用`schedule_timeout_uninterruptible`这个函数进行实现的。
+`schedule_timeout_uninterruptible()`和`schedule_timeout_interruptible`是将当前任务睡眠指定的jiffies之后重新被调度执行，它的实现原理是向系统添加一个定时器，在定时器处理函数中唤醒参数对应的进程。如果直接调用函数是上一小节的sleep类函数的底层实现也是调用`schedule_timeout_uninterruptible`这个函数进行实现的。
 ``` c?linenums
 void msleep(unsigned int msecs) 
 { 
