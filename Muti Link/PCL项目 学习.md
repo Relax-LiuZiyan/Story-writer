@@ -352,7 +352,6 @@ void msleep(unsigned int millisecs);
 unsigned long msleep_interruptible(unsigned int millisecs); 
 void ssleep(unsigned int seconds); 
 ```
-
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
