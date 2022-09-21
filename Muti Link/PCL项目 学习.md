@@ -384,7 +384,7 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 } 
 ```
 
-**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器。`shcedule`。
+**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器。`shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行。。
 
 ### 6.3.3 sleep_on类，在等待队列上睡眠的延时函数
 函数可以将当前进程添加到等待队列中，从而在等待队列上睡眠。当超时发生时，进程将被唤醒（后者可以在超时前被打断）：
