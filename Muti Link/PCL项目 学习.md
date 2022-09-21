@@ -392,6 +392,10 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 sleep_on_timeout(wait_queue_head_t *q, unsigned long timeout); 
 interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout); 
 ```
+
+## 6.4 参考
+1. [【linux kernel】linux内核的进程调度函数__schedule](https://blog.csdn.net/iriczhao/article/details/122644580)
+
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
