@@ -305,7 +305,6 @@ module_exit(kthread_example_exit);
 
 # 五、LINUX内核定时器
 
-
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
