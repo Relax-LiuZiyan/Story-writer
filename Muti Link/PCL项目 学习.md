@@ -307,7 +307,6 @@ module_exit(kthread_example_exit);
 
 # 六、LINUX内核延时函数
 内核中涉及的延时主要有两种实现方式：**忙等待**或者**睡眠等待**。前者阻塞程序，在延时时间到达前一直占用CPU，而后者是将进程挂起（置进程于睡眠状态并释放CPU资源）。前者一般用在延时时间在毫秒以内的精确延时，后者用于延时时间在毫秒以上的长延时。为了充分利用 CPU 资源，使系统有更好的吞吐性能，在对延迟时间的要求并不是很精确的情况下，睡眠等待通常是值得推荐的。
-
 ## 6.1 忙等待短延时 
 内核中提供了如下3个函数用于纳秒、微秒和毫秒级的延时：
 ``` c?linenums
@@ -384,7 +383,9 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 } 
 ```
 
-**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器（本章参考2）。`shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行（本章参考1）。
+**注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器（本章参考2），具体原理大致为`chedule_timeout`函数不会把当前的进程的状态由TASK_RUNNING变为TASK_INTERRUPTIBLE和TASK_UNINTERRUPTIBLE或者TASK_KILLABLE
+所以在__schedule()中，不会把这个task从runqueue中移出去。那么当系统进行调度的时候这个进程仍然会被调度进来。
+`shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行（本章参考1）。
 
 ### 6.3.3 sleep_on类，在等待队列上睡眠的延时函数
 函数可以将当前进程添加到等待队列中，从而在等待队列上睡眠。当超时发生时，进程将被唤醒（后者可以在超时前被打断）：
