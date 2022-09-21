@@ -316,14 +316,38 @@ void udelay(unsigned long usecs);
 void mdelay(unsigned long msecs); //一般不建议直接使用mdelay()函数，这将无谓地耗费 CPU 资源
 ```
 上述延迟的实现原理本质上是忙等待，它根据 CPU 频率进行一定次数的循环。其本质同如下代码：
-
 ``` c?linenums
 void delay(unsigned int time) 
 { 
  while (time--); 
 }
 ```
+## 6.2 忙等待长延时函数
+内核中进行延迟的一个很直观的方法是比较当前的 jiffies 和目标 jiffies（设置为当前 jiffies 加上时间间隔的 jiffies），直到未来的 jiffies 达到目标 jiffies。
 
+``` c?linenums
+// 利用jiffies和time_befor实现延时100个jiffies和2秒的代码：
+ /*延迟 100 个 jiffies*/ 
+ unsigned long delay = jiffies + 100; 
+ while (time_before(jiffies, delay)); 
+```
+
+ 
+ /*再延迟 2s*/ 
+ unsigned long delay = jiffies + 2*HZ; 
+ while (time_before(jiffies, delay)); 
+
+其中，time_befor()只是一个函数宏，与其对应的还有一个time_after():
+
+#define time_after(a,b) \ 
+ (typecheck(unsigned long, a) && \ 
+ typecheck(unsigned long, b) && \ 
+ ((long)(b) - (long)(a) < 0)) 
+
+#define time_before(a,b) time_after(b,a) 
+————————————————
+版权声明：本文为CSDN博主「Leon_George」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/liangzc1124/article/details/121756964
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
