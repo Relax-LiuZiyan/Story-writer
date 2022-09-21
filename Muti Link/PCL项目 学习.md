@@ -310,7 +310,7 @@ module_exit(kthread_example_exit);
 
 ## 6.1 忙等待短延时 
 内核中提供了如下3个函数用于纳秒、微秒和毫秒级的延时：
-``` cpp
+``` c?linenums
 void ndelay(unsigned long nsecs); 
 void udelay(unsigned long usecs); 
 void mdelay(unsigned long msecs); //一般不建议直接使用mdelay()函数，这将无谓地耗费 CPU 资源
