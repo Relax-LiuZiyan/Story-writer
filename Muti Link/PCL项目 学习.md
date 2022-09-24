@@ -325,6 +325,8 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 2. [Linux驱动学习–时间、延迟及延缓操作](http://niehan.blog.techweb.com.cn/archives/118.html)
 3. [Linux内核中的延时函数详解](https://blog.csdn.net/liangzc1124/article/details/121756964)
 4. [schedule_timeout与mdelay的区别](https://www.cnblogs.com/muryo/p/4106208.html)
+5. [进程调度-【转载】schedule_timeout和schedule_timeout_interruptible让出CPU](https://www.cnblogs.com/zhangzhiwei122/p/16156917.html)
+6. 
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. 
