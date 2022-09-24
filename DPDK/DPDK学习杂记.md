@@ -175,9 +175,9 @@ cat /proc/cmdline | grep intel_iommu=on
 add configuartion information to the /etc/default/grub file
 
 ``` bash
-# //原文件的配置信息
+# 原文件的配置信息
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
-#//添加配置信息
+# 添加配置信息
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on"
 ```
 
