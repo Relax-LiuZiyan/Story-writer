@@ -175,6 +175,7 @@ int main(int argc, char *argv[]){
 
 ### 1.5.2 内核态隔离
 
+### 1.5.3 内核态线程
 
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
