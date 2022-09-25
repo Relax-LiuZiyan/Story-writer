@@ -182,7 +182,7 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 ## 1.6 参考
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
-3. [Linux高性能任务独占CPU举例分析](https://www.yisu.com/zixun/458561.html)
+3. [Linux高性能任务独占CPU举例分析](https://www.yisu.com/zixun/458561.html)（很重要）
 
 
 # 二、常用打流命令
