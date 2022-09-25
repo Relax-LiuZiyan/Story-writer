@@ -142,14 +142,11 @@ CPU隔离的需求：在一个SMP或者NUMA系统中，CPU的数量大于1。在
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on"
 # 添加配置信息
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on isolcpus=10-13"
-```
 
-
-``` javascript
+# 在终端中更新
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
 sudo reboot 
 ```
-
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
 cat /proc/cpuinfo
