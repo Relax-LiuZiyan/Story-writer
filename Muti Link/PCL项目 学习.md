@@ -138,7 +138,7 @@ CPU隔离的需求：在一个SMP或者NUMA系统中，CPU的数量大于1。在
 比如在DPDK中，通过在系统文件`/etc/default/grub`添加设置`GRUB_CMDLINE_LINUX_DEFAULT=“isolcpus=0-3,5,7”`隔离CPU0-3,5,7，让DPDK的任务在运行的时候，其他任务不会和DPDK的任务进行上下文切换，从而保证网络性能最佳。文件信息添加成功后，需要重新更新一下启动项，并且重启电脑才可有效。
 
 ``` bash
-# 原文件的配置信息
+# 原文件/etc/default/grub的配置信息
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on"
 # 添加配置信息
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on isolcpus=10-13"
