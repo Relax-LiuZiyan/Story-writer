@@ -171,7 +171,7 @@ int main(int argc, char *argv[]){
 }
 ```
 
-**通过上面实验，可以看出isolcpus=2使得CPU2上无法再运行用户空间的进程了(除非手动设置affinity)。**
+**通过上面实验，可以看出isolcpus=10-13使得CPU10-13上无法再运行用户空间的进程了(除非手动设置affinity)。**
 
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
