@@ -173,7 +173,6 @@ int main(int argc, char *argv[]){
 
 **通过上面实验，可以看出isolcpus=10-13使得CPU10-13上无法再运行用户空间的进程了(除非手动设置affinity，有关手动绑定用户空间进程，可查看参考3)。**
 
-
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
 cat /proc/cpuinfo
