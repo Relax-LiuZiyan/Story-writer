@@ -154,11 +154,23 @@ sudo reboot
 
 ![程序运行前CPU状态](./images/1664102700528.png)
 
-![程序运行时处理器CPU状态如下所示](./images/1664102661550.png)
+![程序运行时CPU状态](./images/1664102661550.png)
 
-运行程序如下
+``` c?linenums
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
 
-
+int main(int argc, char *argv[])
+{
+    fork();
+    fork();
+    fork();
+    fork();
+    fork();
+    while (1);
+}
+```
 
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
