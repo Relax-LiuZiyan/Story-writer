@@ -145,6 +145,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on isolcpus=10-13"
 
 # 在终端中更新启动项信息
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
+#重启电脑
 sudo reboot 
 ```
 ## 1.5 常用关于CPU的命令
