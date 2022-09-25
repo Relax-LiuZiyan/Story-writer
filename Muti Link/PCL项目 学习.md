@@ -143,7 +143,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on"
 # 添加配置信息
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt intel_iommu=on isolcpus=10-13"
 
-# 在终端中更新
+# 在终端中更新启动项信息
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
 sudo reboot 
 ```
