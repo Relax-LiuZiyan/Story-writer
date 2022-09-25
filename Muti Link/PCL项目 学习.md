@@ -171,7 +171,7 @@ int main(int argc, char *argv[]){
 }
 ```
 
-**通过上面实验，可以看出isolcpus=10-13使得CPU10-13上无法再运行用户空间的进程了(除非手动设置affinity，有关手动绑定用户空间进程引用3)。**
+**通过上面实验，可以看出isolcpus=10-13使得CPU10-13上无法再运行用户空间的进程了(除非手动设置affinity，有关手动绑定用户空间进程，可查看参考3)。**
 
 
 ## 1.5 常用关于CPU的命令
@@ -183,6 +183,8 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 ## 1.6 参考
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
+3. [Linux高性能任务独占CPU举例分析](https://www.yisu.com/zixun/458561.html)
+
 
 # 二、常用打流命令
 ## 2.1 iperf3
