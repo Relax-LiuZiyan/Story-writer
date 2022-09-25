@@ -155,7 +155,7 @@ sudo reboot
 ![程序运行前CPU状态](./images/1664102700528.png)
 
 ![程序运行时CPU状态](./images/1664102661550.png)
-
+测试程序如下
 ``` c?linenums
 #include <sys/types.h>
 #include <unistd.h>
