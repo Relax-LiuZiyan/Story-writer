@@ -135,7 +135,7 @@ root@:s_v1.0.8# ./script/cpu_set.sh 0
 ## 1.5 CPU隔离
 CPU隔离的需求：在一个SMP或者NUMA系统中，CPU的数量大于1。在工程中，我们有时候有一种需求，就是让某个能够独占CPU，这个CPU什么都不做，就只做指定的任务，从而获得低延迟、高实时的好处。
 
-比如在DPDK中，通过在系统文件/etc/default/grub设置`GRUB_CMDLINE_LINUX_DEFAULT=“isolcpus=0-3,5,7”`隔离CPU0-3,5,7，让DPDK的任务在运行的时候，其他任务不会和DPDK的任务进行上下文切换，从而保证网络性能最佳。
+比如在DPDK中，通过在系统文件/etc/default/grub中添加设置`GRUB_CMDLINE_LINUX_DEFAULT=“isolcpus=0-3,5,7”`隔离CPU0-3,5,7，让DPDK的任务在运行的时候，其他任务不会和DPDK的任务进行上下文切换，从而保证网络性能最佳。
 
 ``` bash
 # 原文件的配置信息
