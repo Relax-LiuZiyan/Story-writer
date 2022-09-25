@@ -149,7 +149,8 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo reboot 
 ```
 
-### 1.5.1
+### 1.5.1 用户态隔离
+编写了如下程序
 
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
