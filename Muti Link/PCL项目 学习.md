@@ -222,7 +222,8 @@ int main(int argc, char *argv[]){
 ### 内核态线程
 内核态的线程其实和用户态差不多，当它们没有绑定到隔离的CPU的时候，是不会跑到隔离CPU运行的。具体操作就是在启动项中隔离要使用的CPU，然后在内核线程中绑定到对应的CPU编号即可，相关函数有`kthread_bind`。相关内容可以参考：第三章、LINUX内核线程的使用。
 
-
+### 参考
+1. [Linux高性能任务独占CPU举例分析](https://blog.csdn.net/21cnbao/article/details/113733439)（很重要）
 ## 常用关于CPU的命令
 ``` bash?linenums
 cat /proc/cpuinfo
@@ -232,7 +233,6 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 ## 参考
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
-3. [Linux高性能任务独占CPU举例分析](https://www.yisu.com/zixun/458561.html)（很重要）
 
 # 常用打流命令
 ## iperf3
