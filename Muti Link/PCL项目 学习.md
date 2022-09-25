@@ -154,6 +154,10 @@ sudo reboot
 
 
 
+运行程序如下
+
+
+
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
 cat /proc/cpuinfo
