@@ -148,6 +148,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 #重启电脑
 sudo reboot 
 ```
+
+### 1.5.1
+
 ## 1.5 常用关于CPU的命令
 ``` bash?linenums
 cat /proc/cpuinfo
