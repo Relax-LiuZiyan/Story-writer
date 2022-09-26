@@ -262,7 +262,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 代码中使用了函数`kthread_create_on_cpu`，但是在编译驱动过程中提示，经过查阅结果为：`kthread_create_on_cpu`不是由内核导出的，它是 CPU 热插拔线程使用的内部函数（请参阅参考资料linux/smpboot.h）。如果必须设置线程到特定CPU上，则使用函数kthread_bind进行绑定运行。
 ### 3.5.2 参考
 [linux内核模块：内核方法未定义（kthread_create_on_cpu）](https://qa.1r1g.com/sf/ask/2039076791/#)
-## 实际测试
+## 3.6 实际测试
 线程一旦启动起来后，会一直运行，除非该线程主动调用do_exit函数，或者其他的进程调用kthread_stop函数，结束线程的运行。 但如果线程函数正在处理一个非常重要的任务，它不会被中断的。当然如果线程函数永远不返回并且不检查信号，它将永远都不会停止，因此，**==线程函数必须能让出CPU #F44336==**，以便能运行其他线程。同时线程函数也必须能重新被调度运行。在例子程序中，这是**==通过schedule_timeout()函数完成的 #F44336==**。
 
 测试代码参考：[内核线程](https://www.jianshu.com/p/b3fed01aa01a)
