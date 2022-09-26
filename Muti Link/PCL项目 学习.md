@@ -258,7 +258,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
                    const char *namefmt);
 ```
 上述两个代码需要在使用后需要调用kthread_run()里用到的wake_up_process()才能进入运行队列。
-### 编译驱动时提示warning : "kthread_create_on_cpu" undefined!
+### 3.5.2 编译驱动时提示warning : "kthread_create_on_cpu" undefined!
 代码中使用了函数`kthread_create_on_cpu`，但是在编译驱动过程中提示，经过查阅结果为：`kthread_create_on_cpu`不是由内核导出的，它是 CPU 热插拔线程使用的内部函数（请参阅参考资料linux/smpboot.h）。如果必须设置线程到特定CPU上，则使用函数kthread_bind进行绑定运行。
 ### 3.5.1 参考
 [linux内核模块：内核方法未定义（kthread_create_on_cpu）](https://qa.1r1g.com/sf/ask/2039076791/#)
