@@ -43,7 +43,7 @@ tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 ``` bash?linenums
 sudo apt-get install cpufrequtils
 ```
-## 查看CPU信息
+## 1.2 查看CPU信息
 执行cpufreq-info命令，显示所有CPU的各种信息，较为重要的有：
 >hardware limits： CPU硬件支持的频率最小值-最大值；
 available frequency steps： CPU频率可以被设置的值；
