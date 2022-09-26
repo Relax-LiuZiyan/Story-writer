@@ -266,7 +266,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 线程一旦启动起来后，会一直运行，除非该线程主动调用do_exit函数，或者其他的进程调用kthread_stop函数，结束线程的运行。 但如果线程函数正在处理一个非常重要的任务，它不会被中断的。当然如果线程函数永远不返回并且不检查信号，它将永远都不会停止，因此，**==线程函数必须能让出CPU #F44336==**，以便能运行其他线程。同时线程函数也必须能重新被调度运行。在例子程序中，这是**==通过schedule_timeout()函数完成的 #F44336==**。
 
 测试代码参考：[内核线程](https://www.jianshu.com/p/b3fed01aa01a)
-## 注意
+## 3.7 注意
 1. 值得一提的是kthread_should_stop函数，我们需要在开启的线程中嵌入该函数并检查此函数的返回值，否则kthread_stop是不起作用的
 2. 休眠有两种相关的状态:TASK_INTERRUPTIBLE and TASK_UNINTERRUPTIBLE。它们的惟一却不是处于TASK_UNINTERRUPTIBLE状态的进程会忽略信号，而处于TASK_INTERRUPTIBLE状态的进程如果收到信号会被唤醒并处理信号(然后再次进入等待睡眠状态)。两种状态的进程位于同一个等待队列上，等待某些事件，不能够运行。
 3. schedule_time(s*HZ)的参数为节拍数，HZ宏每个系统定义不一样，表示每一秒时钟中断数，如在2.6中为1000，2.4中为100, s为秒单位，例如如果要休眠20ms，则schedule_time(0.02*HZ)就可以了。
