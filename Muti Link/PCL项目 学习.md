@@ -191,7 +191,7 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 2. [linux调频指令-cpufreq介绍](https://blog.csdn.net/qq_40315501/article/details/124466387)
 
 # 二、常用打流命令
-## iperf3
+## 2.1 iperf3
 ``` bash?linenums
 iperf3 -u -c 10.0.0.1 -p10000 -l8756 -t100 -b12G -A10
 iperf3 -s -p10000 -A10
