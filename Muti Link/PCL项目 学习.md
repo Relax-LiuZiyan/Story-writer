@@ -320,7 +320,7 @@ void delay(unsigned int time)
 
 #define time_before(a,b) time_after(b,a)
 ```
-## 睡眠短延时
+## 6.3 睡眠短延时
 ### sleep类延时函数
 下述函数将使得调用它的进程睡眠参数指定的时间，受系统 HZ 和进程调度的影响，msleep()类似函数的精度是有限的。msleep()、ssleep()不能被打断，而msleep_interruptible()则可以被打断。
 ``` cpp?linenums
