@@ -196,7 +196,7 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 iperf3 -u -c 10.0.0.1 -p10000 -l8756 -t100 -b12G -A10
 iperf3 -s -p10000 -A10
 ```
-## iperf
+## 2.2 iperf
 ``` bash?linenums
 iperf -u -c172.16.1.1 -p10000 -l1400 -t100 -b1000M -i1 
 iperf -u -s -p10000 -i1
