@@ -72,7 +72,7 @@ powersave，ondemand，conservative，ondemand，performance这些模式设置�
 sudo cpufreq-set -d {频率下限}
 sudo cpufreq-set -u {频率上限}
 ```
-## 命令总结
+## 1.3 命令总结
 ``` bash?linenums
 Usage: cpufreq-set [options] Options:
 -c CPU, –cpu CPU #指定CPU核心号，请注意上图的analyzing CPU数字。
