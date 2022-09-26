@@ -82,7 +82,7 @@ Usage: cpufreq-set [options] Options:
 -f FREQ, –freq FREQ #设定特定的工作频率（CPU默认档次）
 -h, –help #输出这个帮助信息
 ```
-## 编写cpu_set.sh脚本
+## 1.4 编写cpu_set.sh脚本
 ``` bash?linenums
 #!/bin/bash
  
