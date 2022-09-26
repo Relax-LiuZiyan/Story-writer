@@ -222,7 +222,7 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
 #define kthread_create(threadfn, data, namefmt, arg...) \
         kthread_create_on_node(threadfn, data, -1, namefmt, ##arg)
 ```
-## kthread_run() 创建并运行内核线程
+## 3.2 kthread_run() 创建并运行内核线程
 ``` c?linenums
 #define kthread_run(threadfn, data, namefmt, ...) \
 ({ \
