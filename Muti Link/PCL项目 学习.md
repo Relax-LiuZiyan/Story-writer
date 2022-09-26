@@ -280,7 +280,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 2. [kthread_create 简单使用](https://blog.csdn.net/iamliuyanlei/article/details/9326119)
 # 四、LINUX内核任务延迟队列
 
-# LINUX内核定时器
+# 五、LINUX内核定时器
 
 # LINUX内核延时函数
 内核中涉及的延时主要有两种实现方式：**忙等待**或者**睡眠等待**。前者阻塞程序，在延时时间到达前一直占用CPU，而后者是将进程挂起（置进程于睡眠状态并释放CPU资源）。前者一般用在延时时间在毫秒以内的精确延时，后者用于延时时间在毫秒以上的长延时。为了充分利用 CPU 资源，使系统有更好的吞吐性能，在对延迟时间的要求并不是很精确的情况下，睡眠等待通常是值得推荐的。
