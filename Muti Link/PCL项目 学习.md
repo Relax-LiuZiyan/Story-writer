@@ -52,7 +52,7 @@ available cpufreq governors： CPU频率调节策略。包括powersave, userspac
 ![图1 cpufreq-info](./images/1663643705745.png)
 ### 1.2.1 CPU支持主频
 如图1所示，CPU硬件支持的频率最小值为2.20GHz，最大值为3.4GHz。
-### CPU主频可设置的值
+### 1.2.2 CPU主频可设置的值
 如图一，CPU频率可以被设置的值有：3.4GHz，2.8GHz，2.20GHz。
 需要注意的是：CPU的频率不能被设置为任意值，必须是available frequency steps中的值，若设置的值不在其中，系统会选择设置为大于且在available frequency steps中的最小值。此外，CPU频率设置不会超过其上下限，即 hardware limits。
 ### 调节策略
