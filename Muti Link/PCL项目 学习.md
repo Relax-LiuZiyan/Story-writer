@@ -178,8 +178,7 @@ int main(int argc, char *argv[]){
 
 ### 1.5.3 内核态线程
 内核态的线程其实和用户态差不多，当它们没有绑定到隔离的CPU的时候，是不会跑到隔离CPU运行的。具体操作就是在启动项中隔离要使用的CPU，然后在内核线程中绑定到对应的CPU编号即可，相关函数有`kthread_bind`。相关内容可以参考：第三章、LINUX内核线程的使用。
-
-### 参考
+### 1.5.4 参考
 1. [Linux高性能任务独占CPU举例分析](https://blog.csdn.net/21cnbao/article/details/113733439)（很重要）
 ## 常用关于CPU的命令
 ``` bash?linenums
