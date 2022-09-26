@@ -238,7 +238,7 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
 ``` c?linenums
 int kthread_stop(struct task_struct *k);
 ```
-## kthread_should_stop()，判断线程是否该停止
+## 3.4 kthread_should_stop()，判断线程是否该停止
 在指定线程中利用while循环函数调用此函数，判断此线程是否停止。
 ``` c?linenums
 bool kthread_should_stop(void)
