@@ -328,7 +328,7 @@ void msleep(unsigned int millisecs);
 unsigned long msleep_interruptible(unsigned int millisecs); 
 void ssleep(unsigned int seconds); 
 ```
-### schedule类睡眠延时函数
+### 6.3.2 schedule类睡眠延时函数
 ``` c?linenums
 signed long  schedule_timeout_interruptible(signed long timeout);
 signed long  schedule_timeout_uninterruptible(signed long timeout) 
