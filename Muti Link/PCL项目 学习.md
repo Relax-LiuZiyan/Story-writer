@@ -217,7 +217,7 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
 #include <linux/kthread.h> //kthread_create()、kthread_run()  
 #include <err.h> //IS_ERR()、PTR_ERR()  
 ```
-## kthread_create() 创建内核线程
+## 3.1 kthread_create() 创建内核线程
 ``` c?linenums
 #define kthread_create(threadfn, data, namefmt, arg...) \
         kthread_create_on_node(threadfn, data, -1, namefmt, ##arg)
