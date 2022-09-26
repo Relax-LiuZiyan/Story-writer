@@ -39,7 +39,7 @@ tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 左上角GAME BOOST调整为OFF，A-XMP调整为1，其他配置可以不用修改。操作目的是将CPU设置为非自动模式，将内存设置为高频模式。CPU主频通过命令进行设置。
 
 ![msi主板Bios界面](./images/1663643467056.png)
-## 工具安装
+## 1.1 工具安装
 ``` bash?linenums
 sudo apt-get install cpufrequtils
 ```
