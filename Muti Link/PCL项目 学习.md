@@ -368,7 +368,7 @@ signed long _ _sched schedule_timeout_uninterruptible(signed long timeout)
 sleep_on_timeout(wait_queue_head_t *q, unsigned long timeout); 
 interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout); 
 ```
-## 参考
+## 6.4 参考
 1. [【linux kernel】linux内核的进程调度函数__schedule](https://blog.csdn.net/iriczhao/article/details/122644580)
 2. [Linux驱动学习–时间、延迟及延缓操作](http://niehan.blog.techweb.com.cn/archives/118.html)
 3. [Linux内核中的延时函数详解](https://blog.csdn.net/liangzc1124/article/details/121756964)
