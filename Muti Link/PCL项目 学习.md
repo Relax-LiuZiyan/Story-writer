@@ -233,7 +233,7 @@ LINUX内核线程只能在内核中由其他的线程来创建，而所有的内
         __k; \
 })
 ```
-## kthread_stop()，停止指定内核线程
+## 3.3 kthread_stop()，停止指定内核线程
 一般是在其他线程中调用停止函数，去停止指定的内核线程。
 ``` c?linenums
 int kthread_stop(struct task_struct *k);
