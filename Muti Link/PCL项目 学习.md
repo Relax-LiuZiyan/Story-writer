@@ -63,7 +63,7 @@ ondemand，默认模式。一有cpu计算量的任务，就会立即达到最大
 conservative，翻译成保守（中庸）模 式，会自动在频率上下限调整，
 ondemand的区别在于它会按需分配频率，而不是一味追求最高频率；
 performance，顾名思义只注重效率，无论如何一直保持以最大频率运行。
-### 模式使用
+### 1.2.4 模式使用
 powersave，ondemand，conservative，ondemand，performance这些模式设置后，就如1.2.3中字面意思一样，不用再进一步设置频率。
 而userspace模式，假如你选择的是自定义模式可以通过的话，sudo cpufreq-set -f 1700000（你所需要的频率）
 注意，此处的频率必须是以KHz为单 位，并且是可以达到的频率（也就是用cpufreq-info查看到的各个频率），cpu频率＝倍频x外频。以下凡是涉及频率的一律如此。
