@@ -377,4 +377,5 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 6. [一文讲解linux内核中时间管理基本概念](https://zhuanlan.zhihu.com/p/489077937)
 # 七、常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
-2. 
+2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
+   
