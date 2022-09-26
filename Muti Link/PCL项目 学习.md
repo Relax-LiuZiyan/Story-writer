@@ -55,7 +55,7 @@ available cpufreq governors： CPU频率调节策略。包括powersave, userspac
 ### 1.2.2 CPU主频可设置的值
 如图一，CPU频率可以被设置的值有：3.4GHz，2.8GHz，2.20GHz。
 需要注意的是：CPU的频率不能被设置为任意值，必须是available frequency steps中的值，若设置的值不在其中，系统会选择设置为大于且在available frequency steps中的最小值。此外，CPU频率设置不会超过其上下限，即 hardware limits。
-### 调节策略
+### 1.2.3 调节策略
 命令：`sudo cpufreq-set -g {模式}`
 powersave，是无论如何都只会保持最低频率的所谓”省电”模式；
 userspace，是自定义频率时的模式，这个是当你设定特定频率时自动转变的；
