@@ -246,7 +246,7 @@ bool kthread_should_stop(void)
 	return test_bit(KTHREAD_SHOULD_STOP, &to_kthread(current)->flags);
 }
 ```
-## kthread_bind()，绑定创建好的线程在执行CPU核心上运行
+## 3.5 kthread_bind()，绑定创建好的线程在执行CPU核心上运行
 ``` c?linenums
 void kthread_bind(struct task_struct *k, unsigned int cpu);
 ```
