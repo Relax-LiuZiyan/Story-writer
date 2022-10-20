@@ -387,7 +387,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 当上层生成报文经过Hook函数时，此时处理该报文的CPU和进程号与产生此业务流的相同。因此可以简单理解为，当有两个网络应用通信时，hook点会出现相同的两个函数被同时调用，但线程号不同。
 
 ![hook函数与业务流关系](./images/1666255723707.png)
-同一个应用的网络流，无论报文产生的速度多快，都是只能产生一个线程，只有第一个报文处理结束后，退出钩子函数后，才会有新的报文进入，因此不用进行选择链路加锁等操作。现有处理为将8756字节的报文切割成6个1500的UDP报文，并封装新的UDP报文头，
+同一个应用的网络流，无论报文产生的速度多快，都是只能产生一个线程，只有第一个报文处理结束后，退出钩子函数后，才会有新的报文进入，因此不用进行选择链路加锁等操作。现有处理为将8756字节的报文切割成6个1500的UDP报文，并封装新的UDP报文头进行传输，
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
