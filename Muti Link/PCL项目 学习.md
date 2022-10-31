@@ -391,7 +391,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 
 ## 九、交互式进程查看器-htop使用
-上面界面是可以通过设置进行修改，1-32对应CPU核心0-31，条状为CPU占用率，下侧界面为任务线程(进程、、内核线程等)。
+上面界面是可以通过设置进行修改，1-32对应CPU核心0-31，条状为CPU占用率，下侧界面为任务线程(进程、用户态线程、内核线程等)。
 
 ![htop主界面](./images/1667221831345.png)
 
