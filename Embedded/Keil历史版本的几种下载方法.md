@@ -89,5 +89,3 @@ https://www.keil.com//files/eval/c166v752.exe
 https://www.keil.com//files/eval/c166v704.exe
 
 ![enter description here](./images/1667231280868.png)
-
-从规律中找到下载地址，修改“红色标记的版本”即可，这种方法可以从官网下载正规的软件，而不是第三发优化的版本。但是，这种也有局限，这个规律网址只能下载最新一版的历史版本，比如只能下载C51 V9版本的，V8版本的就不行。
