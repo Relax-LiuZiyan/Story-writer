@@ -55,3 +55,13 @@ Keil 官网提供有 Keil 历史版本下载的地址
 
 ![enter description here](./images/1667231088514.png)
 # 网址直接下载
+这里提供一种从官网下载，也不用 LIC 的方法，直接使用有规律的下载链接，就能下载历史版本。
+
+## 1.Keil MDK有规律的下载地址
+https://armkeil.blob.core.windows.net/eval/MDK***.EXE
+比如：
+https://armkeil.blob.core.windows.net/eval/MDK536.EXE
+https://armkeil.blob.core.windows.net/eval/MDK525.EXE
+https://armkeil.blob.core.windows.net/eval/MDK512.EXE
+
+![keil MDK下载方式](./images/1667231182527.png)
