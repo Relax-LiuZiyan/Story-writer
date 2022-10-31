@@ -394,7 +394,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 上面界面是可以通过设置进行修改，1-32对应CPU核心0-31，条状为CPU占用率，下侧界面为任务线程(进程、用户态线程与内核线程等)。
 
 ![htop主界面](./images/1667221831345.png)
-F1帮助界面r
+F1帮助界面如下su
 
 ![htop](./images/1667221813350.png)
 # 常用的网站
