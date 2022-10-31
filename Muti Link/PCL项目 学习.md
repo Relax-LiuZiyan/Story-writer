@@ -395,7 +395,9 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![htop主界面](./images/1667221831345.png)
 
-## 上册细节讲述
+## 上侧细节讲述
+
+
 ![CPU工作](./images/1667223293892.png)
 
 F1帮助界面如下所示，
