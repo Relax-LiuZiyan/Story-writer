@@ -391,7 +391,10 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 
 ## 九、交互式进程查看器-htop使用
+上面
+![htop主界面](./images/1667221831345.png)
 
+![htop](./images/1667221813350.png)
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
