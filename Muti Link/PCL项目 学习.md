@@ -395,7 +395,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![htop主界面](./images/1667221831345.png)
 
-## 上册细节
+## 上册细节讲述
 
 F1帮助界面如下所示，
 
