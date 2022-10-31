@@ -48,3 +48,7 @@ grammar_tableExtra: true
 # 官网正规步骤下载
 Keil 官网提供有 Keil 历史版本下载的地址
 1. Keil MDK官网历史版本地址：https://www.keil.com/update/rvmdk.asp
+2. Keil C51官网历史版本地址: https://www.keil.com/update/c51.asp
+3. Keil C166官网历史版本地址: https://www.keil.com/update/c166.asp
+4. Keil C251官网历史版本地址: https://www.keil.com/update/c251.asp
+官网历史版本下载说明这种方法需要提供 LIC or PSN
