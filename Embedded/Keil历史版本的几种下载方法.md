@@ -34,3 +34,12 @@ grammar_align: true
 grammar_tableExtra: true
 ---
 
+本文描述以下几种下载 Keil 历史版本的方法：
+
+- 官网正规步骤下载
+- 有规律的下载链接
+- 第三方下载链接
+ 
+适用于 Keil 四大软件（MDK、 C51、 C166、 C251）。
+
+![keil常用软件](./images/1667230919736.png)
