@@ -88,3 +88,9 @@ https://www.keil.com//files/eval/c166v752.exe
 https://www.keil.com//files/eval/c166v704.exe
 
 ![enter description here](./images/1667231280868.png)
+# 第三方下载链接
+第三方下载链接就是非官网下载，百度/谷歌可以出来很多，但要注意，有些第三方的软件可能经过优化处理。
+这里推荐正规的第三方，比如安富莱、正点原子、野火等开发板厂家都提供 Keil 历史版本的下载软件。
+
+第三方下载，可能存在：不全面，软件有被优化处理，
+
