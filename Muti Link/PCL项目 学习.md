@@ -391,7 +391,8 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 
 ## 九、交互式进程查看器-htop使用
-上面
+上面界面是可以通过设置进行修改，
+
 ![htop主界面](./images/1667221831345.png)
 
 ![htop](./images/1667221813350.png)
