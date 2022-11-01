@@ -102,3 +102,4 @@ swap 的部分虽然上图完全没用到，但还是解释一下：swap 的机�
 ### PID/PPID/USER
 PID :  PID 就是每个 process 的 ID。PID的用途挺多的，譬如说可以用 `kill -KILL <pid>` 来杀掉某个 process；或是使用 `kill -STOP` 来暂停 process 再用 `kill -CONT`让继续执行。
 
+PPID: 
