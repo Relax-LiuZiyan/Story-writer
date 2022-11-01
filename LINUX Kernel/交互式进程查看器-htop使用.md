@@ -51,19 +51,15 @@ grammar_tableExtra: true
 
 ![](./images/1667269845325.png)
 ### Tasks 
-
 首先 Tasks 栏位的 125, 355 thr, 304 kthr, 2 running 代表的是目前总共有 125个process、355个thread，304个kernel thread(内核线程需要打开才可看到，在主界面按下K即可), 其中 2个 thread 正在执行（这里指正在物理CPU上操作的进程 or 正在等待轮到它在CPU上运行的进程）。
-
-### &  Load Average & 
+### Load Average
 Load Average(LA) 是用来判断断目前系统有多繁忙，三个数字代表的是系统在最近 1分钟、5分钟、15 分钟内，平均有多少个 thread 需要 CPU。
 
 以上图来说，近一分钟内平均有 0个 thread 需要使用 CPU 进行运算。一般来说电脑完全没在用时 LA 会低于 1，而平常在上网、听音乐、做简报则是会介于 1 到 2 之间。
 
 所以如果觉得自己写的程序跑很慢，不妨先看看 LA 确认瓶颈是不是在 CPU，如果 LA 很低但程序却慢得夸张，那很可能程序并没有善用多核心，或是瓶颈卡在硬盘跟网路 IO；如果 LA 已经很高了但还是觉得太慢，那就只能改善演算法、或是换更快的 CPU 了。
-
 ### Uptime
 Uptime表示系统的运行时长。
-
 ## 主界面左上侧介绍
 
 
