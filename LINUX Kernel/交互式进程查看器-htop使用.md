@@ -110,3 +110,4 @@ USER: 是把这个 process 跑起来的用户。不管程序是谁写的，只�
 
 ![](./images/1667302716165.png)
 
+其中 PRI 是由系统帮你决定的，无法自行修改，像上图 mdbulkimport 的 PRI 值是 17，而 ping 8.8.8.8 则是 24，代表系统认为 mdbulkimport 比 ping 来得重要。
