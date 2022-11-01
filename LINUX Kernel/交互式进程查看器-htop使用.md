@@ -50,6 +50,8 @@ grammar_tableExtra: true
 ![CPU工作](./images/1667223293892.png)
 ### Load Average
 
+
+
 F1帮助界面如下所示，
 
 ![htop](./images/1667221813350.png)
