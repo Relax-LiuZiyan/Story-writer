@@ -107,3 +107,5 @@ PPID: 是每个 process 的 parent ID，就是其父进程的 PID
 USER: 是把这个 process 跑起来的用户。不管程序是谁写的，只要是我把他跑起来，USER 那栏就会显示我的名字。
 ### PRI & NI
 接下来的 Priority 跟 Nice 两个都是跟优先权有关的指标，注意数字越小表示优先权越高，也就可以分配到越多 CPU 时间。
+
+![](./images/1667302716165.png)
