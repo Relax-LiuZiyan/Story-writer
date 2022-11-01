@@ -48,7 +48,7 @@ grammar_tableExtra: true
 - 蓝色 代表 low priority thread，因为优先权比较低，分配到的 CPU 自然也比较少，适合“我 ok，你先跑”那类比较无关紧要的 process，如果 CPU 已经被压榨到快不行了，或是 memory 真的不够用了，第一个杀掉的也是这类 process
 
 ![CPU工作](./images/1667223293892.png)
-### Tasks &  Load Average &Uptime
+### Tasks &  Load Average & Uptime
 首先 Tasks 栏位的 125, 355 thr, 304 kthr, 2 running 代表的是目前总共有 125个process、355个thread，304个kernel thread(内核线程需要打开才可看到，在主界面按下K即可), 其中 2个 thread 正在执行（这里指正在物理CPU上操作的进程 or 正在等待轮到它在CPU上运行的进程）。
 
 ![](./images/1667269845325.png)
