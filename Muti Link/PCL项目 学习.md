@@ -395,6 +395,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![htop主界面](./images/1667221831345.png)
 ## 主界面上侧细节讲述
+### CPU
 使用率的 bar 包含了红色跟绿色，有时甚至还会有蓝色，那其实是有意义：
 
 - 红色 代表 kernel thread 佔用的 CPU，像是系统需要自动做 process scheduling、memory management 等等，是整个系统中最重要、优先权也最高的任务
