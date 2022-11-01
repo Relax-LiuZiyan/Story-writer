@@ -116,3 +116,5 @@ USER: 是把这个 process 跑起来的用户。不管程序是谁写的，只�
 
 ### VIRT & RES & SHR
 这三个数字都是跟内存有关的，分别代表 Virtual memory、Resident 跟 Shared memory。
+
+![](./images/1667303592724.png)
