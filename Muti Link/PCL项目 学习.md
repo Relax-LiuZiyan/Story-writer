@@ -405,7 +405,9 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 - 蓝色 代表 low priority thread，因为优先权比较低，分配到的 CPU 自然也比较少，适合“我 ok，你先跑”那类比较无关紧要的 process，如果 CPU 已经被压榨到快不行了，或是 memory 真的不够用了，第一个杀掉的也是这类 process
 
 ![CPU工作](./images/1667223293892.png)
-### 
+### Load Average
+
+
 F1帮助界面如下所示，
 
 ![htop](./images/1667221813350.png)
