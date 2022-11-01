@@ -103,3 +103,5 @@ swap 的部分虽然上图完全没用到，但还是解释一下：swap 的机�
 PID : 是每个 process 的 ID。PID的用途挺多的，譬如说可以用 `kill -KILL <pid>` 来杀掉某个 process；或是使用 `kill -STOP` 来暂停 process 再用 `kill -CONT`让继续执行。
 
 PPID: 是每个 process 的 parent ID，就是其父进程的 PID
+
+USER: 是把这个 process 跑起来的用户。不管程序是谁写的，只要是我把他跑起来，USER 那栏就会显示我的名字。
