@@ -134,7 +134,7 @@ Shared memory 的话顾名思义就是可以跟别人分享的 memory，像程�
 ![](./images/1667303727605.png)
  S代表的是 process 的 state，比较常见的有以下几个。
 
-R: 意思是 process 正在跑或是在 running queue 裡等待 CPU 排程。
+- R: 意思是 process 正在跑或是在 running queue 裡等待 CPU 排程。
 如果你的程式长时间处于 R 状态但还是跑很慢，代表可能是算法太慢了，或是 CPU 实在太忙一直把你丢在 queue 裡面，可以再通过 CPU% 来确认是哪个问题。
 
 S: 目前正在睡觉，有事做才会醒来。
