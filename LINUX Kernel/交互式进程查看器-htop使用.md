@@ -118,3 +118,12 @@ USER: 是把这个 process 跑起来的用户。不管程序是谁写的，只�
 这三个数字都是跟内存有关的，分别代表 Virtual memory、Resident 跟 Shared memory。
 
 ![](./images/1667303592724.png)
+Virtual memory 的概念比较复杂一点，基本上你可以把他想成 process 可以存取到的 memory 总和。譬如说 head -n index.js 内部运作的方式是先把 index.js 打开，然后读取前十行。
+
+虽然他只读取前十行，但 head process 已经把文件打开了，他其实有权限 access 到整个文件的内容（只是它没有这么做），所以 virtual memory 会把整个文件的大小算进去。
+
+而 Resident 正好相反，他指的是物理上你到底占用了多少内存。以同样的例子来说，若你只读取前十行，那系统就只把前十行从硬盘读进内存，RES 也就只算那十行。
+
+因此在 htop 里面 RES 一定会小于 VIRT（如下图），而且通常是远小于，因为 VIRT 会把一堆乱七八糟的东西都算进去，所以就算看到 VIRT 很肥也完全不用担心。
+
+![](./images/1667303639455.png)
