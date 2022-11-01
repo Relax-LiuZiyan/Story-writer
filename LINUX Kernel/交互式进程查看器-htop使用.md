@@ -100,4 +100,4 @@ swap 的部分虽然上图完全没用到，但还是解释一下：swap 的机�
 ![enter description here](./images/1667273336927.png)
 
 ### PID/PPID/USER
-这部分每个 row 都是一个 process，而 PID 就是每个 process 的 ID。PID的用途挺多的，譬如说可以用 `kill -KILL <pid>` 来杀掉某个 process；或是使用 `kill -STOP` 来暂停 process 再用 `kill -CONT`让继续执行。
+PID :  PID 就是每个 process 的 ID。PID的用途挺多的，譬如说可以用 `kill -KILL <pid>` 来杀掉某个 process；或是使用 `kill -STOP` 来暂停 process 再用 `kill -CONT`让继续执行。
