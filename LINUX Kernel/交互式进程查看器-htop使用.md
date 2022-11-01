@@ -37,7 +37,7 @@ grammar_tableExtra: true
 上面界面是可以通过设置进行修改，1-32对应CPU核心0-31，条状为CPU占用率，下侧界面为任务线程(进程、用户态线程与内核线程等)。
 
 ![htop主界面](./images/1667221831345.png)
-## 主界面上册
+## 主界面上册讲述
 使用率的 bar 包含了红色跟绿色，有时甚至还会有蓝色，那其实是有意义：
 
 - 红色 代表 kernel thread 佔用的 CPU，像是系统需要自动做 process scheduling、memory management 等等，是整个系统中最重要、优先权也最高的任务
