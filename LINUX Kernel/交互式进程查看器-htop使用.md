@@ -100,3 +100,4 @@ swap 的部分虽然上图完全没用到，但还是解释一下：swap 的机�
 ![enter description here](./images/1667273336927.png)
 
 ### PID/PPID/USER
+这部分每个 row 都是一个 process，而 PID 就是每个 process 的 ID。
