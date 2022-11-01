@@ -49,7 +49,6 @@ grammar_tableExtra: true
 
 ![CPU工作](./images/1667223293892.png)
 ### Load Average
-首先 Tasks 栏位的 488, 1994 thr; 3 running 代表的是目前总共有 488个process、1994 个 thread，其中 3 个 thread 正在执行（这数字最大就是你的逻辑核心数）。
+首先 Tasks 栏位的 125, 355 thr, 304 kthr, 2 running 代表的是目前总共有 125个process、355个thread，304个kernel thread(内核线程需要打开才可看到，在主界面按下K即可), 其中 2个 thread 正在执行（这数字最大就是你的逻辑核心数）。
 
-![](./images/1667269515407.png)
-
+![](./images/1667269845325.png)
