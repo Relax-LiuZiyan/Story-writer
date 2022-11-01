@@ -51,7 +51,5 @@ grammar_tableExtra: true
 ### Load Average
 
 
+![](./images/1667269515407.png)
 
-F1帮助界面如下所示，
-
-![htop](./images/1667221813350.png)
