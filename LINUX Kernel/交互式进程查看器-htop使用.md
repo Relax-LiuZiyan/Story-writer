@@ -161,5 +161,5 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 
 
 # Reference 
-1. [你一定用过htop，但你有看懂每个栏位么？](https://blog.csdn.net/weixin_43336281/article/details/126785706)（详细介绍了下侧端）
+1. [你一定用过htop，但你有看懂每个栏位么？](https://blog.csdn.net/weixin_43336281/article/details/126785706)（详细介绍了下侧端介绍）
 2. [【运维工具】htop界面信息详解](https://www.modb.pro/db/75091)
