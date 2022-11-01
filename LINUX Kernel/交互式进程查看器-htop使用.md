@@ -71,7 +71,7 @@ Uptime表示系统的运行时长。
 
 蓝色 则是 buffer pages，用来储存一些 metadata。譬如说当你第一次执行 ls -l 时系统会去硬盘看这个资料夹有哪些文件、每个文件的权限等等，然后帮你存在 buffer pages，当你短时间内再执行 ls -l 时就不用再进入硬盘（因为硬盘很慢），直接从 buffer取出。
 
-橘色 的 cache pages 跟 buffer 很像，只不过 buffer 存的是 metadata，而 cache 存的是文件内容。像你第一次下 cat index.js 时就会把内容读取到 cache pages，如果你 cat 之后发现代码太长，决定先看前十行就好了，那再下 head -n 10 index.js 就会从 cache pages 直接读取
+橘色 的 cache pages 跟 buffer 很像，只不过 buffer 存的是 metadata，而 cache 存的是文件内容。像你第一次下 cat index.js 时就会把内容读取到 cache pages，如果你 cat 之后发现代码太长，决定先看前十行就好了，那再下 head -n 10 index.js 就会从 cache pages 直接读取。
 
 这也代表说内存使用量并非越低越好，毕竟开在那边也没啥用，不如让系统把闲置的部分拿去当 buffer 跟 cache，读取时能不碰硬盘就不碰硬盘，才可以让代码执行得更快。
 
