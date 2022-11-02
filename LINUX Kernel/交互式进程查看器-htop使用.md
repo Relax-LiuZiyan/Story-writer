@@ -215,7 +215,6 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 
 ## Display options 显示选项
 
-
 ![推荐选择](./images/1667393262144.png)
 
 # Reference 
