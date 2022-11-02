@@ -195,8 +195,7 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 | 按下任意键退出         |                               | F10h或q         | 退出htop                   |
 
 # F2 Setup
-
-![推荐使用界面](./images/1667392720321.png)
+![enter description here](./images/1667393483774.png)
 ## meters 计量信息
 该设置信息可以将每个信息放在不同的位置上，可以通过空格选择显示的方式，回车键添加，del键删除。
 
@@ -212,7 +211,11 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 | Battery                                  | 电量                                                     |
 | Hostname                                 | 主机名称                                                 |
 | Blank                                    | 占位条，无实际作用                                       |
-## 
+## Display options 显示选项
+
+
+![推荐选择](./images/1667393262144.png)
+
 # Reference 
 1. [你一定用过htop，但你有看懂每个栏位么？](https://blog.csdn.net/weixin_43336281/article/details/126785706)（详细介绍了下侧）
 2. [【运维工具】htop界面信息详解](https://www.modb.pro/db/75091)(详细的介绍了右上侧)
