@@ -212,6 +212,7 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 | Battery                                  | 电量                                                     |
 | Hostname                                 | 主机名称                                                 |
 | Blank                                    | 占位条，无实际作用                                       |
+
 ## Display options 显示选项
 
 
