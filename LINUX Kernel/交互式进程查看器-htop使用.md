@@ -215,8 +215,7 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 
 ## Display options 显示选项
 
-![推荐选择](./images/1667393262144.png)
-
+![推荐选择](./images/1667393759619.png)
 # Reference 
 1. [你一定用过htop，但你有看懂每个栏位么？](https://blog.csdn.net/weixin_43336281/article/details/126785706)（详细介绍了下侧）
 2. [【运维工具】htop界面信息详解](https://www.modb.pro/db/75091)(详细的介绍了右上侧)
