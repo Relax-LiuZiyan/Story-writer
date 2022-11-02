@@ -159,7 +159,7 @@ MEM% 也很类似，就是使用内存的比例，要注意的是他是用 RES �
 因此如果想知道长期而言哪个程序最占 CPU 的话，就看 Time+ 的数值；如果是想看短期、目前正在暴动的程序，那就是看先前提到的 CPU%。
 # F1
 
-![enter description here](./images/1667356986175.png)
+![help信息](./images/1667356986175.png)
 # Reference 
 1. [你一定用过htop，但你有看懂每个栏位么？](https://blog.csdn.net/weixin_43336281/article/details/126785706)（详细介绍了下侧）
 2. [【运维工具】htop界面信息详解](https://www.modb.pro/db/75091)(详细的介绍了右上侧)
