@@ -34,8 +34,11 @@ grammar_align: true
 grammar_tableExtra: true
 ---
 
+``` apache
 htop 2.1.0 - (C) 2004-2018 Hisham Muhammad
 Released under the GNU GPL.
+```
+
 # 主界面介绍
 上面界面是可以通过设置进行修改，1-32对应CPU核心0-31，条状为CPU占用率，下侧界面为任务线程(进程、用户态线程与内核线程等)。
 
