@@ -392,16 +392,9 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![hook函数与业务流关系](./images/1666255723707.png)
 同一个应用的网络流，无论报文产生的速度多快，都是只能产生一个线程，只有第一个报文处理结束后，退出钩子函数后，才会有新的报文进入，因此不用进行选择链路加锁等操作。现有处理为将8756字节的报文切割成6个1500的UDP报文，并封装新的UDP报文头进行传输，处理时间为2~3us，主频5.4GHz。
-
-
 # 九、交互式进程查看器-htop使用
-
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
-   
-   
-   
 # 提出的问题与解决办法
-
 1. 是否可以将一个任意函数（自己创建函数或LINUX内核函数）进行线程化绑定可控制CPU上，这样既可以降低业务流使用的CPU。
