@@ -412,7 +412,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 使用两个iperf3终端打流S端同一个物理网卡，每条流100M， 打了10S左右，保留了打印信息3W条，即1.5W个报文，测试代码在hook处加了50us的延时，但是测试结果没有出现连续两个ENTER，==即所有的报文全是排队进入网络协议栈函数 #F44336==。
 
 ![测试代码](./images/1667982920567.png)
-### 钩子函数与报文总结
+### 8.1.3 钩子函数与报文总结
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
