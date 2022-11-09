@@ -404,4 +404,4 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
    
 # 提出的问题与解决办法
 
-1. 是否可以将一个任意函数（自己创建函数或LINUX内核函数）进行线程化绑定可控制CPU上，这样既可以降低
+1. 是否可以将一个任意函数（自己创建函数或LINUX内核函数）进行线程化绑定可控制CPU上，这样既可以降低业务流使用的CPU。
