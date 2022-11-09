@@ -409,7 +409,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![ 测试结果](./images/1667980408075.png)
 #### 开启两个打流对同一个物理网卡
-使用iperf3打流S端同一个物理网卡
+使用iperf3打流S端同一个物理网卡，每条流100M，
 
 # 九、交互式进程查看器-htop使用
 # 常用的网站
