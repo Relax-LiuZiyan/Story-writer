@@ -402,7 +402,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![测试结果](./images/1667978161130.png)
 
-#### 开启两个打流对同一个虚拟物理网卡
+#### 开启两个打流对虚拟网卡
 
 
 
