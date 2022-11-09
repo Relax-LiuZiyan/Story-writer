@@ -402,7 +402,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![测试结果](./images/1667978161130.png)
 
-#### 开启两个打流软件同时对
+#### 开启两个打流软件同时对虚拟网卡ji
 
 # 九、交互式进程查看器-htop使用
 # 常用的网站
