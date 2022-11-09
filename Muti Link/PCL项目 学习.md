@@ -404,4 +404,4 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
    
 # 提出的问题与解决办法
 
-1. 是否可以将一个线程进行
+1. 是否可以将一个任意函数
