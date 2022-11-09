@@ -387,7 +387,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 # 八、Linux netfilter
 ## 8.1 hook相关问题
-### 8.1.1 钩子函数与报文
+### 8.1.1 发送钩子函数与报文
 当上层生成报文经过Hook函数时，此时处理该报文的CPU和进程号与产生此业务流的相同。因此可以简单理解为，当有两个网络应用通信时，hook点会出现相同的两个函数被同时调用，但线程号不同。
 
 ![hook函数与业务流关系](./images/1666255723707.png)
