@@ -403,7 +403,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 ![测试结果](./images/1667978161130.png)
 
 #### 开启两个打流对虚拟网卡
-该打印测试信息只纯在于虚拟网卡接收的有效数据报文，本次测试只在
+该打印测试信息只纯在于虚拟网卡接收的有效数据报文，本次测试在
 
 ![测试代码](./images/1667980430830.png)
 
