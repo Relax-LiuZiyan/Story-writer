@@ -413,7 +413,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 
 ![测试代码](./images/1667982920567.png)
 ### 8.1.3 钩子函数与报文总结
-发送钩子的调用是由上层应用调用触发，j
+发送钩子的调用是由上层应用调用触发，即实现线程hu
 
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
