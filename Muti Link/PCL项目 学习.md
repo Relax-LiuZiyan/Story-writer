@@ -393,6 +393,20 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 # 九、LINUX内核内存申请
 ## 9.1 内存申请函数
 
+``` c?linenums
+
+//
+void kfree(const void *objp);
+
+// 分配在物理上连续的内存，虚拟地址自然也是连续的，它基于slab分配实际上存在的连续的内存。
+static __always_inline void *kmalloc(size_t size, gfp_t f lags);
+
+// 基于slab分配在物理上连续的实际的内存,函数在分配了内存后，将内存中的内容都初始化为0。
+static inline void *kzalloc(size_t size, gfp_t flags);
+
+
+```
+
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
