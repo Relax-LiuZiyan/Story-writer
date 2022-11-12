@@ -337,32 +337,9 @@ void ssleep(unsigned int seconds);
 signed long  schedule_timeout_interruptible(signed long timeout);
 signed long  schedule_timeout_uninterruptible(signed long timeout) 
 ```
+
 `schedule_timeout_uninterruptible()`和`schedule_timeout_interruptible`是将当前任务睡眠指定的jiffies之后重新被调度执行，它的实现原理是向系统添加一个定时器，在定时器处理函数中唤醒参数对应的进程。上一小节的sleep类函数的底层实现也是调用`schedule_timeout_uninterruptible`这个函数进行实现的。
-``` c?linenums
-void msleep(unsigned int msecs) 
-{ 
-	unsigned long timeout = msecs_to_jiffies(msecs) + 1; 
-	while (timeout) 
-		timeout = schedule_timeout_uninterruptible(timeout); 
-} 
-unsigned long msleep_interruptible(unsigned int msecs) 
-{ 
-	unsigned long timeout = msecs_to_jiffies(msecs) + 1; 
-	while (timeout && !signal_pending(current)) 
-		timeout = schedule_timeout_interruptible(timeout); 
-	return jiffies_to_msecs(timeout); //返回剩余的延时时间
-}
-signed long _ _sched schedule_timeout_interruptible(signed long timeout) 
-{ 
-	_ _set_current_state(TASK_INTERRUPTIBLE); //置进程状态为 TASK_INTERRUPTIBLE
-	return schedule_timeout(timeout); 
-} 
-signed long _ _sched schedule_timeout_uninterruptible(signed long timeout) 
-{ 
-	_ _set_current_state(TASK_UNINTERRUPTIBLE); //置进程状态为 TASK_UNINTERRUPTIBLE
-	return schedule_timeout(timeout); 
-} 
-```
+
 **注意**：`chedule_timeout` 要求调用者首先设置当前的进程状态。为获得一个不可中断的延迟, 可使用 `TASK_UNINTERRUPTIBLE`代替。如果你忘记改变当前进程的状态,，调用 `schedule_time`如同调用 `shcedule`，建立一个不用的定时器（本章参考2），具体原理大致为`chedule_timeout`函数不会把当前的进程的状态由`TASK_RUNNING`变为`TASK_INTERRUPTIBLE`和`TASK_UNINTERRUPTIBLE`或者`TASK_KILLABLE`所以在`__schedule()`中，不会把这个task从runqueue中移出去。那么当系统进行调度的时候这个进程仍然会被调度进来。`schedule_timeout_interruptible`, 在调用`schedule`之前，会先调用`set_current_state`设置进程状态，所以会将进程移出运行队列。从而达到降低CPU使用率的作用。
 
 `shcedule`函数的功能是：让调度器选择一个合适的进程并切换到对应的线程运行（本章参考1）。
@@ -380,7 +357,6 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 5. [进程调度-【转载】schedule_timeout和schedule_timeout_interruptible让出CPU](https://www.cnblogs.com/zhangzhiwei122/p/16156917.html)
 6. [一文讲解linux内核中时间管理基本概念](https://zhuanlan.zhihu.com/p/489077937)
 # 七、网卡多队列原理及学习
-
 ## 参考
 1. [网卡多队列原理及学习](https://blog.csdn.net/linggang_123/article/details/113186750)
 2. [Linux网卡多队列学习笔记](https://blog.csdn.net/liqiaochu970326/article/details/123989715)
@@ -414,6 +390,8 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 ![测试代码](./images/1667982920567.png)
 ### 8.1.3 钩子函数与报文总结
 发送钩子的调用是由上层应用调用触发，实现线程化，即每个网络应用就会触发一个内核协议栈函数进行并行处理。
+# 九、LINUX内核内存申请
+## 9.1 内存申请函数
 
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
