@@ -412,7 +412,7 @@ void vfree(const void *addr);
 ## 9.2 内存函数申请最大值
 使用下方代码可以测试出当前系统内核可以申请的最大内存为4MB，对应64位系统指针大小位8B，即可以放下4MB/8B=524,288个报文，每个报文为1500B，对应为524288\*1500\*8=5.86Gb，对应一个10Gb网卡来说可以使用。
 
-> 虽然申请的内存可以存放5.86G的报文数据，但如果消费者线程处理能力小于生产者线程能力，即会造成数据的不断叠加，最终导致内存满而释放报文，导致丢包。
+> 虽然申请的内存可以存放5.86G的报文数据，但如果消费者线程处理能力小于生产者线程能力，即会造成数据的不断叠加，最终导致内存满而释放报文，导致丢包。因此
 
 ``` c?linenums
 DBG("sizeof(struct fifo_element) = %ld, sizeof(struct sk_buff *) = %ld, sizeof(int *) = %ld", sizeof(struct fifo_element), sizeof(struct sk_buff *), sizeof(int *));
