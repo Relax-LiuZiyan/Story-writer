@@ -391,7 +391,7 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 ### 8.1.3 钩子函数与报文总结
 发送钩子的调用是由上层应用调用触发，实现线程化，即每个网络应用就会触发一个内核协议栈函数进行并行处理。
 # 九、LINUX内核内存申请
-## 9.
+## 9.1 内核申请和释放函数
 ``` c?linenums
 // 分配在物理上连续的内存，虚拟地址自然也是连续的，它基于slab分配实际上存在的连续的内存。
 static __always_inline void *kmalloc(size_t size, gfp_t f lags);
