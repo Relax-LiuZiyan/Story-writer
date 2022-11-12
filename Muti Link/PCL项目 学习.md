@@ -408,7 +408,7 @@ void *vmalloc(unsigned long size);
 // vfree( )释放从addr开始的内存块，它一般与vmalloc( )函数一起使用，这时addr即是由vmalloc( )分配的内存块的地址，参考vmalloc( )函数的分析。
 void vfree(const void *addr);
 ```
-一般选用的是
+一般选用的是kzalloc和
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
