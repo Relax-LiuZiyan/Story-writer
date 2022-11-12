@@ -394,17 +394,20 @@ interruptible_sleep_on_timeout(wait_queue_head_t*q, unsigned long timeout);
 ## 9.1 内存申请函数
 
 ``` c?linenums
-
-//
-void kfree(const void *objp);
-
 // 分配在物理上连续的内存，虚拟地址自然也是连续的，它基于slab分配实际上存在的连续的内存。
 static __always_inline void *kmalloc(size_t size, gfp_t f lags);
 
 // 基于slab分配在物理上连续的实际的内存,函数在分配了内存后，将内存中的内容都初始化为0。
 static inline void *kzalloc(size_t size, gfp_t flags);
 
+// kfree( )函数一般与kmalloc( )函数配对使用，用来释放地址objp开始的一段内存。
+void kfree(const void *objp);
 
+// vmalloc( )分配一块非连续地址空间，它分配的物理地址一般不连续的，但是虚拟地址是连续的，分配的内存空间被映射进入内核数据段中，从用户空间是不可见的。
+void *vmalloc(unsigned long size);
+
+// vfree( )释放从addr开始的内存块，它一般与vmalloc( )函数一起使用，这时addr即是由vmalloc( )分配的内存块的地址，参考vmalloc( )函数的分析。
+void vfree(const void *addr);
 ```
 
 # 常用的网站
