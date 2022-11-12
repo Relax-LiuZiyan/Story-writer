@@ -422,7 +422,6 @@ else{
     DBG("kmalloc create successfully");
 }
 ```
-
 # 常用的网站
 1. [Linux内核API](https://deepinout.com/linux-kernel-api/linux-kernel-api-process-management/linux-kernel-api-pro)(网站包含有内核API接口的中文注释，可以用于查看源码)
 2. [linux内核源码网站](https://elixir.bootlin.com/linux/v4.15.18/source)
