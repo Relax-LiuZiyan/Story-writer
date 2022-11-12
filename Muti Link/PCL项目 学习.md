@@ -410,7 +410,7 @@ void vfree(const void *addr);
 ```
 一般选用的是kzalloc和kfree配套使用，不使用虚拟地址连续。
 ## 9.2 内存函数申请最大值
-使用下方代码可以测试出当前系统内核可以申请的最大内存，
+使用下方代码可以测试出当前系统内核可以申请的最大内存为4MB，
 ``` c?linenums
 DBG("sizeof(struct fifo_element) = %ld, sizeof(struct sk_buff *) = %ld, sizeof(int *) = %ld", sizeof(struct fifo_element), sizeof(struct sk_buff *), sizeof(int *));
 str = kmalloc(4*1024*1024, GFP_KERNEL);
