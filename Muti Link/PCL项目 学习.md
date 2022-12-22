@@ -34,7 +34,7 @@ grammar_align: true
 grammar_tableExtra: true
 tags: 'Linux内核,网络协议栈,多线程,CPU亲和性(affinity)'
 ---
-
+[toc]
 
 # CPU性能设置
 左上角GAME BOOST调整为OFF，A-XMP调整为1，其他配置可以不用修改。操作目的是将CPU设置为非自动模式，将内存设置为高频模式。CPU主频通过命令进行设置。
