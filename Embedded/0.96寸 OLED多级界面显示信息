@@ -35,4 +35,7 @@ tags: '0.96寸OLED,图像显示,多级显示'
 ---
 
 # OLED图像显示
-oled的图像显示函数用的是`void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[])`，函数实现如下所示
+oled的图像显示函数用的是`void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[])`，函数实现如下所示。
+
+``` c?linenums
+```
