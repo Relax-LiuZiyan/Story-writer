@@ -1,6 +1,7 @@
 ---
 title: PCL项目 学习
 slug: storywriter/grammar
+renderNumberedHeading: true
 grammar_abbr: true
 grammar_table: true
 grammar_defList: true
