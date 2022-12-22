@@ -68,3 +68,6 @@ OLED_DrawBMP(0,0,20,2,signal_BMP);
 ![图2：PCtoLCD2002完美版的软件使用](./images/1671719187022.png)
 
 ![图3：显示效果](./images/1671719283602.jpg)
+
+
+# 参考文献
