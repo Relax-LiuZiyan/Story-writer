@@ -1,6 +1,7 @@
 ---
 title: 0.96寸 OLED多级界面显示信息
 slug: storywriter/grammar
+renderNumberedHeading: true
 grammar_abbr: true
 grammar_table: true
 grammar_defList: true
@@ -31,7 +32,7 @@ grammar_cjkRuby: true
 grammar_center: true
 grammar_align: true
 grammar_tableExtra: true
-tags: '0.96寸OLED,图像显示,多级显示'
+tags: '图像显示,多级显示'
 ---
 
 # OLED的图像显示步骤
