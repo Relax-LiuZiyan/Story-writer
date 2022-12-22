@@ -58,5 +58,5 @@ void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned 
 	}
 }
 
-// 例如一个图像像素为20*16的像素点，并且让它显示到
+// 例如一个图像像素为20*16的像素点，并且让它左上角顶角显示
 ```
