@@ -58,4 +58,4 @@ OLED_DrawBMP(0,0,20,2,signal_BMP);
 
 ```
 
-图像的获取需要两个软件和一个网站的的配合使用，软件分别`Image2Lcd 2.9`和`PCtoLCD2002完美版`，网站为[PNG转JPG在线网址](https://www.aconvert.com/cn/image/png-to-jpg/)，具体流程为一个像素照片，先在网站转换为JPG格式后
+图像的获取需要两个软件和一个网站的的配合使用，软件分别`Image2Lcd 2.9`和`PCtoLCD2002完美版`，网站为[PNG转JPG在线网址](https://www.aconvert.com/cn/image/png-to-jpg/)。具体流程为一个像素照片，先在网站转换为JPG格式后，
