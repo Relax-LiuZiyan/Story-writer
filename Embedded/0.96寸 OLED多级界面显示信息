@@ -37,7 +37,7 @@ tags: '图像显示,多级显示'
 
 [toc]
 
-# OLED的图像显示步骤
+# 图像显示
 oled的图像显示函数用的是`void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[])`，函数实现如下所示。
 
 ``` c?linenums
@@ -69,6 +69,8 @@ OLED_DrawBMP(0,0,20,2,signal_BMP);
 
 ![图3：显示效果](./images/1671719283602.jpg)
 # 显示中文
+
+![中文设置](./images/1671801342771.png)
 # 参考文献
 1. [【强烈推荐】基于stm32的OLED各种显示实现（含动态图）](https://blog.csdn.net/black_sneak/article/details/125418537?spm=1001.2014.3001.5501)
 2. [基于STM32的OLED多级菜单GUI实现（简化版智能手表）](https://blog.csdn.net/black_sneak/article/details/126442559?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167171004516800188560340%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167171004516800188560340&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-126442559-null-null.142^v68^control,201^v4^add_ask,213^v2^t3_esquery_v2&utm_term=oled%E5%A4%9A%E7%BA%A7%E8%8F%9C%E5%8D%95&spm=1018.2226.3001.4187)
