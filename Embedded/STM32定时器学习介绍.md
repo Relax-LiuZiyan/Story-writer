@@ -43,8 +43,6 @@ tags: 'PWM,输出比较,输入捕获,PWM捕获'
 
 ![输出比较模式输出PWM](./images/1679218600302.png)
 
-
-
 # 参考文献
 1. [HAL库(STM32CubeMX)——基本定时器、PWM、输入捕获、输出比较、互补式PWM等综合学习（STM32G431RBT6）](https://blog.csdn.net/zerokingwang/article/details/123559200?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167921754116800197041139%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167921754116800197041139&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~baidu_landing_v2~default-1-123559200-null-null.blog_rank_default&utm_term=STM32%20HAL%20%E8%BE%93%E5%87%BA%E6%AF%94%E8%BE%83%E6%A8%A1%E5%BC%8F)
 2. 
