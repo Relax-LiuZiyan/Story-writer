@@ -66,3 +66,6 @@ mdk软件下载地址为：[MDK-ARM Version 5.37](https://www.keil.com/demo/eval
 若描述不够详细，可以参考注册视频：https://github.com/Relax-LiuZiyan/Story-writer/tree/master/Embedded/videos/MDK注册过程.mp4
 
 # 所有资料下载网址
+链接：https://pan.baidu.com/s/1cwG2v4Pf4NK8djuVevrzJA 
+提取码：wj9u 
+内容包含：Keil F1的器件包  破解软件
