@@ -37,7 +37,7 @@ grammar_tableExtra: true
 
 [toc]
 # MDK for Arm
-mdk软件下载地址为：[MDK-ARM Version 5.37](https://www.keil.com/demo/eval/arm.htm)，但是需要注意一点MDK在V537以后采用的编译器为V6版本，不支持向前兼容编译器V5的工程，因此不推荐使用MDK_V537，这里我使用的版本为MDK_V536，下载地址为：https://armkeil.blob.core.windows.net/eval/MDK536.EXE ,推荐使用迅雷下载。
+mdk软件下载，这里我使用的版本为MDK_V536，下载地址为：https://armkeil.blob.core.windows.net/eval/MDK536.EXE ,推荐使用迅雷下载。
 
 器件包下载网址为[MDK5 Software Packs](https://www.keil.com/dd2/pack/)，下载STM32F1即可。
 
