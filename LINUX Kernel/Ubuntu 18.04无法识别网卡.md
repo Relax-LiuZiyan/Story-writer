@@ -241,7 +241,7 @@ Press any key to exit.
 
 ```
 
-运行`sudo ethtool -i enp45s0f0`，可以查看
+运行`sudo ethtool -i enp45s0f0`，可以查看到`firmware-version: 9.20 `，更新成功。
 
 ``` bash?linenums
 f410-server@f410-server:~/700Series/Linux_x64$ sudo ethtool -i enp45s0f0
