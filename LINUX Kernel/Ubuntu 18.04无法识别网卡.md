@@ -124,7 +124,7 @@ initrd/initramfs file to prevent the OS loading old versions of the i40e driver.
 安装之前驱动显示字节为335872。
 
 ![更新驱动前效果](./images/1683730031859.png)
-驱动安装后信息如下所示，可以看到现在的i40e驱动版本为2.22.18，符合要求。
+驱动安装后信息如下所示，可以看到现在的i40e驱动版本为2.22.18，跟最新的驱动版本相同。
 
 ``` bash?linenums
 f410-server@f410-server:~/i40e-2.22.18/src$ ethtool enp45s0f0
