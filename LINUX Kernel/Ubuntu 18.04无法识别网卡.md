@@ -1,5 +1,5 @@
 ---
-title: Ubuntu 18.04安装驱动
+title: Ubuntu 18.04 网卡驱动与固件
 category: /小书匠/日记/2023-05
 grammar_cjkRuby: true
 tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO,X710-T4'
