@@ -1,19 +1,22 @@
 ---
-title: Ubuntu 18.04无法识别网卡
+title: Ubuntu 18.04安装驱动
 category: /小书匠/日记/2023-05
 grammar_cjkRuby: true
-tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO'
+tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO,X710-T4'
 ---
+[toc]
 
-# 问题
+
+# 系统环境
+## 安装新内核版本后无法识别主板网卡的问题
 主板上的网卡信息无法被识别，通过`sudo lshw -class network`命令后，打印信息为`*-network UNCLAIMED`，通过`ifconfig`命令，没有识别到对应的网卡信息。这意味着该设备没有被操作系统识别或找不到合适的驱动程序。
 
 由于此主板之前一直使用，重新安装**新的系统**后，才导致网卡口应该没问题的，因此可以认为是驱动的问题。
-# 系统环境
+
  Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-208-generic x86_64)
  主板：X570-A PRO
  网卡：RTL8111/8168/8411
-  # 解决办法
+  ## 解决办法
  首先下载网卡驱动信息
  https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
  
@@ -33,6 +36,6 @@ tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO'
 
 ![生产的网卡驱动信息](./images/1683723427543.png)
 
-# 其中遇到的问题
+## 其中遇到的问题
 
 在编译驱动时，通过命令`sudo make all`后，提示没有`/lib/modules/4.15.0-208-generic/build`路径，经过查询学弟在安装系统内核后，忘记安装系统头文件导致此问题，运行命令`sudo apt-get install linux-headers-$(uname -r)`，即可完成内核头文件的安装。
