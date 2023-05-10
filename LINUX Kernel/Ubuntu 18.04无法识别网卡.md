@@ -32,3 +32,7 @@ tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO'
 
 
 ![生产的网卡驱动信息](./images/1683723427543.png)
+
+# 其中遇到的问题
+
+在编译驱动时，通过命令`sudo make all`后，提示没有`/lib/modules/4.15.0-208-generic/build`路径，经过查询学弟在安装系统内核后，忘记安装系统头文件导致此问题，运行命令`sudo apt-get install linux-headers-$(uname -r)`，即可完成内核头文件的安装。
