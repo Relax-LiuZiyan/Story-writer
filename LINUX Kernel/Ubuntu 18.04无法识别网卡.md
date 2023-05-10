@@ -16,9 +16,10 @@ tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO'
   # 解决办法
  首先下载网卡驱动信息
  https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
+ 
  ![选择网卡驱动](./images/1683722783662.png)
  
-卸载之前的驱动信息，避免相同驱动冲突问题，通过lsmod查看后，进行卸载`sudo rmmod r8169`。
+ 卸载之前的驱动信息，避免相同驱动冲突问题，通过lsmod查看后，进行卸载`sudo rmmod r8169`。
 
 解压下载的文件`tar -jxf r8168-8.051.02.tar.bz2`，解压后，进入到`src`文件夹后，运行`sudo make all`命令。由于本系统是新系统，因此提前需要安装`sudo apt-get install make`和`sudo apt-get install gcc`。
 
