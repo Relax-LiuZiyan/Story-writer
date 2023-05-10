@@ -43,7 +43,7 @@ tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO,X710-T4'
 1. [ubuntu RTL8111/8168/8411网卡驱动怎么正确安装？](https://www.zhihu.com/question/287274115)
 
 
-# X710-T4网卡驱动安装
+# X710-T4网卡驱动和固件更新
 ## 驱动信息无法识别
 
 
@@ -193,4 +193,66 @@ name:           i40e
 vermagic:       4.15.0-208-generic SMP mod_unload modversions
 parm:           debug:Debug level (0=none,...,16=all) (int)
 parm:           l4mode:L4 cloud filter mode: 0=UDP,1=TCP,2=Both,-1=Disabled(default) (int)
+```
+
+
+## 固件更新
+从Intel官网下载最新版本的网卡固件，此固件的版本信息为9.20。
+[适用于 英特尔® 以太网 适配器 700 系列的非易失性内存 （NVM） 更新实用程序 — Linux*](https://www.intel.cn/content/www/cn/zh/download/18635/non-volatile-memory-nvm-update-utility-for-intel-ethernet-adapters-700-series-linux.html?wapkw=x710)
+
+![Linux版本下固件下载](./images/1683733031528.png)
+
+下载完成后复制到服务器端，解压完成后，进入到`Linux`文件夹下，运行`sudo ./nvmupdate64e`即可。**注意在运行大概5-10分钟，更新的过程中千万不要关机，固件更新过程中如果断电，会变砖！**
+
+``` bash?linenums
+f410-server@f410-server:~/700Series/Linux_x64$ sudo ./nvmupdate64e
+[sudo] f410-server 的密码：
+
+Intel(R) Ethernet NVM Update Tool
+NVMUpdate version 1.39.32.6
+Copyright(C) 2013 - 2023 Intel Corporation.
+
+
+WARNING: To avoid damage to your device, do not stop the update or reboot or power off the system during this update.
+Inventory in progress. Please wait [*****|....]
+
+
+Num Description                          Ver.(hex)  DevId S:B    Status
+=== ================================== ============ ===== ====== ==============
+01) Intel(R) Ethernet Converged         8.00(8.00)   1589 00:045 Update
+    Network Adapter X710-T4                                      available
+
+Options: Adapter Index List (comma-separated), [A]ll, e[X]it
+Enter selection: A
+Would you like to back up the NVM images? [Y]es/[N]o: y
+Update in progress. This operation may take several minutes.
+[****|.....]
+
+
+Num Description                          Ver.(hex)  DevId S:B    Status
+=== ================================== ============ ===== ====== ==============
+01) Intel(R) Ethernet Converged         9.32(9.20)   1589 00:045 Update
+    Network Adapter X710-T4                                      successful
+
+Reboot is required to complete the update process.
+
+Tool execution completed with the following status: All operations completed successfully.
+Press any key to exit.
+
+```
+
+运行`sudo ethtool -i enp45s0f0`，可以查看
+
+``` bash?linenums
+f410-server@f410-server:~/700Series/Linux_x64$ sudo ethtool -i enp45s0f0
+driver: i40e
+version: 2.22.18
+firmware-version: 9.20 0x8000d8cc 1.2766.0
+expansion-rom-version:
+bus-info: 0000:2d:00.0
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+supports-priv-flags: yes
 ```
