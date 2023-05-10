@@ -53,6 +53,7 @@ tags: '网卡驱动,RTL8111/8168/8411,X570-A PRO,X710-T4'
 
 ![X710-T4对应的i40e网卡驱动](./images/1683724641314.png)
 
+以下是驱动的编译，安装和测试。
 
 ``` bash?linenums
 To manually build the driver
@@ -117,4 +118,79 @@ initrd/initramfs file to prevent the OS loading old versions of the i40e driver.
 
    For Ubuntu:
 	# update-initramfs -u
+```
+
+
+安装之前驱动显示字节为335872。
+
+![更新驱动前效果](./images/1683730031859.png)
+驱动安装后信息如下所示，可以看到现在的i40e驱动版本为2.22.18，符合要求。
+
+``` bash?linenums
+f410-server@f410-server:~/i40e-2.22.18/src$ ethtool enp45s0f0
+Settings for enp45s0f0:
+        Supported ports: [ TP ]
+        Supported link modes:   100baseT/Full
+                                1000baseT/Full
+                                10000baseT/Full
+        Supported pause frame use: Symmetric Receive-only
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  100baseT/Full
+                                1000baseT/Full
+                                10000baseT/Full
+        Advertised pause frame use: No
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Speed: 10000Mb/s
+        Duplex: Full
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: internal
+        Auto-negotiation: on
+        MDI-X: Unknown
+Cannot get wake-on-lan settings: Operation not permitted
+        Current message level: 0x0000000f (15)
+                               drv probe link timer
+        Link detected: yes
+f410-server@f410-server:~/i40e-2.22.18/src$ modinfo i40e
+filename:       /lib/modules/4.15.0-208-generic/updates/drivers/net/ethernet/intel/i40e/i40e.ko
+version:        2.22.18
+license:        GPL
+description:    Intel(R) 40-10 Gigabit Ethernet Connection Network Driver
+author:         Intel Corporation, <e1000-devel@lists.sourceforge.net>
+srcversion:     51A6A1821A4BE66CE429DBC
+alias:          pci:v00008086d0000158Bsv*sd*bc*sc*i*
+alias:          pci:v00008086d0000158Asv*sd*bc*sc*i*
+alias:          pci:v00008086d00000DDAsv*sd*bc*sc*i*
+alias:          pci:v00008086d000037D3sv*sd*bc*sc*i*
+alias:          pci:v00008086d000037D2sv*sd*bc*sc*i*
+alias:          pci:v00008086d000037D1sv*sd*bc*sc*i*
+alias:          pci:v00008086d000037D0sv*sd*bc*sc*i*
+alias:          pci:v00008086d000037CFsv*sd*bc*sc*i*
+alias:          pci:v00008086d000037CEsv*sd*bc*sc*i*
+alias:          pci:v00008086d00000D58sv*sd*bc*sc*i*
+alias:          pci:v00008086d00000CF8sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001588sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001587sv*sd*bc*sc*i*
+alias:          pci:v00008086d0000104Fsv*sd*bc*sc*i*
+alias:          pci:v00008086d0000104Esv*sd*bc*sc*i*
+alias:          pci:v00008086d000015FFsv*sd*bc*sc*i*
+alias:          pci:v00008086d00001589sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001586sv*sd*bc*sc*i*
+alias:          pci:v00008086d0000101Fsv*sd*bc*sc*i*
+alias:          pci:v00008086d00000DD2sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001585sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001584sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001583sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001581sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001580sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001574sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001572sv*sd*bc*sc*i*
+depends:        ptp,intel_auxiliary
+retpoline:      Y
+name:           i40e
+vermagic:       4.15.0-208-generic SMP mod_unload modversions
+parm:           debug:Debug level (0=none,...,16=all) (int)
+parm:           l4mode:L4 cloud filter mode: 0=UDP,1=TCP,2=Both,-1=Disabled(default) (int)
 ```
