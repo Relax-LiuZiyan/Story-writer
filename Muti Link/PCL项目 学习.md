@@ -186,6 +186,9 @@ int main(int argc, char *argv[]){
 cat /proc/cpuinfo
 sudo cpufreq_info
 watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
+
+watch -n 1 'cat /proc/cpuinfo | grep "MHz" | awk '\''{print "CPU" (NR-1) ": " $4 " MHz"}'\'
+
 ```
 ##  参考
 1. [设置ubuntu中cpu频率](https://blog.csdn.net/xuershuai/article/details/122023817)
@@ -194,7 +197,8 @@ watch -n 0 "cat /proc/cpuinfo | grep -i mhz"
 # 常用打流命令
 ## iperf3
 ``` bash?linenums
-iperf3 -u -c 10.0.0.1 -p10000 -l8756 -t100 -b12G -A10 -Z -O3
+
+iperf3 -u -c 10.0.0.1 -p10000 -l1460 -t1000 -b6G -A10
 iperf3 -s -p10000 -A10
 
 iperf3 -u -c 172.16.0.1 -p10000 -l1400 -t1000 -b10M -A10
