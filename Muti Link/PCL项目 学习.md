@@ -198,8 +198,8 @@ watch -n 1 'cat /proc/cpuinfo | grep "MHz" | awk '\''{print "CPU" (NR-1) ": " $4
 ## iperf3
 ``` bash?linenums
 
-iperf3 -u -c 10.0.0.1 -p10000 -l1460 -t1000 -b6G -A10
-iperf3 -s -p10000 -A10
+iperf3 -u -c 10.0.0.1 -p10000 -l1460 -t1000 -b6G -A9
+iperf3 -s -p10000 -A9
 
 iperf3 -u -c 172.16.0.1 -p10000 -l1400 -t1000 -b10M -A10
 iperf3 -s -p10000 -A10
