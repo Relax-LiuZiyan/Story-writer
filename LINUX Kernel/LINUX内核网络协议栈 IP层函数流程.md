@@ -1,6 +1,6 @@
 ---
-title: LINUX内核网络协议栈 IP层函数流程
-category: /小书匠/日记/2023-12
+title: LINUX内核网络协议栈_IP层的函数流程
+category: /LINUX内核/IP层函数/2023-12
 grammar_cjkRuby: true
 tags: 'LINUX内核协议栈,IP层,IP报文发送流程,IP报文接收流程'
 ---
