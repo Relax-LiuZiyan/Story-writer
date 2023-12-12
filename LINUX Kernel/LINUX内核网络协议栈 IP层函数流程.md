@@ -12,7 +12,7 @@ tags: 'LINUX内核协议栈,IP层,IP报文发送流程,IP报文接收流程'
 3. 该函数将参数指定的数据(from,length)按照MTU大小组织成一个个的方便后面IP协议处理的skb，并且将这些skb放入传输控制块的发送缓冲区中，这些skb在代码中被称之为 pending数据；
 4. ip_append_data()在分配了skb后，会拷贝L4 payload部分，还会初始化skb中的某些字段，如上图缓冲区左侧的图示；其余的如L4 header由调用ip_push_pending_frames()的函数负责填充、IP header由ip_push_pending_frames()填充
 
-具体关于此函数的功能可以查看：[linux内核协议栈 IPv4之发送接口: ip_append_data() Ⅰ 【UDP使用】](https://blog.csdn.net/wangquan1992/article/details/109203513?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170221500616800213025890%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=170221500616800213025890&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-2-109203513-null-null.nonecase&utm_term=ip_append_data&spm=1018.2226.3001.4450)，这篇文章很好的解释了实现。注意一点，本系统的网卡是具备了`S/G IO`功能，因此主要采用文章中的前两种情况。
+具体关于此函数的功能可以查看：[linux内核协议栈 IPv4之发送接口: ip_append_data() Ⅰ 【UDP使用】](https://blog.csdn.net/wangquan1992/article/details/109203513?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170221500616800213025890%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=170221500616800213025890&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-2-109203513-null-null.nonecase&utm_term=ip_append_data&spm=1018.2226.3001.4450)，这篇文章很好的解释了实现。注意一点，本系统的网卡是具备了`S/G IO`功能，因此主要采用文章中的后面的情况。
 
 
 ### ip_queue_xmit
